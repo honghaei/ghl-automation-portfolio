@@ -1,6 +1,7 @@
 export type Project = {
   slug: string
   title: string
+  category: 'Automation' | 'Web Development' | 'App Development' | 'Research'
   type: string
   status: string
   summary: string
@@ -15,116 +16,235 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: 'camera-rental-automation',
-    title: 'Camera Rental Booking & Automation System',
-    type: 'Real Business / In Progress',
-    status: 'Featured',
+    slug: 'smart-expense-tracker',
+    title: 'Smart Expense Tracker',
+    category: 'App Development',
+    type: 'Mobile Application',
+    status: 'Project Build',
     summary:
-      'A customer journey for a camera rental business covering inquiry, booking, availability, payment validation, reminders, pickup coordination, and post-rental follow-up.',
+      'A mobile financial-management application for tracking expenses, bills, wallets, transactions, reminders, and budget activity in one place.',
     problem:
-      'Rental inquiries can become repetitive and difficult to track when availability, payment confirmation, reminders, and pickup details are handled manually across multiple channels.',
+      'Managing everyday spending becomes difficult when expenses, bills, balances, and transaction history are spread across separate tools or tracked manually.',
     solution:
-      'I designed a centralized GoHighLevel workflow that captures rental inquiries, organizes customers inside a pipeline, sends booking instructions, handles reminders, and keeps the rental process structured from inquiry to completion.',
-    stack: ['GoHighLevel', 'Forms', 'Calendars', 'Pipelines', 'Workflows', 'Email/SMS', 'Canva'],
-    automations: [
-      'Inquiry capture and source tagging',
-      'Rental qualification form',
-      'Booking confirmation sequence',
-      'Payment validation follow-up',
-      'Pickup and return reminders',
-      'Completed rental follow-up',
+      'I built a multi-screen mobile application that brings expense tracking, bill management, wallet balances, transaction history, reminders, and receipt-related workflows into one organized experience.',
+    stack: [
+      'React Native',
+      'Expo',
+      'TypeScript',
+      'Firebase',
+      'AsyncStorage',
+      'Mobile UI',
     ],
-    workflow: ['Inquiry', 'Qualification', 'Booking', 'Payment', 'Pickup', 'Return', 'Follow-up'],
+    automations: [
+      'Expense and transaction tracking',
+      'Bill due-date and reminder workflows',
+      'Wallet and cash-balance management',
+      'Transaction history organization',
+      'Receipt capture and review flow',
+      'Budget analysis and spending insights',
+    ],
+    workflow: [
+      'Dashboard',
+      'Expense Entry',
+      'Bills',
+      'Wallets',
+      'Transactions',
+      'Reports',
+    ],
     screenshots: [
-      { title: 'Rental Funnel', description: 'Add your landing page or booking funnel screenshot here.' },
-      { title: 'Booking Form', description: 'Show the actual fields, rental rules, and booking details.' },
-      { title: 'Pipeline', description: 'Show how inquiries move from new lead to completed rental.' },
-      { title: 'Workflow', description: 'Show the backend automation that handles confirmations and reminders.' },
+      {
+        title: 'Dashboard',
+        description:
+          'Show the main balance, spending summaries, and latest transactions.',
+      },
+      {
+        title: 'Bills',
+        description:
+          'Show upcoming bills, overdue bills, payment actions, and history.',
+      },
+      {
+        title: 'Wallets',
+        description:
+          'Show wallet creation, wallet balances, and wallet-related transactions.',
+      },
+      {
+        title: 'Receipt Scanner',
+        description:
+          'Show the receipt capture, preview, editing, and apply flow.',
+      },
     ],
   },
+
   {
-    slug: 'med-spa-lead-system',
-    title: 'Med Spa Lead-to-Client Automation',
-    type: 'Advanced Demo Project',
-    status: 'Flagship',
+    slug: 'hr-management-system',
+    title: 'HR Management System',
+    category: 'Web Development',
+    type: 'Web Application',
+    status: 'Project Build',
     summary:
-      'An end-to-end CRM and appointment automation system designed to turn paid traffic into qualified consultations and paying clients.',
+      'A responsive HR management interface with authentication, employee organization, company-specific navigation, and administrative workflows.',
     problem:
-      'Med spas often lose leads because of slow follow-up, inconsistent appointment reminders, no-show leakage, and disconnected sales tracking.',
+      'Employee information and navigation needed to be organized across several company brands while keeping the experience consistent and easy to manage.',
     solution:
-      'I built a modular GoHighLevel system with qualification logic, opportunity management, booking automation, no-show recovery, sales follow-up, onboarding, review requests, and reactivation campaigns.',
-    stack: ['GoHighLevel', 'Funnels', 'Surveys', 'Calendars', 'Pipelines', 'Workflows', 'Payments'],
-    automations: [
-      'Lead scoring and qualification',
-      'Appointment booking and reminders',
-      'No-show and cancellation recovery',
-      'Treatment offer and payment follow-up',
-      'Client onboarding',
-      'Review and referral automation',
-      '90-day reactivation campaign',
+      'I developed a responsive React-based interface with login handling, branded company filtering, navigation, employee-management views, and backend integration work.',
+    stack: [
+      'React',
+      'TypeScript',
+      'JavaScript',
+      'PHP',
+      'MySQL',
+      'Responsive UI',
     ],
-    workflow: ['Traffic', 'Lead Capture', 'Qualification', 'Booking', 'Consultation', 'Payment', 'Client', 'Review'],
+    automations: [
+      'Authentication and login flow',
+      'Company-specific navigation',
+      'Employee information organization',
+      'Responsive dashboard interface',
+      'Backend login and data integration',
+    ],
+    workflow: [
+      'Login',
+      'Company Selection',
+      'Dashboard',
+      'Employee Management',
+      'Navigation',
+    ],
     screenshots: [
-      { title: 'Lead Funnel', description: 'Show the main offer and CTA.' },
-      { title: 'Qualification Logic', description: 'Show conditional branches and lead scoring.' },
-      { title: 'CRM Pipeline', description: 'Show appointment, proposal, payment, and outcome stages.' },
-      { title: 'No-Show Recovery', description: 'Show the recovery workflow and booking exit condition.' },
-      { title: 'Onboarding', description: 'Show what happens after payment is received.' },
-      { title: 'Review Automation', description: 'Show the post-service review and referral workflow.' },
+      {
+        title: 'Login Screen',
+        description:
+          'Show the authentication entry point and login experience.',
+      },
+      {
+        title: 'Dashboard',
+        description:
+          'Show the main HR workspace and administrative interface.',
+      },
+      {
+        title: 'Company Navigation',
+        description:
+          'Show the company filters, branded navigation, and active states.',
+      },
+      {
+        title: 'Employee Management',
+        description:
+          'Show the employee information and management interface.',
+      },
     ],
   },
+
   {
-    slug: 'csquared-crm',
-    title: 'CSquared CRM & Sales Automation',
-    type: 'CRM Build',
-    status: 'Completed Build',
+    slug: 'inventory-management-system',
+    title: 'Inventory Management System',
+    category: 'Web Development',
+    type: 'CRUD Business System',
+    status: 'Project Build',
     summary:
-      'A full CRM setup built from scratch with contacts, calendar, forms, web funnel, pipeline structure, and automated follow-up workflows.',
+      'A browser-based inventory system for handling inbound stock, outbound stock, suppliers, quantities, stock values, and item records.',
     problem:
-      'The sales process needed a centralized system for lead capture, scheduling, follow-up, and opportunity tracking.',
+      'Spreadsheet-based inventory tracking becomes harder to maintain when inbound deliveries, outbound releases, stock quantities, suppliers, and item matching all need to stay synchronized.',
     solution:
-      'I created the CRM structure from the ground up, connected the lead capture process to the pipeline, and automated repetitive follow-up actions to reduce manual work and missed leads.',
-    stack: ['GoHighLevel', 'CRM', 'Calendar', 'Forms', 'Funnels', 'Workflow Automation'],
-    automations: [
-      'Contact creation and organization',
-      'Form-to-pipeline routing',
-      'Appointment scheduling',
-      'Automated follow-up sequences',
-      'Opportunity stage movement',
+      'I translated the inventory workflow into a web-based CRUD system where inbound transactions add stock, outbound transactions deduct stock, and item records stay connected through matching logic.',
+    stack: [
+      'HTML',
+      'CSS',
+      'JavaScript',
+      'CRUD',
+      'Inventory Logic',
+      'Responsive Tables',
     ],
-    workflow: ['Lead Capture', 'Contacted', 'Booked Call', 'Proposal', 'Follow-up', 'Closed Won / Lost'],
+    automations: [
+      'Inbound stock updates',
+      'Outbound stock deductions',
+      'Item and supplier matching',
+      'Stock-value calculations',
+      'Reorder and stock-status tracking',
+    ],
+    workflow: [
+      'Inventory',
+      'Inbound',
+      'Item Matching',
+      'Stock Update',
+      'Outbound',
+      'Monitoring',
+    ],
     screenshots: [
-      { title: 'CRM Dashboard', description: 'Show the completed account structure.' },
-      { title: 'Pipeline', description: 'Show the stages and opportunity organization.' },
-      { title: 'Workflow', description: 'Show the automation that handles repetitive follow-up.' },
-      { title: 'Funnel', description: 'Show the web funnel or form entry point.' },
+      {
+        title: 'Inventory Tracker',
+        description:
+          'Show quantities, item details, stock values, reorder levels, and status.',
+      },
+      {
+        title: 'Inbound Transactions',
+        description:
+          'Show delivery information and quantity-received entry.',
+      },
+      {
+        title: 'Outbound Transactions',
+        description:
+          'Show requisition information and stock-deduction flow.',
+      },
+      {
+        title: 'Connected Inventory Logic',
+        description:
+          'Show how inbound and outbound transactions update the inventory records.',
+      },
     ],
   },
+
   {
-    slug: 'agency-sales-pipeline',
-    title: 'B2B Agency Sales Pipeline',
-    type: 'Demo Project',
-    status: 'System Design',
+    slug: 'learning-management-system',
+    title: 'Learning Management System',
+    category: 'Web Development',
+    type: 'Web Application',
+    status: 'Project Build',
     summary:
-      'A sales automation system for agencies that manages lead capture, discovery calls, proposals, follow-ups, and closed-won or closed-lost outcomes.',
+      'A learning management system designed to organize educational content, user access, learning workflows, and dashboard-based course management.',
     problem:
-      'Agency leads can fall through the cracks when outreach, discovery calls, proposal follow-ups, and pipeline updates are handled manually.',
+      'Learning content and user activity need a structured environment where educational resources, access, and course-related information can be managed from one system.',
     solution:
-      'The system connects pipeline stages to dedicated workflows so each prospect receives the right communication based on their current sales stage and behavior.',
-    stack: ['GoHighLevel', 'Pipelines', 'Calendar', 'Email', 'Workflows', 'Opportunity Automation'],
-    automations: [
-      'New lead intake',
-      'Contacted stage follow-up',
-      'Booked-call automation',
-      'Proposal follow-up',
-      'Closed-lost timeout logic',
+      'I worked on a web-based LMS structure focused on organized learning content, user management, dashboard workflows, and a clearer experience for managing educational activities.',
+    stack: [
+      'Web Application',
+      'LMS',
+      'Dashboard',
+      'User Management',
     ],
-    workflow: ['New Lead', 'Contacted', 'Booked Call', 'Proposal Sent', 'Closed Won', 'Closed Lost'],
+    automations: [
+      'User access and management',
+      'Learning content organization',
+      'Course-related workflows',
+      'Dashboard-based navigation',
+      'Structured learning experience',
+    ],
+    workflow: [
+      'Login',
+      'Dashboard',
+      'Courses',
+      'Learning Content',
+      'User Activity',
+    ],
     screenshots: [
-      { title: 'Pipeline', description: 'Show the sales stages.' },
-      { title: 'Contacted Workflow', description: 'Show the 3-day and 7-day follow-up logic.' },
-      { title: 'Booked Call Workflow', description: 'Show appointment-triggered stage movement.' },
-      { title: 'Proposal Workflow', description: 'Show follow-up and closed-lost automation.' },
+      {
+        title: 'Dashboard',
+        description:
+          'Show the main LMS dashboard and navigation experience.',
+      },
+      {
+        title: 'Course View',
+        description:
+          'Show how courses or learning materials are organized.',
+      },
+      {
+        title: 'Learning Content',
+        description:
+          'Show the content or lesson experience inside the system.',
+      },
+      {
+        title: 'User Management',
+        description:
+          'Show how users or learners are organized and managed.',
+      },
     ],
   },
 ]

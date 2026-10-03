@@ -1,0 +1,144 @@
+
+.portfolio-footer {
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(91, 242, 173, 0.045), transparent 32%),
+    #06100c;
+}
+
+.portfolio-footer-inner {
+  width: min(1320px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 54px 0 26px;
+}
+
+.portfolio-footer-main {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr 0.8fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.portfolio-footer-brand h2 {
+  margin: 0;
+  color: #f3f7f5;
+  font-size: 1.35rem;
+  letter-spacing: -0.025em;
+}
+
+.portfolio-footer-brand > p {
+  max-width: 500px;
+  margin: 12px 0 0;
+  color: #8f9f98;
+  line-height: 1.75;
+  font-size: 0.92rem;
+}
+
+.portfolio-footer-role {
+  display: inline-block;
+  margin-top: 18px;
+  color: #5bf2ad;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portfolio-footer-group h3 {
+  margin: 0 0 15px;
+  color: #f3f7f5;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.portfolio-footer-links {
+  display: grid;
+  gap: 11px;
+}
+
+.portfolio-footer-links a,
+.portfolio-footer-links button {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #92a29b;
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.portfolio-footer-links a:hover,
+.portfolio-footer-links button:hover {
+  color: #5bf2ad;
+  transform: translateX(2px);
+}
+
+.portfolio-footer-bottom {
+  margin-top: 46px;
+  padding-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #64746d;
+  font-size: 0.76rem;
+}
+
+.portfolio-footer-bottom p {
+  margin: 0;
+}
+
+.portfolio-footer-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.portfolio-footer-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5bf2ad;
+  box-shadow: 0 0 14px rgba(91, 242, 173, 0.65);
+}
+
+@media (max-width: 820px) {
+  .portfolio-footer-inner {
+    width: min(100% - 28px, 1320px);
+    padding-top: 44px;
+  }
+
+  .portfolio-footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .portfolio-footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .portfolio-footer-main {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-footer-brand {
+    grid-column: auto;
+  }
+
+  .portfolio-footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

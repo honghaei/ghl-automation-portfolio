@@ -1,39 +1,120 @@
-import { Link, useLocation } from 'react-router-dom'
-import type { MouseEvent } from 'react'
+import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import avatar from '../assets/charles-avatar.png'
+import './Navbar.css'
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
-  const onHome = location.pathname === '/'
 
-  const scrollToSection = (event: MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    if (!onHome) return
+  const closeMenu = () => setMenuOpen(false)
 
-    event.preventDefault()
-    const section = document.getElementById(sectionId)
+  const isProjectPage =
+    location.pathname.startsWith('/project/') ||
+    location.pathname.startsWith('/projects/') ||
+    location.pathname.startsWith('/ghl-project/')
 
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      window.history.replaceState(null, '', `/#${sectionId}`)
+  const activeHash = location.hash || '#home'
+
+  const isActive = (section: string) => {
+    if (isProjectPage) {
+      return section === 'projects'
     }
+
+    return activeHash === `#${section}`
   }
 
-  return (
-    <header className="nav-wrap">
-      <nav className="nav container">
-        <Link to="/" className="brand" aria-label="Home">
-          <span className="brand-mark">CJ</span>
-          <span>
-            <strong>Charles Jacob Lat</strong>
-            <small>Automation Specialist</small>
-          </span>
-        </Link>
+  const navClass = (section: string) =>
+    `portfolio-nav-link${isActive(section) ? ' is-active' : ''}`
 
-        <div className="nav-links">
-          <Link to="/#projects" onClick={(event) => scrollToSection(event, 'projects')}>Projects</Link>
-          <Link to="/#capabilities" onClick={(event) => scrollToSection(event, 'capabilities')}>Capabilities</Link>
-          <Link to="/#contact" onClick={(event) => scrollToSection(event, 'contact')} className="nav-cta">Contact</Link>
+  return (
+    <header className="portfolio-navbar-wrap">
+      <nav className="portfolio-navbar" aria-label="Primary navigation">
+        <a className="portfolio-brand" href="/#home" onClick={closeMenu}>
+          <span className="portfolio-avatar-shell">
+            <img
+              className="portfolio-avatar"
+              src={avatar}
+              alt="Charles Jacob Lat avatar"
+            />
+          </span>
+
+          <span className="portfolio-brand-copy">
+            <span className="portfolio-brand-name">Charles Jacob Lat</span>
+            <span className="portfolio-brand-role">
+              GHL Specialist · Automation · Web Dev · App Dev
+            </span>
+          </span>
+        </a>
+
+        <div className="portfolio-nav-links">
+          <a className={navClass('home')} href="/#home">
+            Home
+          </a>
+
+          <a className={navClass('about')} href="/#about">
+            About
+          </a>
+
+          <a className={navClass('projects')} href="/#projects">
+            Projects
+          </a>
+
+          <a className={navClass('skills')} href="/#skills">
+            Skills
+          </a>
+
+          <a className={navClass('faqs')} href="/#faqs">
+            FAQs
+          </a>
         </div>
+
+        <a className="portfolio-contact-link" href="/#contact">
+          Contact Me
+          <span className="portfolio-contact-arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+
+        <button
+          className="portfolio-mobile-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((current) => !current)}
+        >
+          {menuOpen ? '×' : '☰'}
+        </button>
       </nav>
+
+      <div
+        className={`portfolio-mobile-menu${menuOpen ? ' is-open' : ''}`}
+        aria-hidden={!menuOpen}
+      >
+        <a href="/#home" onClick={closeMenu}>
+          Home
+        </a>
+        <a href="/#about" onClick={closeMenu}>
+          About
+        </a>
+        <a href="/#projects" onClick={closeMenu}>
+          Projects
+        </a>
+        <a href="/#skills" onClick={closeMenu}>
+          Skills
+        </a>
+        <a href="/#faqs" onClick={closeMenu}>
+          FAQs
+        </a>
+
+        <a
+          className="portfolio-mobile-contact"
+          href="/#contact"
+          onClick={closeMenu}
+        >
+          Contact Me ↗
+        </a>
+      </div>
     </header>
   )
 }

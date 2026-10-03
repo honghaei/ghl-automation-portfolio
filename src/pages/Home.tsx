@@ -1,223 +1,418 @@
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
-import ProjectCard from '../components/ProjectCard'
-import { projects } from '../data/projects'
-import profilePhoto from '../assets/charles-jacob-lat.jpg'
+import { useState } from 'react'
 import WhatsAppContact from '../components/WhatsAppContact'
+import ProjectCard from '../components/ProjectCard'
+import profilePhoto from '../assets/charles-jacob-lat.jpg'
+import { projects } from '../data/projects'
+import { ghlProjects } from '../data/ghlProjects'
+import './HomeRedesign.css'
 
-const capabilities = [
-  ['CRM Architecture', 'Pipelines, stages, opportunities, tags, custom fields, and contact organization.'],
-  ['Workflow Automation', 'Behavior-based email/SMS sequences, If/Else logic, waits, goals, and workflow handoffs.'],
-  ['Funnels & Forms', 'Lead capture funnels, qualification forms, booking flows, and conversion-focused pages.'],
-  ['Calendars & Booking', 'Appointment scheduling, reminders, rescheduling, no-show recovery, and internal notifications.'],
-  ['Lead Nurturing', 'Follow-up systems designed to keep leads moving without repetitive manual work.'],
-  ['Sales Operations', 'Proposal, payment, onboarding, review, referral, and reactivation automations.'],
+type FAQItem = {
+  question: string
+  answer: string
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: 'What do you actually build?',
+    answer:
+      'I build GoHighLevel automation systems, CRM workflows, responsive web applications, and mobile apps. I focus on practical systems that make business processes easier to manage and reduce repetitive work.',
+  },
+  {
+    question: 'What platforms and technologies do you work with?',
+    answer:
+      'My work includes GoHighLevel, React, TypeScript, React Native, Expo, JavaScript, HTML, CSS, PHP, MySQL, Firebase, and other tools depending on the needs of the project.',
+  },
+  {
+    question: 'Do you only work with GoHighLevel?',
+    answer:
+      'No. GoHighLevel and automation are one of my main specializations, but I also build web applications, mobile applications, dashboards, and business systems.',
+  },
+  {
+    question: 'Can you build full websites and apps?',
+    answer:
+      'Yes. I can work on frontend interfaces, responsive websites, CRUD-based systems, mobile applications, and the supporting logic needed to turn an idea into a working product.',
+  },
+  {
+    question: 'Are you available for freelance or remote work?',
+    answer:
+      'Yes. I am open to freelance projects and remote opportunities involving GoHighLevel, automation, web development, and app development.',
+  },
+  {
+    question: 'How can I contact you?',
+    answer:
+      'You can reach me through email at latcharlesjacob@gmail.com or use the WhatsApp contact button on this portfolio to view and copy my number.',
+  },
 ]
 
 export default function Home() {
-  const location = useLocation()
+  const [openFaq, setOpenFaq] = useState<number>(0)
 
-  useEffect(() => {
-    if (!location.hash) return
-
-    const sectionId = location.hash.replace('#', '')
-    const section = document.getElementById(sectionId)
-
-    if (section) {
-      requestAnimationFrame(() => {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      })
-    }
-  }, [location.hash])
+  const openWhatsApp = () => {
+    window.dispatchEvent(new Event('open-whatsapp-contact'))
+  }
 
   return (
-    <main>
-      <section className="hero container">
-        <motion.div
-          className="hero-copy"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
-        >
-          <div className="eyebrow">GOHIGHLEVEL • CRM • AUTOMATION</div>
-          <h1>I build systems that turn leads into <span>booked calls, customers, and repeat business.</span></h1>
-          <p className="hero-lead">
-            I’m Charles Jacob Lat, a GoHighLevel and automation specialist focused on building practical CRM systems, sales pipelines, funnels, and workflows that reduce manual work and keep leads moving.
-          </p>
-          <div className="hero-actions">
-            <a href="/projects/med-spa-lead-system" className="button button-primary">View Featured Case Study</a>
-            <a href="#about" className="button button-secondary">About Me</a>
-          </div>
-          <div className="micro-proof">
-            <span>CRM builds</span><span>Workflow logic</span><span>Funnels</span><span>Lead nurturing</span>
-          </div>
-        </motion.div>
+    <div className="portfolio-home" id="home">
+      <main>
+        <section className="portfolio-home-section portfolio-hero">
+          <div className="portfolio-hero-copy">
+            <p className="portfolio-home-eyebrow">Open for opportunities</p>
 
-        <motion.div
-          className="hero-console"
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.65, delay: 0.08 }}
-        >
-          <div className="console-head">
-            <span></span><span></span><span></span>
-            <p>Automation overview</p>
-          </div>
-          <div className="console-grid">
-            <div className="metric-card"><small>Active systems</small><strong>04</strong><span>Portfolio builds</span></div>
-            <div className="metric-card"><small>Core focus</small><strong>CRM</strong><span>Lead-to-client journeys</span></div>
-          </div>
-          <div className="automation-card">
-            <div className="automation-line"><b>01</b><span>Lead captured</span><em>Trigger</em></div>
-            <div className="automation-line"><b>02</b><span>Opportunity created</span><em>CRM</em></div>
-            <div className="automation-line"><b>03</b><span>Qualification branch</span><em>If / Else</em></div>
-            <div className="automation-line"><b>04</b><span>Appointment nurture</span><em>Workflow</em></div>
-            <div className="automation-line active"><b>05</b><span>Booked call</span><em>Goal reached</em></div>
-          </div>
-        </motion.div>
-      </section>
+            <h1 className="portfolio-hero-title">
+              Hi, I&apos;m <span className="accent">Charles Jacob Lat</span>
+            </h1>
 
-      <section className="signal-bar">
-        <div className="container signal-grid">
-          <div><strong>System-first</strong><span>Not just attractive pages</span></div>
-          <div><strong>Modular workflows</strong><span>Cleaner and easier to maintain</span></div>
-          <div><strong>Business logic</strong><span>Built around real customer journeys</span></div>
-        </div>
-      </section>
+            <p className="portfolio-hero-roles">
+              <span className="accent">GHL Specialist</span> · Automation Specialist ·{' '}
+              <span className="accent">Web Developer</span> · App Developer
+            </p>
 
-      <section className="section container" id="projects">
-        <div className="section-heading">
-          <div>
-            <div className="eyebrow">FEATURED BUILDS</div>
-            <h2>Systems I can show, explain, and rebuild.</h2>
-          </div>
-          <p>Each case study focuses on the business problem, the backend automation, and the customer journey—not only the front-end design.</p>
-        </div>
-        <div className="project-grid">
-          {projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}
-        </div>
-      </section>
+            <p className="portfolio-hero-description">
+              I build systems, websites, and applications that solve practical business
+              problems — from GoHighLevel CRM automation and lead workflows to responsive
+              web applications and cross-platform mobile experiences.
+            </p>
 
-      <section className="section container" id="about">
-        <div className="about-layout">
-          <motion.div
-            className="about-photo-card"
-            initial={{ opacity: 0, x: -18 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="about-photo-frame">
-              <img src={profilePhoto} alt="Charles Jacob Lat" className="about-photo" />
-              <div className="about-photo-overlay" />
+            <div className="portfolio-hero-actions">
+              <a className="portfolio-primary-btn" href="#projects">
+                View My Work <span aria-hidden="true">↗</span>
+              </a>
+
+              <a className="portfolio-secondary-btn" href="#about">
+                About Me
+              </a>
             </div>
-            <div className="about-photo-meta">
-              <div>
-                <strong>Charles Jacob Lat</strong>
-                <span>GoHighLevel & Automation Specialist</span>
+          </div>
+
+          <div className="portfolio-focus-grid" aria-label="Areas of expertise">
+            <article className="portfolio-focus-card">
+              <div className="portfolio-focus-icon">⚙</div>
+              <h3>Automation Systems</h3>
+              <p>
+                GoHighLevel CRM architecture, pipelines, funnels, workflows, lead nurturing,
+                appointment automation, and business process automation.
+              </p>
+              <div className="portfolio-chip-row">
+                <span className="portfolio-chip green">GoHighLevel</span>
+                <span className="portfolio-chip">CRM</span>
+                <span className="portfolio-chip">Workflows</span>
               </div>
-              <span className="available-dot">Available</span>
+            </article>
+
+            <article className="portfolio-focus-card">
+              <div className="portfolio-focus-icon">&lt;/&gt;</div>
+              <h3>Web Development</h3>
+              <p>
+                Responsive websites and web applications focused on usability, clean
+                interfaces, business logic, and real-world workflows.
+              </p>
+              <div className="portfolio-chip-row">
+                <span className="portfolio-chip green">React</span>
+                <span className="portfolio-chip">TypeScript</span>
+                <span className="portfolio-chip">Web Apps</span>
+              </div>
+            </article>
+
+            <article className="portfolio-focus-card">
+              <div className="portfolio-focus-icon">▯</div>
+              <h3>App Development</h3>
+              <p>
+                Cross-platform mobile applications with practical features, interactive
+                interfaces, local or cloud data, and business-focused functionality.
+              </p>
+              <div className="portfolio-chip-row">
+                <span className="portfolio-chip green">React Native</span>
+                <span className="portfolio-chip">Expo</span>
+                <span className="portfolio-chip">Mobile</span>
+              </div>
+            </article>
+
+            <article className="portfolio-focus-card">
+              <div className="portfolio-focus-icon">◇</div>
+              <h3>Business Systems</h3>
+              <p>
+                Systems for managing operations such as inventory, employees, learning
+                content, customer data, transactions, and internal processes.
+              </p>
+              <div className="portfolio-chip-row">
+                <span className="portfolio-chip green">CRUD</span>
+                <span className="portfolio-chip">Dashboards</span>
+                <span className="portfolio-chip">Data</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section
+          className="portfolio-ghl-section"
+          id="projects"
+          aria-labelledby="ghl-projects-title"
+        >
+          <div className="portfolio-home-section">
+            <div className="portfolio-ghl-head">
+              <div className="portfolio-ghl-head-left">
+                <p className="portfolio-home-eyebrow">GoHighLevel projects</p>
+                <h2 id="ghl-projects-title">
+                  Systems I can show, explain, and rebuild.
+                </h2>
+              </div>
+
+              <p className="portfolio-ghl-head-right">
+                These builds focus on the CRM structure, automation logic, customer journey,
+                and operational flow behind the system — not only the front-end design.
+              </p>
             </div>
-          </motion.div>
 
-          <motion.div
-            className="about-intro"
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="eyebrow">ABOUT ME</div>
-            <h2>Building systems with both technical and business thinking.</h2>
-            <p>
-              I’m Charles Jacob Lat, a Computer Science graduate and GoHighLevel automation specialist focused on building systems that make business processes simpler, more organized, and easier to scale.
-            </p>
-            <p>
-              My technical background helps me approach automation beyond simply connecting actions together. I look at how leads move through a business, where repetitive work can be reduced, and how the CRM should be structured so the entire customer journey stays clear and manageable.
-            </p>
-            <p>
-              I use GoHighLevel to build CRM pipelines, automated workflows, funnels, booking systems, lead nurturing sequences, forms, calendars, and client onboarding processes. I continue sharpening those skills by building real-world systems and portfolio projects around practical business problems.
-            </p>
-          </motion.div>
-        </div>
+            <div className="portfolio-ghl-grid">
+              {ghlProjects.map((project) => (
+                <article className="portfolio-ghl-card" key={project.slug}>
+                  <div className="portfolio-ghl-card-top">
+                    <span className="portfolio-ghl-badge">{project.badge}</span>
+                    <span className="portfolio-ghl-status">{project.status}</span>
+                  </div>
 
-        <div className="about-cards about-cards-row">
-          <motion.div className="about-card" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span>01</span>
-            <small>BACKGROUND</small>
-            <h3>Computer Science</h3>
-            <p>A technical foundation in systems, software, structured thinking, and problem solving.</p>
-          </motion.div>
-          <motion.div className="about-card" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }}>
-            <span>02</span>
-            <small>SPECIALIZATION</small>
-            <h3>GoHighLevel</h3>
-            <p>CRM architecture, workflows, funnels, pipelines, calendars, lead nurturing, and automation.</p>
-          </motion.div>
-          <motion.div className="about-card" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
-            <span>03</span>
-            <small>APPROACH</small>
-            <h3>Problem Solving</h3>
-            <p>Understand the process first, identify the friction, then automate what actually matters.</p>
-          </motion.div>
-        </div>
-      </section>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
 
-      <section className="section container" id="capabilities">
-        <div className="section-heading narrow">
-          <div>
-            <div className="eyebrow">WHAT I BUILD</div>
-            <h2>GoHighLevel systems with the operations behind them.</h2>
-          </div>
-        </div>
-        <div className="capability-grid">
-          {capabilities.map(([title, description], index) => (
-            <motion.div
-              key={title}
-              className="capability-card"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.04 }}
-            >
-              <span className="cap-number">0{index + 1}</span>
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+                  <div className="portfolio-chip-row">
+                    {project.tools.map((tool, index) => (
+                      <span
+                        className={`portfolio-chip${index === 0 ? ' green' : ''}`}
+                        key={tool}
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
 
-      <section className="section container">
-        <div className="process-box">
-          <div>
-            <div className="eyebrow">HOW I THINK</div>
-            <h2>Start with the customer journey. Then automate the repetitive work.</h2>
+                  <a
+                    className="portfolio-ghl-link"
+                    href={`/ghl-project/${project.slug}`}
+                    aria-label={`View ${project.title} case study`}
+                  >
+                    View case study <span aria-hidden="true">→</span>
+                  </a>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="process-steps">
-            <span>01 Map the process</span>
-            <span>02 Build the CRM structure</span>
-            <span>03 Connect triggers & actions</span>
-            <span>04 Test every path</span>
-            <span>05 Improve the handoffs</span>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="section container" id="contact">
-        <div className="contact-panel">
-          <div>
-            <div className="eyebrow">AVAILABLE FOR GHL WORK</div>
-            <h2>Need someone who can build the system, not just follow clicks?</h2>
-            <p>I’m available for freelance projects, ongoing GoHighLevel support, and remote opportunities. If you have a system that needs to be built, cleaned up, or automated, let’s connect.</p>
+        <section
+          className="portfolio-content-section"
+          id="development-projects"
+          aria-labelledby="development-projects-title"
+        >
+          <div className="portfolio-home-section">
+            <div className="portfolio-section-head">
+              <p className="portfolio-home-eyebrow">Featured development projects</p>
+              <h2 id="development-projects-title">Web and app projects.</h2>
+              <p>
+                A selection of projects that showcase my experience across mobile
+                development, web applications, and business systems.
+              </p>
+            </div>
+
+            <div className="portfolio-project-grid">
+              {projects.map((project) => (
+                <ProjectCard project={project} key={project.slug} />
+              ))}
+            </div>
           </div>
-          <div className="contact-actions">
-            <a className="button button-primary" href="mailto:latcharlesjacob@gmail.com">Email Me</a>
-            <button className="button button-secondary" type="button" onClick={() => window.dispatchEvent(new Event('open-whatsapp-contact'))}>WhatsApp Me</button>
+        </section>
+
+        <section
+          className="portfolio-content-section"
+          id="about"
+          aria-labelledby="about-title"
+        >
+          <div className="portfolio-home-section portfolio-about-grid">
+            <div className="portfolio-about-photo">
+              <img src={profilePhoto} alt="Charles Jacob Lat" />
+            </div>
+
+            <div className="portfolio-about-copy">
+              <p className="portfolio-home-eyebrow">About me</p>
+              <h2 id="about-title">
+                Building practical systems with a developer&apos;s mindset.
+              </h2>
+
+              <p>
+                I&apos;m Charles Jacob Lat, a Computer Science graduate focused on
+                automation, web development, and application development. I enjoy taking a
+                process or business problem, understanding how the pieces connect, and
+                turning it into a working digital system.
+              </p>
+
+              <p>
+                My work ranges from GoHighLevel CRM automation and workflow design to React
+                web applications and React Native mobile apps. I approach each project with
+                an emphasis on usability, maintainability, and solving the actual problem
+                behind the build.
+              </p>
+
+              <div className="portfolio-about-pillars">
+                <div className="portfolio-about-pillar">
+                  <span>Automation</span>
+                  <strong>GoHighLevel & CRM Systems</strong>
+                </div>
+
+                <div className="portfolio-about-pillar">
+                  <span>Web</span>
+                  <strong>React & TypeScript Development</strong>
+                </div>
+
+                <div className="portfolio-about-pillar">
+                  <span>Apps</span>
+                  <strong>React Native & Expo</strong>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section
+          className="portfolio-content-section"
+          id="skills"
+          aria-labelledby="skills-title"
+        >
+          <div className="portfolio-home-section">
+            <div className="portfolio-section-head">
+              <p className="portfolio-home-eyebrow">Skills & technologies</p>
+              <h2 id="skills-title">What I work with.</h2>
+              <p>
+                My toolkit spans CRM automation, modern frontend development, mobile
+                development, databases, and business system design.
+              </p>
+            </div>
+
+            <div className="portfolio-skills-grid">
+              <article className="portfolio-skill-card">
+                <h3>Automation & CRM</h3>
+                <div className="portfolio-skill-list">
+                  <span className="portfolio-chip green">GoHighLevel</span>
+                  <span className="portfolio-chip">CRM Pipelines</span>
+                  <span className="portfolio-chip">Workflows</span>
+                  <span className="portfolio-chip">Funnels</span>
+                  <span className="portfolio-chip">Forms</span>
+                  <span className="portfolio-chip">Calendars</span>
+                  <span className="portfolio-chip">Lead Nurturing</span>
+                </div>
+              </article>
+
+              <article className="portfolio-skill-card">
+                <h3>Web Development</h3>
+                <div className="portfolio-skill-list">
+                  <span className="portfolio-chip green">React</span>
+                  <span className="portfolio-chip">TypeScript</span>
+                  <span className="portfolio-chip">JavaScript</span>
+                  <span className="portfolio-chip">HTML</span>
+                  <span className="portfolio-chip">CSS</span>
+                  <span className="portfolio-chip">PHP</span>
+                  <span className="portfolio-chip">Responsive UI</span>
+                </div>
+              </article>
+
+              <article className="portfolio-skill-card">
+                <h3>Apps & Data</h3>
+                <div className="portfolio-skill-list">
+                  <span className="portfolio-chip green">React Native</span>
+                  <span className="portfolio-chip">Expo</span>
+                  <span className="portfolio-chip">MySQL</span>
+                  <span className="portfolio-chip">Firebase</span>
+                  <span className="portfolio-chip">CRUD</span>
+                  <span className="portfolio-chip">Git</span>
+                  <span className="portfolio-chip">GitHub</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="portfolio-content-section"
+          id="faqs"
+          aria-labelledby="faq-title"
+        >
+          <div className="portfolio-home-section">
+            <div className="portfolio-faq-shell">
+              <div className="portfolio-faq-header">
+                <p className="portfolio-home-eyebrow">FAQs</p>
+                <h2 id="faq-title">Quick answers.</h2>
+                <p>A few things clients and employers usually want to know.</p>
+              </div>
+
+              {faqs.map((faq, index) => {
+                const isOpen = openFaq === index
+
+                return (
+                  <div
+                    className={`portfolio-faq-item${isOpen ? ' is-open' : ''}`}
+                    key={faq.question}
+                  >
+                    <button
+                      type="button"
+                      className="portfolio-faq-button"
+                      aria-expanded={isOpen}
+                      onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                    >
+                      <span className="portfolio-faq-number">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="portfolio-faq-question">{faq.question}</span>
+                      <span className="portfolio-faq-icon" aria-hidden="true">
+                        +
+                      </span>
+                    </button>
+
+                    <div className="portfolio-faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="portfolio-content-section"
+          id="contact"
+          aria-labelledby="contact-title"
+        >
+          <div className="portfolio-home-section">
+            <div className="portfolio-contact-panel">
+              <div>
+                <p className="portfolio-home-eyebrow">Available for work</p>
+                <h2 id="contact-title">Have a project or opportunity in mind?</h2>
+                <p>
+                  I&apos;m open to GoHighLevel, automation, web development, app
+                  development, freelance, and remote opportunities.
+                </p>
+              </div>
+
+              <div className="portfolio-contact-actions">
+                <a
+                  className="portfolio-primary-btn"
+                  href="mailto:latcharlesjacob@gmail.com"
+                >
+                  Email Me
+                </a>
+
+                <button
+                  className="portfolio-secondary-btn"
+                  type="button"
+                  onClick={openWhatsApp}
+                >
+                  WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <WhatsAppContact />
-    </main>
+    </div>
   )
 }
