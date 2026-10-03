@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
 import { projects } from '../data/projects'
 import profilePhoto from '../assets/charles-jacob-lat.jpg'
+import WhatsAppContact from '../components/WhatsAppContact'
 
 const capabilities = [
   ['CRM Architecture', 'Pipelines, stages, opportunities, tags, custom fields, and contact organization.'],
@@ -211,10 +212,12 @@ export default function Home() {
           </div>
           <div className="contact-actions">
             <a className="button button-primary" href="mailto:latcharlesjacob@gmail.com">Email Me</a>
-            <a className="button button-secondary" href="https://wa.me/639674101235" target="_blank" rel="noreferrer">WhatsApp Me</a>
+            <button className="button button-secondary" type="button" onClick={() => window.dispatchEvent(new Event('open-whatsapp-contact'))}>WhatsApp Me</button>
           </div>
         </div>
       </section>
+
+      <WhatsAppContact />
     </main>
   )
 }
