@@ -26,22 +26,27 @@ export default function ProjectCaseStudy() {
         </Link>
 
         <div className="case-grid">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <div className="eyebrow">
-              {project.category} · {project.type}
-            </div>
-
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="eyebrow">{project.category} · {project.type}</div>
             <h1>{project.title}</h1>
             <p>{project.summary}</p>
 
             <div className="tag-row large">
-              {project.stack.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
+              {project.stack.map((item) => <span key={item}>{item}</span>)}
             </div>
+
+            {project.githubUrl && (
+              <div style={{ marginTop: 24 }}>
+                <a
+                  className="button button-primary"
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View GitHub Repository ↗
+                </a>
+              </div>
+            )}
           </motion.div>
 
           <aside className="case-sidebar">
@@ -49,7 +54,7 @@ export default function ProjectCaseStudy() {
             <strong>{project.status}</strong>
             <p>
               A detailed look at the problem, solution, project flow,
-              features, and implementation behind this build.
+              features, implementation, and visual proof behind this build.
             </p>
           </aside>
         </div>
@@ -62,7 +67,6 @@ export default function ProjectCaseStudy() {
             <h2>What needed to be solved</h2>
             <p>{project.problem}</p>
           </article>
-
           <article className="info-panel">
             <div className="eyebrow">THE SOLUTION</div>
             <h2>How I approached it</h2>
@@ -78,7 +82,6 @@ export default function ProjectCaseStudy() {
             <h2>How the system or experience moves</h2>
           </div>
         </div>
-
         <Workflow items={project.workflow} />
       </section>
 
@@ -106,24 +109,46 @@ export default function ProjectCaseStudy() {
             <div className="eyebrow">PROJECT EVIDENCE</div>
             <h2>Project screenshots.</h2>
           </div>
-
           <p>
-            Selected screens and interfaces from the project will be shown here
-            as the case study is documented.
+            Selected clean screens from the working build, presented without
+            Expo Go development overlays.
           </p>
         </div>
 
         <div className="screenshot-grid">
           {project.screenshots.map((shot, index) => (
             <article className="screenshot-card" key={shot.title}>
-              <div className="screenshot-placeholder">
-                <span>
-                  Project Screenshot {String(index + 1).padStart(2, '0')}
-                </span>
+              {shot.image ? (
+                <div style={{
+                  background: '#07101f',
+                  padding: 16,
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}>
+                  <img
+                    src={shot.image}
+                    alt={shot.title}
+                    loading="lazy"
+                    style={{
+                      width: '100%',
+                      maxWidth: 430,
+                      height: 'auto',
+                      display: 'block',
+                      borderRadius: 14,
+                    }}
+                  />
+                </div>
+              ) : (
+                <div className="screenshot-placeholder">
+                  <span>Project Screenshot {String(index + 1).padStart(2, '0')}</span>
+                  <strong>{shot.title}</strong>
+                </div>
+              )}
+              <p>
                 <strong>{shot.title}</strong>
-              </div>
-
-              <p>{shot.description}</p>
+                <br />
+                {shot.description}
+              </p>
             </article>
           ))}
         </div>
@@ -140,13 +165,7 @@ export default function ProjectCaseStudy() {
                 implementation, and user experience.
               </p>
             </div>
-
-            <a
-              className="button button-primary"
-              href={project.loomUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a className="button button-primary" href={project.loomUrl} target="_blank" rel="noreferrer">
               Watch Walkthrough ↗
             </a>
           </div>
