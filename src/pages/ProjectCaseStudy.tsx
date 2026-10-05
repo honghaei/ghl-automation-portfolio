@@ -3,6 +3,17 @@ import { motion } from 'framer-motion'
 import Workflow from '../components/Workflow'
 import { projects } from '../data/projects'
 
+const revealSection = {
+  initial: { opacity: 0, y: 34 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.16 },
+  transition: {
+    duration: 0.58,
+    ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  },
+}
+
+
 export default function ProjectCaseStudy() {
   const { slug } = useParams()
   const project = projects.find((item) => item.slug === slug)
@@ -20,7 +31,7 @@ export default function ProjectCaseStudy() {
 
   return (
     <main>
-      <section className="case-hero container">
+      <motion.section className="case-hero container" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
         <Link className="back-link" to="/#development-projects">
           ← Back to development projects
         </Link>
@@ -49,18 +60,62 @@ export default function ProjectCaseStudy() {
             )}
           </motion.div>
 
-          <aside className="case-sidebar">
-            <small>PROJECT STATUS</small>
-            <strong>{project.status}</strong>
-            <p>
-              A detailed look at the problem, solution, project flow,
-              features, implementation, and visual proof behind this build.
-            </p>
-          </aside>
-        </div>
-      </section>
+          <motion.aside
+            className="case-sidebar"
+            initial={{ opacity: 0, x: 28 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.62, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+            style={
+              project.heroIcon
+                ? {
+                    alignSelf: 'start',
+                    marginTop: 8,
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }
+                : undefined
+            }
+          >
+            {project.heroIcon && (
+              <div
+                style={{
+                  width: 118,
+                  height: 118,
+                  borderRadius: '50%',
+                  padding: 5,
+                  marginBottom: 26,
+                  background:
+                    'linear-gradient(135deg, rgba(79,217,255,.95), rgba(99,120,255,.9))',
+                  boxShadow: '0 0 34px rgba(79,217,255,.18)',
+                }}
+              >
+                <img
+                  src={project.heroIcon}
+                  alt={`${project.title} icon`}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            )}
 
-      <section className="section container">
+            <small style={{ textAlign: 'center' }}>PROJECT STATUS</small>
+            <strong style={{ textAlign: 'center' }}>{project.status}</strong>
+            <p style={{ textAlign: 'center', maxWidth: 280 }}>
+              {project.statusDescription ??
+                'A detailed look at the problem, solution, project flow, features, implementation, and visual proof behind this build.'}
+            </p>
+          </motion.aside>
+        </div>
+      </motion.section>
+
+      <motion.section className="section container" {...revealSection}>
         <div className="two-column">
           <article className="info-panel">
             <div className="eyebrow">THE PROBLEM</div>
@@ -73,38 +128,67 @@ export default function ProjectCaseStudy() {
             <p>{project.solution}</p>
           </article>
         </div>
-      </section>
+      </motion.section>
 
-      <section className="section container">
-        <div className="section-heading narrow">
+      <motion.section className="section container" {...revealSection}>
+        <motion.div
+          className="section-heading narrow"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.7 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div>
             <div className="eyebrow">PROJECT FLOW</div>
             <h2>How the system or experience moves</h2>
           </div>
-        </div>
+        </motion.div>
         <Workflow items={project.workflow} />
-      </section>
+      </motion.section>
 
-      <section className="section container">
-        <div className="section-heading narrow">
+      <motion.section className="section container" {...revealSection}>
+        <motion.div
+          className="section-heading narrow"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.7 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div>
             <div className="eyebrow">KEY FEATURES</div>
             <h2>What I built</h2>
           </div>
-        </div>
+        </motion.div>
 
         <div className="automation-list">
           {project.automations.map((item, index) => (
-            <div key={item} className="automation-list-item">
+            <motion.div
+              key={item}
+              className="automation-list-item"
+              initial={{ opacity: 0, x: -18 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.55 }}
+              transition={{
+                duration: 0.42,
+                delay: Math.min(index * 0.055, 0.32),
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               <span>{String(index + 1).padStart(2, '0')}</span>
               <p>{item}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section className="section container">
-        <div className="section-heading">
+      <motion.section className="section container" {...revealSection}>
+        <motion.div
+          className="section-heading"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.65 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div>
             <div className="eyebrow">PROJECT EVIDENCE</div>
             <h2>Project screenshots.</h2>
@@ -113,11 +197,23 @@ export default function ProjectCaseStudy() {
             Selected clean screens from the working build, presented without
             Expo Go development overlays.
           </p>
-        </div>
+        </motion.div>
 
         <div className="screenshot-grid">
           {project.screenshots.map((shot, index) => (
-            <article className="screenshot-card" key={shot.title}>
+            <motion.article
+              className="screenshot-card"
+              key={shot.title}
+              initial={{ opacity: 0, y: 24, scale: 0.985 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.5,
+                delay: Math.min(index * 0.06, 0.3),
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{ y: -4 }}
+            >
               {shot.image ? (
                 <div style={{
                   background: '#07101f',
@@ -149,13 +245,13 @@ export default function ProjectCaseStudy() {
                 <br />
                 {shot.description}
               </p>
-            </article>
+            </motion.article>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {project.loomUrl && (
-        <section className="section container">
+        <motion.section className="section container" {...revealSection}>
           <div className="loom-panel">
             <div>
               <div className="eyebrow">VIDEO WALKTHROUGH</div>
@@ -169,7 +265,7 @@ export default function ProjectCaseStudy() {
               Watch Walkthrough ↗
             </a>
           </div>
-        </section>
+        </motion.section>
       )}
     </main>
   )

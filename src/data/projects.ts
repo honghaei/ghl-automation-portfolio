@@ -17,6 +17,8 @@ export type Project = {
   }[]
   loomUrl?: string
   githubUrl?: string
+  heroIcon?: string
+  statusDescription?: string
 }
 
 export const projects: Project[] = [
@@ -25,20 +27,20 @@ export const projects: Project[] = [
     title: 'Pengpeng — The Smart AI Expense Tracker',
     category: 'App Development',
     type: 'React Native Mobile Application',
-    status: 'Completed Portfolio Build',
+    status: 'Completed Mobile App',
     summary:
-      'A personalized, local-first personal finance app for managing balances, wallet budgets, bills, subscriptions, savings goals, reports, and spending insights through a polished mobile experience.',
+      'Pengpeng is a personalized AI-powered expense tracker built with React Native and Expo, combining wallet budgeting, bills, savings goals, reports, and local financial insights in one polished mobile experience.',
     problem:
-      'Everyday financial activity can become difficult to manage when balances, wallet budgets, recurring payments, savings goals, and spending history are spread across separate tools. Traditional expense trackers also record what happened without helping users understand the patterns behind their financial behavior.',
+      'Most expense trackers record transactions but leave users to interpret the numbers themselves. Balances, wallet budgets, recurring bills, savings goals, and spending history can also become fragmented across different tools, making it harder to understand overall financial behavior.',
     solution:
-      'I designed and built Pengpeng as a connected personal-finance system using React Native and Expo. The app centralizes Total Balance, category wallets, transactions, bills and subscriptions, savings goals, payday settings, Auto Split, reports, and financial preferences. Pengpeng adds a local insight layer that retrieves saved financial context, analyzes spending patterns and budget risk, and turns the user’s financial data into clearer, more personalized guidance.',
+      'I designed and built Pengpeng as a connected mobile finance system using React Native and Expo. It brings balances, category wallets, transactions, bills and subscriptions, payday allocation, savings goals, reports, and financial preferences into one experience. A local retrieval and analytics layer gives Pengpeng access to saved financial context so it can surface spending patterns, budget risk, and personalized insights without requiring a cloud AI service.',
     stack: [
       'React Native',
       'Expo SDK 57',
       'JavaScript',
+      'Local RAG',
       'AsyncStorage',
       'React Navigation',
-      'Local RAG',
       'Data Analytics',
     ],
     automations: [
@@ -112,6 +114,9 @@ export const projects: Project[] = [
       },
     ],
     githubUrl: 'https://github.com/honghaei/pengpeng-ai-expense-tracker',
+    heroIcon: '/projects/pengpeng/pengpeng-avatar.png',
+    statusDescription:
+      'A complete mobile app case study covering product design, financial workflows, local AI insights, onboarding, implementation, and the final working experience.',
   },
 
   {
