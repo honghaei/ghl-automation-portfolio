@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Workflow from '../components/Workflow'
 import { projects } from '../data/projects'
+import "../CaseStudyPolish.css";
 
 const revealSection = {
   initial: { opacity: 0, y: 34 },
@@ -12,7 +13,6 @@ const revealSection = {
     ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
   },
 }
-
 
 export default function ProjectCaseStudy() {
   const { slug } = useParams()
@@ -29,21 +29,33 @@ export default function ProjectCaseStudy() {
     )
   }
 
+  const desktopEvidence = project.evidenceLayout === 'desktop'
+  const heroIconVariant = project.heroIconVariant ?? 'avatar'
+
   return (
     <main>
-      <motion.section className="case-hero container" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
+      <motion.section
+        className="case-hero container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.35 }}
+      >
         <Link className="back-link" to="/#development-projects">
           ← Back to development projects
         </Link>
 
         <div className="case-grid">
           <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}>
-            <div className="eyebrow">{project.category} · {project.type}</div>
+            <div className="eyebrow">
+              {project.category} · {project.type}
+            </div>
             <h1>{project.title}</h1>
             <p>{project.summary}</p>
 
             <div className="tag-row large">
-              {project.stack.map((item) => <span key={item}>{item}</span>)}
+              {project.stack.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
 
             {project.githubUrl && (
@@ -61,46 +73,16 @@ export default function ProjectCaseStudy() {
           </motion.div>
 
           <motion.aside
-            className="case-sidebar"
+            className={`case-sidebar${project.heroIcon ? ' has-project-mark' : ''}`}
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.62, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-            style={
-              project.heroIcon
-                ? {
-                    alignSelf: 'start',
-                    marginTop: 8,
-                    textAlign: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }
-                : undefined
-            }
           >
             {project.heroIcon && (
-              <div
-                style={{
-                  width: 118,
-                  height: 118,
-                  borderRadius: '50%',
-                  padding: 5,
-                  marginBottom: 26,
-                  background:
-                    'linear-gradient(135deg, rgba(79,217,255,.95), rgba(99,120,255,.9))',
-                  boxShadow: '0 0 34px rgba(79,217,255,.18)',
-                }}
-              >
+              <div className={`case-project-mark ${heroIconVariant}`}>
                 <img
                   src={project.heroIcon}
-                  alt={`${project.title} icon`}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
+                  alt={`${project.title} logo`}
                 />
               </div>
             )}
@@ -130,7 +112,7 @@ export default function ProjectCaseStudy() {
         </div>
       </motion.section>
 
-      <motion.section className="section container" {...revealSection}>
+      <motion.section className="section container case-flow-section project-case-flow" {...revealSection}>
         <motion.div
           className="section-heading narrow"
           initial={{ opacity: 0, y: 14 }}
@@ -140,7 +122,7 @@ export default function ProjectCaseStudy() {
         >
           <div>
             <div className="eyebrow">PROJECT FLOW</div>
-            <h2>How the system or experience moves</h2>
+            <h2>How the project works</h2>
           </div>
         </motion.div>
         <Workflow items={project.workflow} />
@@ -181,7 +163,7 @@ export default function ProjectCaseStudy() {
         </div>
       </motion.section>
 
-      <motion.section className="section container" {...revealSection}>
+      <motion.section className="section container case-evidence-section" {...revealSection}>
         <motion.div
           className="section-heading"
           initial={{ opacity: 0, y: 14 }}
@@ -194,12 +176,15 @@ export default function ProjectCaseStudy() {
             <h2>Project screenshots.</h2>
           </div>
           <p>
-            Selected clean screens from the working build, presented without
-            Expo Go development overlays.
+            {project.evidenceDescription ??
+              'Selected screens from the working build showing the project’s main experience and implementation.'}
           </p>
         </motion.div>
 
-        <div className="screenshot-grid">
+        <div
+          className="screenshot-grid"
+          style={desktopEvidence ? { gridTemplateColumns: '1fr' } : undefined}
+        >
           {project.screenshots.map((shot, index) => (
             <motion.article
               className="screenshot-card"
@@ -215,23 +200,12 @@ export default function ProjectCaseStudy() {
               whileHover={{ y: -4 }}
             >
               {shot.image ? (
-                <div style={{
-                  background: '#07101f',
-                  padding: 16,
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}>
+                <div className={`case-shot-frame ${desktopEvidence ? 'desktop' : 'mobile'}`}>
                   <img
+                    className="case-shot-image"
                     src={shot.image}
                     alt={shot.title}
                     loading="lazy"
-                    style={{
-                      width: '100%',
-                      maxWidth: 430,
-                      height: 'auto',
-                      display: 'block',
-                      borderRadius: 14,
-                    }}
                   />
                 </div>
               ) : (

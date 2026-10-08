@@ -1,0 +1,218 @@
+/* Case-study-only polish.
+   Imported by ProjectCaseStudy.tsx so the rest of the portfolio remains unchanged. */
+
+/* Project status / project mark */
+.case-sidebar.has-project-mark {
+  align-self: start;
+  margin-top: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.case-project-mark {
+  display: grid;
+  place-items: center;
+  margin: 0 auto 24px;
+  overflow: hidden;
+}
+
+.case-project-mark.avatar {
+  width: 118px;
+  height: 118px;
+  padding: 5px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 217, 255, 0.95),
+    rgba(99, 120, 255, 0.9)
+  );
+  box-shadow: 0 0 34px rgba(79, 217, 255, 0.18);
+}
+
+.case-project-mark.avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.case-project-mark.brand {
+  width: min(220px, 100%);
+  min-height: 100px;
+  padding: 20px 22px;
+  border: 1px solid rgba(100, 245, 163, 0.14);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(37, 130, 205, 0.18), transparent 55%),
+    linear-gradient(145deg, #0b2c50, #071d35);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.26),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.case-project-mark.brand img {
+  width: 100%;
+  max-width: 178px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Reduce the oversized gap before project flow */
+.case-flow-section {
+  padding-top: 70px;
+  padding-bottom: 78px;
+}
+
+.case-flow-section .section-heading {
+  margin-bottom: 24px;
+}
+
+/* Desktop flow: 4 nodes per row, no horizontal scrollbar */
+.project-case-flow .workflow-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px 34px;
+  overflow: visible;
+  align-items: stretch;
+  padding: 6px 0 0;
+}
+
+.project-case-flow .workflow-item {
+  position: relative;
+  display: block;
+  min-width: 0;
+}
+
+.project-case-flow .workflow-node {
+  min-height: 76px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7px;
+  padding: 15px 17px;
+  border: 1px solid rgba(100, 245, 163, 0.2);
+  border-radius: 14px;
+  background:
+    linear-gradient(145deg, rgba(100, 245, 163, 0.075), rgba(255, 255, 255, 0.018));
+  color: #dffbea;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.project-case-flow .workflow-step {
+  color: #64f5a3;
+  font: 700 10px/1 'Space Grotesk', sans-serif;
+  letter-spacing: 0.14em;
+}
+
+.project-case-flow .workflow-label {
+  color: #e7f1ec;
+  font: 600 13px/1.35 'Space Grotesk', sans-serif;
+}
+
+.project-case-flow .workflow-arrow {
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  width: 16px;
+  transform: translateY(-50%);
+  color: #60766b;
+  text-align: center;
+}
+
+.project-case-flow .workflow-item:nth-child(4n) .workflow-arrow,
+.project-case-flow .workflow-item:last-child .workflow-arrow {
+  display: none;
+}
+
+/* Screenshot presentation */
+.case-evidence-section {
+  padding-top: 82px;
+}
+
+.case-evidence-section .screenshot-card {
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.16);
+}
+
+.case-shot-frame {
+  background: #07101f;
+  display: flex;
+  justify-content: center;
+}
+
+.case-shot-frame.desktop {
+  padding: 5px;
+}
+
+.case-shot-frame.mobile {
+  padding: 16px;
+}
+
+.case-shot-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.case-shot-frame.desktop .case-shot-image {
+  max-width: none;
+  border-radius: 11px;
+}
+
+.case-shot-frame.mobile .case-shot-image {
+  max-width: 430px;
+  border-radius: 14px;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .project-case-flow .workflow-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 30px;
+  }
+
+  .project-case-flow .workflow-item:nth-child(2n) .workflow-arrow,
+  .project-case-flow .workflow-item:last-child .workflow-arrow {
+    display: none;
+  }
+
+  .case-project-mark.brand {
+    width: min(230px, 100%);
+  }
+}
+
+/* Phone */
+@media (max-width: 560px) {
+  .case-flow-section {
+    padding-top: 58px;
+    padding-bottom: 62px;
+  }
+
+  .project-case-flow .workflow-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .project-case-flow .workflow-arrow {
+    display: none !important;
+  }
+
+  .project-case-flow .workflow-node {
+    min-height: 68px;
+  }
+
+  .case-shot-frame.desktop {
+    padding: 3px;
+  }
+
+  .case-project-mark.brand {
+    width: min(210px, 100%);
+    min-height: 92px;
+    padding: 18px 20px;
+  }
+}

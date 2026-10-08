@@ -18,7 +18,10 @@ export type Project = {
   loomUrl?: string
   githubUrl?: string
   heroIcon?: string
+  heroIconVariant?: 'avatar' | 'brand'
   statusDescription?: string
+  evidenceDescription?: string
+  evidenceLayout?: 'mobile' | 'desktop'
 }
 
 export const projects: Project[] = [
@@ -115,37 +118,120 @@ export const projects: Project[] = [
     ],
     githubUrl: 'https://github.com/honghaei/pengpeng-ai-expense-tracker',
     heroIcon: '/projects/pengpeng/pengpeng-avatar.png',
+    heroIconVariant: 'avatar',
     statusDescription:
       'A complete mobile app case study covering product design, financial workflows, local AI insights, onboarding, implementation, and the final working experience.',
+    evidenceDescription:
+      'Selected clean screens from the working mobile build, covering the core financial flows and guided onboarding experience.',
+    evidenceLayout: 'mobile',
   },
 
   {
-    slug: 'hr-management-system',
-    title: 'HR Management System',
+    slug: 'iparcel-hrms',
+    title: 'IParcel HRMS',
     category: 'Web Development',
-    type: 'Web Application',
-    status: 'Project Build',
+    type: 'Full-Stack HR Management System',
+    status: 'Completed Full-Stack Project',
     summary:
-      'A responsive HR management interface with authentication, employee organization, company-specific navigation, and administrative workflows.',
+      'A multi-company Human Resource Management System for centralizing employee records, attendance, leave review, departments, announcements, reporting, and HR administration across IParcel Plus, IPXpress, Swift, and Nagali.',
     problem:
-      'Employee information and navigation needed to be organized across several company brands while keeping the experience consistent and easy to manage.',
+      'Managing employee records and day-to-day HR operations across multiple companies becomes difficult when attendance, leave requests, departments, announcements, and reporting are handled through separate or manual processes. HR needed one consistent workspace that could organize workforce data while still allowing company-specific filtering and administrative control.',
     solution:
-      'I developed a responsive React-based interface with login handling, branded company filtering, navigation, employee-management views, and backend integration work.',
-    stack: ['React', 'TypeScript', 'JavaScript', 'PHP', 'MySQL', 'Responsive UI'],
+      'I built IParcel HRMS as a full-stack administrative system using React, TypeScript, Vite, PHP, and MySQL. The application centralizes employee CRUD, attendance logging, leave approvals, department management, company announcements, reports, and account settings in one responsive interface. A PHP backend connects the React frontend to MySQL, while searchable tables, filters, dashboard metrics, activity history, and export tools make daily HR work easier to manage.',
+    stack: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'PHP',
+      'MySQL',
+      'Axios',
+      'XAMPP',
+    ],
     automations: [
-      'Authentication and login flow',
-      'Company-specific navigation',
-      'Employee information organization',
-      'Responsive dashboard interface',
-      'Backend login and data integration',
+      'Administrator authentication with a dedicated HR login experience and protected workspace flow',
+      'Multi-company workforce dashboard with employee totals, attendance status, leave counts, company headcount, milestones, and recent HR activity',
+      'Employee management with searchable records, company/status/location filters, profile viewing, editing, photo support, initials fallback, print view, and a four-step Add Employee form',
+      'Attendance management with manual Time In and Time Out, date/time controls, remarks, attendance statuses, daily roster filters, total-hours tracking, and CSV export',
+      'Leave request review with Pending, Approved, and Rejected states, company/type/date filters, request details, approval or rejection actions, and HR review notes',
+      'Department management with add, edit, delete, department-head assignment, employee counts, search, and company filtering',
+      'Announcement management with create, edit, delete, audience targeting, priority levels, expiration dates, active/expired filtering, and highlighted important notices',
+      'Reporting workspace with Employee Directory, Attendance, Leave Requests, Department Headcount, and Birthday & Anniversary reports plus preview, print/PDF, and CSV export actions',
+      'Account settings with administrator profile details and password-change validation',
     ],
-    workflow: ['Login', 'Company Selection', 'Dashboard', 'Employee Management', 'Navigation'],
+    workflow: [
+      'Admin Login',
+      'Workforce Dashboard',
+      'Employee Management',
+      'Attendance Tracking',
+      'Leave Review',
+      'Departments',
+      'Announcements',
+      'Reports & Settings',
+    ],
     screenshots: [
-      { title: 'Login Screen', description: 'Show the authentication entry point and login experience.' },
-      { title: 'Dashboard', description: 'Show the main HR workspace and administrative interface.' },
-      { title: 'Company Navigation', description: 'Show the company filters, branded navigation, and active states.' },
-      { title: 'Employee Management', description: 'Show the employee information and management interface.' },
+      {
+        title: 'HR Administrator Login',
+        description:
+          'A clean split-screen login experience introducing the multi-company HR workspace and administrator authentication flow.',
+        image: '/projects/hrms/01-login.png',
+      },
+      {
+        title: 'Workforce Dashboard',
+        description:
+          'A live HR overview showing employee totals, attendance, approved leave, pending requests, company headcount, and recent administrative activity.',
+        image: '/projects/hrms/02-dashboard.png',
+      },
+      {
+        title: 'Employee Directory',
+        description:
+          'Searchable employee records with company, status, and location filters, employee details, profile actions, and the Add Employee workflow.',
+        image: '/projects/hrms/03-employees.png',
+      },
+      {
+        title: 'Attendance Management',
+        description:
+          'Daily timekeeping with employee selection, Time In/Time Out controls, remarks, attendance status metrics, roster filters, and export functionality.',
+        image: '/projects/hrms/04-attendance.png',
+      },
+      {
+        title: 'Leave Request Review',
+        description:
+          'HR review workspace for filtering requests, checking leave details, tracking approval states, and recording reviewer information.',
+        image: '/projects/hrms/05-leave-requests.png',
+      },
+      {
+        title: 'Department Management',
+        description:
+          'Multi-company department cards with department-head assignment, employee counts, search, filtering, and CRUD controls.',
+        image: '/projects/hrms/06-departments.png',
+      },
+      {
+        title: 'Company Announcements',
+        description:
+          'Centralized company updates with audience targeting, priority labels, active status, expiration handling, and edit/delete controls.',
+        image: '/projects/hrms/07-announcements.png',
+      },
+      {
+        title: 'HR Reports',
+        description:
+          'Report selection and preview for employee, attendance, leave, department, and milestone data with print/PDF and CSV export actions.',
+        image: '/projects/hrms/08-reports.png',
+      },
+      {
+        title: 'Administrator Settings',
+        description:
+          'Account profile information and password management for the HR administrator.',
+        image: '/projects/hrms/09-settings.png',
+      },
     ],
+    githubUrl: 'https://github.com/honghaei/IParcel-HRMS',
+    heroIcon: '/projects/hrms/IPARCELPLUS.png',
+    heroIconVariant: 'brand',
+    statusDescription:
+      'A completed full-stack HRMS case study covering database-backed CRUD, multi-company workflows, timekeeping, leave review, reporting, and administrative tools.',
+    evidenceDescription:
+      'Final screens from the working HRMS build, showing the complete administrator workflow from login and workforce management through reporting and account settings.',
+    evidenceLayout: 'desktop',
   },
 
   {
