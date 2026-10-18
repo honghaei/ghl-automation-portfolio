@@ -12,10 +12,38 @@ export type GHLProject = {
     title: string
     description: string
   }[]
+  image?: string
   loomUrl?: string
 }
 
 export const ghlProjects: GHLProject[] = [
+  {
+    slug: 'velora-aesthetics-crm-automation',
+    title: 'Velora Aesthetics | CRM & Consultation Automation',
+    badge: 'Verified Portfolio Demo',
+    status: 'Featured Case Study',
+    image: '/projects/velora/screenshots/01-funnel-pages/velora-landing-hero-editor.png',
+    description:
+      'A three-page consultation funnel connected to a GoHighLevel CRM and six automation workflows. The inquiry-to-booking journey was verified through real execution logs and delivered emails.',
+    tools: ['GoHighLevel', 'CRM', 'Funnels', 'Automation', 'Calendars'],
+    problem:
+      'Consultation inquiries, lead qualification, calendar bookings, and follow-ups are harder to coordinate when records and steps are disconnected.',
+    solution:
+      'I connected a branded funnel to a structured pipeline, native qualification rules, a consultation calendar, and lifecycle workflows, then verified the core journey with one controlled test contact.',
+    workflow: [
+      'Inquiry Submitted',
+      'Contact & Opportunity Created',
+      'Qualified for Consultation',
+      'Invitation Delivered',
+      'Appointment Booked',
+      'Confirmation Delivered',
+    ],
+    screenshots: [
+      {title: 'Landing Page', description: 'Real branded inquiry landing page.'},
+      {title: 'CRM Qualification', description: 'Qualification logic, stage movement, and eligibility guard.'},
+      {title: 'Booking Confirmation', description: 'Verified appointment, redirect, and email delivery.'},
+    ],
+  },
   {
     slug: 'camera-rental-booking-automation',
     title: 'Camera Rental Booking & Automation System',
@@ -57,51 +85,6 @@ export const ghlProjects: GHLProject[] = [
         title: 'Automation Workflow',
         description:
           'Show confirmation, reminder, and follow-up automation logic.',
-      },
-    ],
-  },
-
-  {
-    slug: 'med-spa-lead-to-client-automation',
-    title: 'Med Spa Lead-to-Client Automation',
-    badge: 'Advanced Demo Project',
-    status: 'Flagship',
-    description:
-      'An end-to-end CRM and appointment automation system designed to move leads from qualification to booked consultations and follow-up.',
-    tools: ['GoHighLevel', 'Funnels', 'Forms', 'Calendars'],
-    problem:
-      'Med spa leads can be lost when qualification, booking, reminders, no-show recovery, and post-consultation follow-up are handled manually.',
-    solution:
-      'The project connects lead capture, qualification, pipeline movement, booking, appointment reminders, consultation follow-up, and client conversion into one structured GoHighLevel system.',
-    workflow: [
-      'Lead Capture',
-      'Qualification',
-      'Pipeline Creation',
-      'Consultation Booking',
-      'Appointment Reminders',
-      'Consultation Follow-Up',
-      'Client Conversion',
-    ],
-    screenshots: [
-      {
-        title: 'Lead Capture Funnel',
-        description:
-          'Show the funnel and form used to capture and qualify leads.',
-      },
-      {
-        title: 'Lead-to-Client Pipeline',
-        description:
-          'Show the CRM stages from new lead to converted client.',
-      },
-      {
-        title: 'Booking Calendar',
-        description:
-          'Show the consultation calendar and booking experience.',
-      },
-      {
-        title: 'Automation Workflow',
-        description:
-          'Show qualification, reminders, and follow-up logic.',
       },
     ],
   },

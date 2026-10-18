@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import ProjectCaseStudy from './pages/ProjectCaseStudy'
 import GHLProjectCaseStudy from './pages/GHLProjectCaseStudy'
+import VeloraCaseStudy from './pages/VeloraCaseStudy'
 
 export default function App() {
   return (
@@ -18,6 +19,9 @@ export default function App() {
 
         {/* Backward-compatible route for any older links */}
         <Route path="/projects/:slug" element={<ProjectCaseStudy />} />
+
+        {/* Featured Velora case study and other GoHighLevel projects */}
+        <Route path="/ghl-project/velora-aesthetics-crm-automation" element={<VeloraCaseStudy />} />
 
         {/* GoHighLevel project case studies */}
         <Route path="/ghl-project/:slug" element={<GHLProjectCaseStudy />} />
