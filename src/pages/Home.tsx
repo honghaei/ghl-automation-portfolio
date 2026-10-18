@@ -4,6 +4,9 @@ import ProjectCard from '../components/ProjectCard'
 import profilePhoto from '../assets/charles-jacob-lat.jpg'
 import { projects } from '../data/projects'
 import { ghlProjects } from '../data/ghlProjects'
+import { funnels } from '../data/funnels'
+import FunnelCard from '../components/FunnelCard'
+import './FunnelShowcase.css'
 import './HomeRedesign.css'
 
 type FAQItem = {
@@ -15,7 +18,7 @@ const faqs: FAQItem[] = [
   {
     question: 'What do you actually build?',
     answer:
-      'I build GoHighLevel automation systems, CRM workflows, responsive web applications, and mobile apps. I focus on practical systems that make business processes easier to manage and reduce repetitive work.',
+      'I build GoHighLevel funnels, automation systems, CRM workflows, responsive web applications, and mobile apps. I focus on practical systems that make business processes easier to manage and reduce repetitive work.',
   },
   {
     question: 'What platforms and technologies do you work with?',
@@ -63,7 +66,7 @@ export default function Home() {
             </h1>
 
             <p className="portfolio-hero-roles">
-              <span className="accent">GHL Specialist</span> · Automation Specialist ·{' '}
+              <span className="accent">GHL Specialist</span> · Funnel Builder · Automation Specialist ·{' '}
               <span className="accent">Web Developer</span> · App Developer
             </p>
 
@@ -201,6 +204,22 @@ export default function Home() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="portfolio-funnels-section" id="funnels" aria-labelledby="portfolio-funnels-heading">
+          <div className="portfolio-home-section">
+            <div className="portfolio-funnel-heading">
+              <div>
+                <p className="portfolio-home-eyebrow">Live GoHighLevel funnel demos</p>
+                <h2 id="portfolio-funnels-heading">Designed to convert. Built to explore.</h2>
+              </div>
+              <p>Three distinct brand journeys, each with a live, browsable funnel and a documented case study—from sample-only demos to CRM-integrated booking.</p>
+            </div>
+            <div className="portfolio-funnel-grid">
+              {funnels.map((funnel) => <FunnelCard key={funnel.slug} funnel={funnel} />)}
+            </div>
+            <p className="portfolio-funnel-footnote">Portfolio demonstrations using GoHighLevel preview URLs. AURA and FORME are fictional, non-collecting interactive demos; Velora’s CRM results come from controlled tests.</p>
           </div>
         </section>
 

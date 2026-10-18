@@ -12,13 +12,14 @@ export default function Navbar() {
   const isProjectPage =
     location.pathname.startsWith('/project/') ||
     location.pathname.startsWith('/projects/') ||
-    location.pathname.startsWith('/ghl-project/')
+    location.pathname.startsWith('/ghl-project/') ||
+    location.pathname.startsWith('/funnel/')
 
   const activeHash = location.hash || '#home'
 
   const isActive = (section: string) => {
     if (isProjectPage) {
-      return section === 'projects'
+      return section === (location.pathname.startsWith('/funnel/') ? 'funnels' : 'projects')
     }
 
     return activeHash === `#${section}`
@@ -60,6 +61,10 @@ export default function Navbar() {
             Projects
           </a>
 
+          <a className={navClass('funnels')} href="/#funnels">
+            Funnels
+          </a>
+
           <a className={navClass('skills')} href="/#skills">
             Skills
           </a>
@@ -99,6 +104,9 @@ export default function Navbar() {
         </a>
         <a href="/#projects" onClick={closeMenu}>
           Projects
+        </a>
+        <a href="/#funnels" onClick={closeMenu}>
+          Funnels
         </a>
         <a href="/#skills" onClick={closeMenu}>
           Skills

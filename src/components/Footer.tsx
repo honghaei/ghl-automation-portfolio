@@ -25,6 +25,7 @@ export default function Footer() {
             <div className="portfolio-footer-links">
               <a href="/#home">Home</a>
               <a href="/#projects">Projects</a>
+              <a href="/#funnels">Funnels</a>
               <a href="/#about">About</a>
               <a href="/#skills">Skills</a>
               <a href="/#faqs">FAQs</a>
