@@ -58,16 +58,28 @@ export default function ProjectCaseStudy() {
               ))}
             </div>
 
-            {project.githubUrl && (
-              <div style={{ marginTop: 24 }}>
-                <a
-                  className="button button-primary"
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View GitHub Repository ↗
-                </a>
+            {(project.liveUrl || project.githubUrl) && (
+              <div className="case-project-links">
+                {project.liveUrl && (
+                  <a
+                    className="button button-primary"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit Live Website ↗
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    className="button button-primary"
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View GitHub Repository ↗
+                  </a>
+                )}
               </div>
             )}
           </motion.div>

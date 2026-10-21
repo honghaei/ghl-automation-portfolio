@@ -17,6 +17,8 @@ export type Project = {
   }[]
   loomUrl?: string
   githubUrl?: string
+  liveUrl?: string
+  coverImage?: string
   heroIcon?: string
   heroIconVariant?: 'avatar' | 'brand'
   statusDescription?: string
@@ -235,32 +237,88 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'inventory-management-system',
-    title: 'Inventory Management System',
+    slug: 'lakbay-3d-philippines-tourism-map',
+    title: 'Lakbay — Interactive 3D Philippines Tourism Map',
     category: 'Web Development',
-    type: 'CRUD Business System',
-    status: 'Project Build',
+    type: '3D Tourism Discovery Web Application',
+    status: 'Completed & Live on Netlify',
     summary:
-      'A browser-based inventory system for handling inbound stock, outbound stock, suppliers, quantities, stock values, and item records.',
+      'A deployed 3D tourism discovery platform where visitors can explore Philippine provinces, discover curated attractions on an interactive map, view destination details and photo galleries, and save places to a personal wishlist.',
     problem:
-      'Spreadsheet-based inventory tracking becomes harder to maintain when inbound deliveries, outbound releases, stock quantities, suppliers, and item matching all need to stay synchronized.',
+      'Planning trips across the Philippines often means jumping between disconnected maps, travel articles, and photo collections. It can be difficult to understand where attractions are located, explore nearby provinces, or keep a practical shortlist of places to visit.',
     solution:
-      'I translated the inventory workflow into a web-based CRUD system where inbound transactions add stock, outbound transactions deduct stock, and item records stay connected through matching logic.',
-    stack: ['HTML', 'CSS', 'JavaScript', 'CRUD', 'Inventory Logic', 'Responsive Tables'],
+      'I designed, developed, and deployed Lakbay using Next.js, React, TypeScript, CesiumJS, and Supabase. I combined a terrain-backed 3D view of the Philippines with province boundaries, location search, attraction pins, category filters, destination profiles, credited photo galleries, and a browser-persistent wishlist. I also built a structured destination-data pipeline with source tracking and review statuses so the public experience can distinguish curated attractions from unverified map data. GitHub and Netlify provide the production deployment workflow.',
+    stack: [
+      'Next.js 16',
+      'React',
+      'TypeScript',
+      'CesiumJS',
+      'Supabase',
+      'OpenStreetMap',
+      'Netlify',
+      'GitHub',
+    ],
     automations: [
-      'Inbound stock updates',
-      'Outbound stock deductions',
-      'Item and supplier matching',
-      'Stock-value calculations',
-      'Reorder and stock-status tracking',
+      'Immersive 3D Philippines map with satellite imagery, terrain, geographic boundaries, and province labels',
+      'Province and city discovery through interactive selection, camera navigation, and search',
+      'Tourist destination markers with categories for Nature, Beaches, History, Culture, and Adventure',
+      'Destination preview cards with photo carousels, summaries, and links to full attraction pages',
+      'Detailed destination pages with location coordinates, Google Maps directions, and photographic attribution',
+      'Personal wishlist with save/remove controls and browser-persistent favorites',
+      'Supabase-backed destination directory with source metadata, review states, and controlled public visibility',
+      'Resumable OpenStreetMap ingestion and local-only preview tools to support destination curation',
+      'Production deployment through a private GitHub repository and Netlify, with protected environment variables',
     ],
-    workflow: ['Inventory', 'Inbound', 'Item Matching', 'Stock Update', 'Outbound', 'Monitoring'],
+    workflow: [
+      'Open 3D Map',
+      'Find a Province',
+      'Filter Attractions',
+      'Select a Map Pin',
+      'Explore Destination',
+      'Save to Wishlist',
+      'Plan the Visit',
+    ],
     screenshots: [
-      { title: 'Inventory Tracker', description: 'Show quantities, item details, stock values, reorder levels, and status.' },
-      { title: 'Inbound Transactions', description: 'Show delivery information and quantity-received entry.' },
-      { title: 'Outbound Transactions', description: 'Show requisition information and stock-deduction flow.' },
-      { title: 'Connected Inventory Logic', description: 'Show how inbound and outbound transactions update the inventory records.' },
+      {
+        title: 'Interactive 3D Philippines Tourism Map',
+        description:
+          'A nationwide interactive 3D map of the Philippines with province borders, discovery controls, and a tourism introduction.',
+        image: '/projects/lakbay/01-nationwide-3d-philippines-map.webp',
+      },
+      {
+        title: 'Province Exploration & Destination Discovery',
+        description:
+          'Palawan selected on the 3D map, with Puerto Princesa Subterranean River highlighted in the destination preview panel.',
+        image: '/projects/lakbay/02-palawan-destination-discovery.webp',
+      },
+      {
+        title: 'Historical Destination Profile',
+        description:
+          'The redesigned Barasoain Church destination page, with a heritage overview, a large credited photo gallery, and visitor planning information.',
+        image: '/projects/lakbay/03-barasoain-church-destination.webp',
+      },
+      {
+        title: 'Destination Details & Photo Gallery',
+        description:
+          'The redesigned Puerto Princesa Subterranean River page, featuring destination information, scenic photography, and a photo gallery.',
+        image: '/projects/lakbay/04-puerto-princesa-photo-gallery.webp',
+      },
+      {
+        title: 'Personal Travel Wishlist',
+        description:
+          'The redesigned wishlist displaying saved visits to Barasoain Church and Puerto Princesa Subterranean River, including photos and search.',
+        image: '/projects/lakbay/05-personal-travel-wishlist.webp',
+      },
     ],
+    liveUrl: 'https://lakbay-3d-philippines.netlify.app/',
+    coverImage: '/projects/lakbay/01-nationwide-3d-philippines-map.webp',
+    heroIcon: '/projects/lakbay/lakbay-logo.png',
+    heroIconVariant: 'brand',
+    statusDescription:
+      'A fully built and deployed Next.js tourism application, from geographic data modeling and interactive Cesium mapping to curated destination pages, photo galleries, and wishlist functionality.',
+    evidenceDescription:
+      'Screenshots captured from the deployed Lakbay application, showing its 3D map, province-level attraction discovery, destination profiles, and saved-place experience.',
+    evidenceLayout: 'desktop',
   },
 
   {
