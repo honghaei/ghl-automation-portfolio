@@ -316,12 +316,12 @@ export default function Home() {
                 <h3>Automation & CRM</h3>
                 <div className="portfolio-skill-list">
                   <span className="portfolio-chip green">GoHighLevel</span>
+                  <span className="portfolio-chip">n8n</span>
+                  <span className="portfolio-chip">Workflow Automation</span>
                   <span className="portfolio-chip">CRM Pipelines</span>
-                  <span className="portfolio-chip">Workflows</span>
                   <span className="portfolio-chip">Funnels</span>
-                  <span className="portfolio-chip">Forms</span>
-                  <span className="portfolio-chip">Calendars</span>
-                  <span className="portfolio-chip">Lead Nurturing</span>
+                  <span className="portfolio-chip">REST APIs</span>
+                  <span className="portfolio-chip">Webhooks</span>
                 </div>
               </article>
 
@@ -329,10 +329,10 @@ export default function Home() {
                 <h3>Web Development</h3>
                 <div className="portfolio-skill-list">
                   <span className="portfolio-chip green">React</span>
+                  <span className="portfolio-chip">Next.js</span>
                   <span className="portfolio-chip">TypeScript</span>
                   <span className="portfolio-chip">JavaScript</span>
-                  <span className="portfolio-chip">HTML</span>
-                  <span className="portfolio-chip">CSS</span>
+                  <span className="portfolio-chip">Laravel</span>
                   <span className="portfolio-chip">PHP</span>
                   <span className="portfolio-chip">Responsive UI</span>
                 </div>
@@ -343,13 +343,14 @@ export default function Home() {
                 <div className="portfolio-skill-list">
                   <span className="portfolio-chip green">React Native</span>
                   <span className="portfolio-chip">Expo</span>
+                  <span className="portfolio-chip">Supabase</span>
                   <span className="portfolio-chip">MySQL</span>
-                  <span className="portfolio-chip">Firebase</span>
-                  <span className="portfolio-chip">CRUD</span>
-                  <span className="portfolio-chip">Git</span>
-                  <span className="portfolio-chip">GitHub</span>
+                  <span className="portfolio-chip">CesiumJS</span>
+                  <span className="portfolio-chip">Git & GitHub</span>
+                  <span className="portfolio-chip">Netlify</span>
                 </div>
               </article>
+
             </div>
           </div>
         </section>

@@ -12,7 +12,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {project.coverImage && (
         <a className="portfolio-project-cover" href={`/project/${project.slug}`} aria-label={`Explore ${project.title} case study`}>
           <img src={project.coverImage} alt={project.slug === 'lakbay-3d-philippines-tourism-map' ? 'Nationwide interactive 3D map of the Philippines in Lakbay' : `${project.title} preview`} loading="lazy" />
-          <span>LIVE PROJECT</span>
+          <span>{project.liveUrl ? 'LIVE PROJECT' : 'PROJECT SHOWCASE'}</span>
         </a>
       )}
 

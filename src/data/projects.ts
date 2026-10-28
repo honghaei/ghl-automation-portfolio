@@ -119,6 +119,7 @@ export const projects: Project[] = [
       },
     ],
     githubUrl: 'https://github.com/honghaei/pengpeng-ai-expense-tracker',
+    coverImage: '/projects/pengpeng/pengpeng-cover.png',
     heroIcon: '/projects/pengpeng/pengpeng-avatar.png',
     heroIconVariant: 'avatar',
     statusDescription:
@@ -227,6 +228,7 @@ export const projects: Project[] = [
       },
     ],
     githubUrl: 'https://github.com/honghaei/IParcel-HRMS',
+    coverImage: '/projects/hrms/02-dashboard.png',
     heroIcon: '/projects/hrms/IPARCELPLUS.png',
     heroIconVariant: 'brand',
     statusDescription:
@@ -322,31 +324,123 @@ export const projects: Project[] = [
   },
 
   {
-    slug: 'learning-management-system',
-    title: 'Learning Management System',
+    slug: 'campusflow-learning-management-system',
+    title: 'CampusFlow — Learning Management System',
     category: 'Web Development',
-    type: 'Web Application',
-    status: 'Project Build',
+    type: 'Full-Stack Learning Management System',
+    status: 'Completed Local Demo Build',
     summary:
-      'A learning management system designed to organize educational content, user access, learning workflows, and dashboard-based course management.',
+      'A role-based academic platform that combines registrar-verified enrollment, student and instructor workspaces, subject modules, file previews, learning progress, certificates, and messaging in one responsive system.',
     problem:
-      'Learning content and user activity need a structured environment where educational resources, access, and course-related information can be managed from one system.',
+      'Academic learning tools can leave important tasks disconnected: validating enrollment eligibility, assigning the right subjects, sharing course materials, tracking module completion, and issuing certificates. Students and instructors need clear, purpose-built experiences rather than relying on a single generic dashboard.',
     solution:
-      'I worked on a web-based LMS structure focused on organized learning content, user management, dashboard workflows, and a clearer experience for managing educational activities.',
-    stack: ['Web Application', 'LMS', 'Dashboard', 'User Management'],
+      'I developed CampusFlow as a role-based academic enrollment and learning management platform using Laravel, PHP, Blade, and MySQL. I implemented registrar-verified placement, connected approved enrollment to subject access, and developed learning modules that let instructors publish materials while students preview, download, and track completion. I created student and instructor dashboards, integrated certificate management and in-app messaging, and refined the experience for desktop and mobile. I tested the end-to-end student and instructor journeys in a separate local environment with realistic fictional academic records, without affecting the shared project.',
+    stack: [
+      'Laravel',
+      'PHP',
+      'Blade',
+      'MySQL',
+      'JavaScript',
+      'Responsive CSS',
+      'Role-Based Access',
+    ],
     automations: [
-      'User access and management',
-      'Learning content organization',
-      'Course-related workflows',
-      'Dashboard-based navigation',
-      'Structured learning experience',
+      'Distinct student and instructor dashboards, with assigned subjects and learning or teaching metrics',
+      'Registrar-reviewed academic placement and eligible-section enrollment flow',
+      'Five populated Grade 10 subjects in the demonstration environment with 20 published learning modules',
+      'Instructor module management with publishing controls and course-specific downloadable resources',
+      'Protected, in-page PDF preview and original-file download actions for learning materials',
+      'Module completion tracking, per-subject progress bars, and consolidated student learning progress',
+      'Instructor-issued certificate administration with a student certificate gallery, inline preview, and downloads',
+      'Student–instructor messaging with correct sender and recipient display',
+      'Shared navigation, responsive layouts, and mobile-friendly student profile and course pages',
+      'Isolated local CampusFlow database and fictional demonstration records for portfolio validation',
     ],
-    workflow: ['Login', 'Dashboard', 'Courses', 'Learning Content', 'User Activity'],
+    workflow: [
+      'Sign In by Role',
+      'Academic Placement Review',
+      'Verified Enrollment',
+      'Access Assigned Subjects',
+      'Preview Learning Files',
+      'Track Module Progress',
+      'Receive Certificates',
+      'Message Instructors',
+    ],
     screenshots: [
-      { title: 'Dashboard', description: 'Show the main LMS dashboard and navigation experience.' },
-      { title: 'Course View', description: 'Show how courses or learning materials are organized.' },
-      { title: 'Learning Content', description: 'Show the content or lesson experience inside the system.' },
-      { title: 'User Management', description: 'Show how users or learners are organized and managed.' },
+      {
+        title: 'Student Dashboard & Learning Overview',
+        description:
+          'The enrolled student workspace shows five subjects, 20 published modules, learning activity, and personalized course progress.',
+        image: '/projects/campusflow/01-student-dashboard.webp',
+      },
+      {
+        title: 'Five Subjects with Individual Progress',
+        description:
+          'A populated Grade 10 course directory featuring subject-level progress for Mathematics, Science, English, Filipino, and Araling Panlipunan.',
+        image: '/projects/campusflow/02-five-subjects.webp',
+      },
+      {
+        title: 'Course Learning Hub',
+        description:
+          'Published learning modules, a module detail panel, access to lesson files, and student completion controls.',
+        image: '/projects/campusflow/03-learning-modules.webp',
+      },
+      {
+        title: 'In-Page Learning File Preview',
+        description:
+          'A protected PDF learning guide displayed inside the CampusFlow interface with separate close and download actions.',
+        image: '/projects/campusflow/04-inline-pdf-preview.webp',
+      },
+      {
+        title: 'Instructor Dashboard & Teaching Activity',
+        description:
+          'An instructor-specific dashboard with assigned subjects, enrolled learners, published modules, drafts, and recent module activity.',
+        image: '/projects/campusflow/05-instructor-dashboard.webp',
+      },
+      {
+        title: 'Instructor Module Management',
+        description:
+          'Instructor workspace for working with subject-specific modules, published files, and module editing tools.',
+        image: '/projects/campusflow/06-instructor-module-management.webp',
+      },
+      {
+        title: 'Registrar-Verified Academic Enrollment',
+        description:
+          'Academic placement approval and the eligible-section enrollment journey, keeping grade assignment under registrar review.',
+        image: '/projects/campusflow/07-registrar-approved-enrollment.webp',
+      },
+      {
+        title: 'Certificate Gallery',
+        description:
+          'The student certificate collection displays a real certificate thumbnail, issue details, and view or download actions.',
+        image: '/projects/campusflow/08-certificate-gallery.webp',
+      },
+      {
+        title: 'Inline Certificate Preview',
+        description:
+          'A certificate of achievement for the fictional student profile, previewed in a secure overlay without leaving CampusFlow.',
+        image: '/projects/campusflow/09-certificate-preview.webp',
+      },
+      {
+        title: 'Student–Instructor Inbox',
+        description:
+          'Course-related messaging with conversations between the fictional student and instructor accounts.',
+        image: '/projects/campusflow/10-course-inbox.webp',
+      },
+      {
+        title: 'CampusFlow Login Experience',
+        description:
+          'A redesigned, responsive two-panel authentication screen matching the CampusFlow visual identity.',
+        image: '/projects/campusflow/11-login.webp',
+      },
     ],
+    coverImage: '/projects/campusflow/01-student-dashboard.webp',
+    heroIcon: '/projects/campusflow/campusflow-logo.png',
+    heroIconVariant: 'brand',
+    statusDescription:
+      'A completed local portfolio demonstration of the CampusFlow enhancements, including role-specific interfaces, verified enrollment, learning modules, file handling, messaging, and certificates. Not a public school deployment.',
+    evidenceDescription:
+      'Screenshots from an isolated local CampusFlow environment using fictional student and instructor accounts and example academic records. They document implemented interface and workflow behavior rather than a live institutional deployment.',
+    evidenceLayout: 'desktop',
   },
 ]

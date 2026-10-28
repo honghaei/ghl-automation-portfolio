@@ -850,3 +850,14 @@
 }
 .portfolio-project-actions .portfolio-project-link { margin-top: 0; }
 .portfolio-project-live { color: #f5ce69; }
+
+/* PORTFOLIO_PENGPENG_MOBILE_COVER */
+.portfolio-project-cover img[src="/projects/pengpeng/02-overview.png"] {
+    object-fit: contain;
+    object-position: center;
+    background: radial-gradient(
+        circle at center,
+        #16433f 0%,
+        #091c21 76%
+    );
+}
