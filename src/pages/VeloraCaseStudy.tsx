@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 import './VeloraCaseStudy.css'
 
 type Media = { src: string; title: string; caption: string }
@@ -269,6 +270,7 @@ export default function VeloraCaseStudy() {
   const [opened, setOpened] = useState<Media | null>(null)
   const [activeFlow, setActiveFlow] = useState<Workflow | null>(null)
   const [showCrmProof, setShowCrmProof] = useState(false)
+  useScrollReveal('velora-case', '.velora-hero-text, .velora-hero-picture, .velora-facts > div, .velora-two-col > div, .velora-heading-row, .velora-problem-card, .velora-funnel-item, .velora-stage-list > li, .velora-crm-evidence-main, .velora-crm-execution-card, .velora-workflow-card, .velora-results-grid > article, .velora-evidence-gallery, .velora-learnings article, .velora-finale .velora-case-shell')
 
   useEffect(() => {
     if (!opened && !activeFlow && !showCrmProof) return

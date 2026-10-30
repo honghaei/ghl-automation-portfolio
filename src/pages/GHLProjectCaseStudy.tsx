@@ -1,4 +1,5 @@
 import { ghlProjects } from '../data/ghlProjects'
+import CSquaredShowcase from './CSquaredShowcase'
 import './GHLProjectCaseStudy.css'
 
 type GHLProjectCaseStudyProps = {
@@ -15,6 +16,10 @@ export default function GHLProjectCaseStudy({
 }: GHLProjectCaseStudyProps) {
   const activeSlug = slug ?? getSlugFromPath()
   const project = ghlProjects.find((item) => item.slug === activeSlug)
+
+  if (activeSlug === 'csquared-crm-sales-automation') {
+    return <CSquaredShowcase />
+  }
 
   if (!project) {
     return (
@@ -65,6 +70,15 @@ export default function GHLProjectCaseStudy({
           </div>
         </section>
 
+        {project.heroImage && (
+          <section className="ghl-case-shell ghl-case-hero-media" aria-label="Project visual preview">
+            <a href={project.heroImage} target="_blank" rel="noreferrer" aria-label="Open the CSQUARED landing page screenshot">
+              <img src={project.heroImage} alt="CSQUARED branded camera rental landing page in the GoHighLevel editor" />
+            </a>
+            <p>{project.heroCaption}</p>
+          </section>
+        )}
+
         <section className="ghl-case-section">
           <div className="ghl-case-shell ghl-case-grid">
             <article className="ghl-case-panel">
@@ -87,8 +101,8 @@ export default function GHLProjectCaseStudy({
               <p className="ghl-case-kicker">System Flow</p>
               <h2>How the customer journey moves.</h2>
               <p>
-                A high-level view of how leads, bookings, opportunities, and
-                follow-up actions move through the system from entry to outcome.
+                {project.flowIntro ??
+                  'A high-level view of how leads, bookings, opportunities, and follow-up actions move through the system from entry to outcome.'}
               </p>
             </div>
 
@@ -105,29 +119,64 @@ export default function GHLProjectCaseStudy({
           </div>
         </section>
 
+        {project.verification && (
+          <section className="ghl-case-section" aria-labelledby="ghl-case-verification-title">
+            <div className="ghl-case-shell">
+              <div className="ghl-case-section-head">
+                <p className="ghl-case-kicker">Implementation Status</p>
+                <h2 id="ghl-case-verification-title">Verified work vs. remaining integration.</h2>
+                <p>What has been built and checked, without presenting unfinished booking capabilities as live.</p>
+              </div>
+              <div className="ghl-case-verification-grid">
+                <article className="ghl-case-verification-panel">
+                  <h3><span aria-hidden="true">✓</span> Built &amp; evidenced</h3>
+                  <ul>{project.verification.completed.map((item) => <li key={item}>{item}</li>)}</ul>
+                </article>
+                <article className="ghl-case-verification-panel ghl-case-verification-panel--pending">
+                  <h3><span aria-hidden="true">○</span> Not yet verified / operational</h3>
+                  <ul>{project.verification.pending.map((item) => <li key={item}>{item}</li>)}</ul>
+                </article>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="ghl-case-section">
           <div className="ghl-case-shell">
             <div className="ghl-case-section-head">
               <p className="ghl-case-kicker">Project Evidence</p>
               <h2>Project screenshots.</h2>
               <p>
-                Selected CRM, funnel, booking, pipeline, and workflow screens
-                from the build are documented here to show how the system works
-                behind the scenes.
+                {project.evidenceNote ??
+                  'Selected CRM, funnel, booking, pipeline, and workflow screens from the build are documented here to show how the system works behind the scenes.'}
               </p>
             </div>
 
             <div className="ghl-case-screenshot-grid">
               {project.screenshots.map((screenshot, index) => (
                 <article
-                  className="ghl-case-screenshot"
+                  className={`ghl-case-screenshot${screenshot.image ? ' ghl-case-screenshot--with-image' : ''}`}
                   key={screenshot.title}
                 >
-                  <span>
-                    Project Screenshot {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <h3>{screenshot.title}</h3>
-                  <p>{screenshot.description}</p>
+                  {screenshot.image && (
+                    <a
+                      className="ghl-case-screenshot-link"
+                      href={screenshot.image}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open full-size screenshot: ${screenshot.title}`}
+                    >
+                      <img src={screenshot.image} alt={screenshot.title} loading="lazy" />
+                      <span className="ghl-case-screenshot-expand">View full image ↗</span>
+                    </a>
+                  )}
+                  <div className="ghl-case-screenshot-copy">
+                    <span>
+                      {screenshot.label ?? `Project Screenshot ${String(index + 1).padStart(2, '0')}`}
+                    </span>
+                    <h3>{screenshot.title}</h3>
+                    <p>{screenshot.description}</p>
+                  </div>
                 </article>
               ))}
             </div>

@@ -281,3 +281,124 @@
     padding: 56px 0;
   }
 }
+
+/* Evidence-rich CSQUARED case study. Existing placeholder projects remain unchanged. */
+.ghl-case-hero-media {
+  overflow: hidden;
+  margin-bottom: 56px;
+  border: 1px solid rgba(91, 242, 173, 0.18);
+  border-radius: 24px;
+  background: rgba(12, 26, 20, 0.84);
+}
+
+.ghl-case-hero-media a {
+  display: block;
+  max-height: 520px;
+  overflow: hidden;
+}
+
+.ghl-case-hero-media img {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  background: #111914;
+}
+
+.ghl-case-hero-media p {
+  margin: 0;
+  padding: 13px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: #9eaea7;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.ghl-case-verification-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.ghl-case-verification-panel {
+  padding: 26px 28px;
+  border: 1px solid rgba(91, 242, 173, 0.2);
+  border-radius: 22px;
+  background: rgba(91, 242, 173, 0.035);
+}
+
+.ghl-case-verification-panel--pending {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ghl-case-verification-panel h3 {
+  margin: 0;
+  font-size: 1.17rem;
+  letter-spacing: -0.025em;
+}
+
+.ghl-case-verification-panel h3 span {
+  margin-right: 8px;
+  color: #5bf2ad;
+}
+
+.ghl-case-verification-panel--pending h3 span { color: #b6c4bd; }
+
+.ghl-case-verification-panel ul {
+  margin: 18px 0 0;
+  padding-left: 20px;
+  color: #adbbb4;
+  line-height: 1.75;
+}
+
+.ghl-case-verification-panel li + li { margin-top: 10px; }
+
+.ghl-case-screenshot--with-image {
+  min-height: 0;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.ghl-case-screenshot-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: #0d1712;
+}
+
+.ghl-case-screenshot-link img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1363 / 936;
+  object-fit: contain;
+  transition: transform 180ms ease;
+}
+
+.ghl-case-screenshot-link:hover img { transform: scale(1.015); }
+
+.ghl-case-screenshot-expand {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(6, 16, 12, 0.89);
+  color: #e5faee !important;
+  letter-spacing: 0 !important;
+  font-size: 0.7rem;
+}
+
+.ghl-case-screenshot-copy { padding: 18px 22px 22px; }
+
+.ghl-case-screenshot--with-image h3 { margin: 9px 0 0; }
+.ghl-case-screenshot--with-image p { margin: 7px 0 0; }
+
+@media (max-width: 760px) {
+  .ghl-case-verification-grid { grid-template-columns: 1fr; }
+  .ghl-case-hero-media { margin-bottom: 35px; }
+  .ghl-case-verification-panel { padding: 22px; }
+}

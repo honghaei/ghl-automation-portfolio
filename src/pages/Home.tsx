@@ -168,7 +168,7 @@ export default function Home() {
 
             <div className="portfolio-ghl-grid">
               {ghlProjects.map((project) => (
-                <article className={`portfolio-ghl-card${project.image ? ' portfolio-ghl-card--featured' : ''}`} key={project.slug}>
+                <article className={`portfolio-ghl-card${project.image ? ' portfolio-ghl-card--featured' : ''}${project.slug === 'csquared-crm-sales-automation' ? ' portfolio-ghl-card--csquared' : ''}`} key={project.slug}>
                   <div className="portfolio-ghl-card-top">
                     <span className="portfolio-ghl-badge">{project.badge}</span>
                     <span className="portfolio-ghl-status">{project.status}</span>
@@ -176,8 +176,8 @@ export default function Home() {
 
                   {project.image && (
                     <div className="portfolio-ghl-preview">
-                      <img src={project.image} alt={`${project.title} landing page preview`} loading="lazy" />
-                      <span>View the real project</span>
+                      <img src={project.image} alt={`${project.title} ${project.slug === 'csquared-crm-sales-automation' ? 'promotional artwork' : 'landing page preview'}`} loading="lazy" />
+                      <span>{project.slug === 'csquared-crm-sales-automation' ? 'View case study' : 'View the real project'}</span>
                     </div>
                   )}
                   <h3>{project.title}</h3>
