@@ -867,3 +867,24 @@
 .portfolio-ghl-card--csquared .portfolio-ghl-preview img { width:100%; height:100%; object-fit:contain; object-position:center; }
 .portfolio-ghl-card--csquared .portfolio-ghl-preview span { background:rgba(7,20,13,.92); color:#b7f7d4; }
 .portfolio-ghl-card--csquared .portfolio-ghl-badge { color:#7bf6ba; border-color:rgba(88,237,169,.32); background:rgba(88,237,169,.07); }
+
+
+/* Accessibility: whole-card case study links, external actions stay separately clickable. */
+.portfolio-ghl-card, .portfolio-project-card { position: relative; cursor: pointer; }
+.portfolio-ghl-card .portfolio-ghl-link::after,
+.portfolio-project-card .portfolio-project-actions .portfolio-project-link:not(.portfolio-project-live)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.portfolio-project-card .portfolio-project-cover,
+.portfolio-project-card .portfolio-project-live {
+  position: relative;
+  z-index: 2;
+}
+.portfolio-ghl-card:focus-within,
+.portfolio-project-card:focus-within { outline: 2px solid #5bf2ad; outline-offset: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-project-card:hover {transform: translateY(-3px);border-color: rgba(91,242,173,.40)}
+}

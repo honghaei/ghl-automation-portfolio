@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import ProjectCaseStudy from './pages/ProjectCaseStudy'
+import LeadSenseCaseStudy from './pages/LeadSenseCaseStudy'
 import GHLProjectCaseStudy from './pages/GHLProjectCaseStudy'
 import VeloraCaseStudy from './pages/VeloraCaseStudy'
 import FunnelCaseStudy from './pages/FunnelCaseStudy'
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
 
         {/* Web / App project case studies */}
+        <Route path="/project/leadsense-ai" element={<LeadSenseCaseStudy />} />
         <Route path="/project/:slug" element={<ProjectCaseStudy />} />
 
         {/* Backward-compatible route for any older links */}

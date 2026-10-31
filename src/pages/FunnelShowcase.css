@@ -28,3 +28,18 @@
 @media(max-width:720px){.portfolio-funnels-section{padding:76px 0}.portfolio-funnel-grid{grid-template-columns:1fr}.funnel-showcase-image{aspect-ratio:1.6}.funnel-showcase-info{padding:22px}}
 @media(max-width:380px){.funnel-showcase-actions{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.funnel-showcase-card,.funnel-showcase-image img{transition:none!important}}
+
+/* Whole funnel cards open case studies, except explicit live preview actions. */
+.funnel-showcase-card { position: relative; cursor: pointer; }
+.funnel-showcase-card .funnel-showcase-details::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.funnel-showcase-card .funnel-showcase-image,
+.funnel-showcase-card .funnel-showcase-visit {
+  position: relative;
+  z-index: 2;
+}
+.funnel-showcase-card:focus-within { outline: 2px solid #5bf2ad; outline-offset: 3px; }

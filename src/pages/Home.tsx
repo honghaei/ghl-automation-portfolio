@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import WhatsAppContact from '../components/WhatsAppContact'
 import ProjectCard from '../components/ProjectCard'
+import LeadSenseFeature from '../components/LeadSenseFeature'
 import profilePhoto from '../assets/charles-jacob-lat.jpg'
 import { projects } from '../data/projects'
 import { ghlProjects } from '../data/ghlProjects'
@@ -237,6 +238,8 @@ export default function Home() {
                 development, web applications, and business systems.
               </p>
             </div>
+
+            <LeadSenseFeature />
 
             <div className="portfolio-project-grid">
               {projects.map((project) => (
