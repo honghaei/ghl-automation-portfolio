@@ -34,7 +34,7 @@ export const projects: Project[] = [
     type: 'React Native Mobile Application',
     status: 'Completed Mobile App',
     summary:
-      'Pengpeng is a personalized AI-powered expense tracker built with React Native and Expo, combining wallet budgeting, bills, savings goals, reports, and local financial insights in one polished mobile experience.',
+      'Pengpeng is a smart personal finance companion that connects expense tracking, category budgets, bills, payday planning and savings goals with AI-style insights grounded in locally saved financial history.',
     problem:
       'Most expense trackers record transactions but leave users to interpret the numbers themselves. Balances, wallet budgets, recurring bills, savings goals, and spending history can also become fragmented across different tools, making it harder to understand overall financial behavior.',
     solution:

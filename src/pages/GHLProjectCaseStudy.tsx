@@ -1,5 +1,6 @@
 import { ghlProjects } from '../data/ghlProjects'
 import CSquaredShowcase from './CSquaredShowcase'
+import ScrollProcessTimeline from '../components/ScrollProcessTimeline'
 import './GHLProjectCaseStudy.css'
 
 type GHLProjectCaseStudyProps = {
@@ -106,16 +107,7 @@ export default function GHLProjectCaseStudy({
               </p>
             </div>
 
-            <div className="ghl-case-flow">
-              {project.workflow.map((step, index) => (
-                <div className="ghl-case-flow-item" key={step}>
-                  <span className="ghl-case-flow-number">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <strong>{step}</strong>
-                </div>
-              ))}
-            </div>
+            <ScrollProcessTimeline title={`${project.title} / Documented system flow`} steps={project.workflow.map((step,index)=>({title:step,eyebrow:`PROCESS STAGE ${String(index + 1).padStart(2, '0')}`,detail:`Stage ${index+1} of the documented ${project.title} process. This is a process description, not evidence that every branch has been tested.`}))} note={project.verification ? 'Consult the implementation-status section below for the verified scope and remaining limitations.' : 'This high-level process illustrates the configured or planned workflow; it is not a claim of unattended customer execution.'}/>
           </div>
         </section>
 

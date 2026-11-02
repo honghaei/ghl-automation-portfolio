@@ -1,0 +1,27 @@
+/* Progressive scroll animation, enabled only after elements are observed.
+   Reduced-motion visitors receive the ordinary static page. */
+@media (prefers-reduced-motion: no-preference) {
+  .portfolio-motion-enabled .portfolio-motion-item {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition: opacity .76s cubic-bezier(.22,1,.36,1),
+                transform .76s cubic-bezier(.22,1,.36,1);
+    transition-delay: var(--portfolio-motion-delay, 0ms);
+  }
+  .portfolio-motion-enabled .portfolio-motion-item.portfolio-motion-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-motion-item { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* FlowDesk entrance choreography: individual hero and editorial elements only. */
+@media (prefers-reduced-motion: no-preference) {
+ .fd-case-page.portfolio-motion-enabled .fd-hero-copy.portfolio-motion-item {transform:translate3d(-24px,18px,0);transition-duration:.9s;}
+ .fd-case-page.portfolio-motion-enabled .fd-hero-visual.portfolio-motion-item {transform:translate3d(26px,18px,0) scale(.975);transition-duration:1s;}
+ .fd-case-page.portfolio-motion-enabled .fd-hero-copy.portfolio-motion-visible,
+ .fd-case-page.portfolio-motion-enabled .fd-hero-visual.portfolio-motion-visible {transform:translate3d(0,0,0) scale(1);}
+ .fd-case-page.portfolio-motion-enabled .fd-section-heading.portfolio-motion-item {transition-duration:.9s;}
+}

@@ -1,0 +1,77 @@
+/* V9: pinned document-scrolling storytelling, never a nested scroll container. */
+.scroll-story { position:relative; min-height:calc(100svh + var(--story-run, 0svh)); overflow:visible !important; isolation:isolate; scroll-margin-top:84px; }
+.scroll-story-panel { position:sticky; top:var(--story-nav, 76px); min-height:calc(100svh - var(--story-nav, 76px)); max-height:calc(100svh - var(--story-nav, 76px)); display:flex; flex-direction:column; justify-content:center; min-width:0; overflow:visible; }
+.scroll-story-cue { margin:14px 0 0;color:#91c9ab;font-size:.78rem;line-height:1.65;letter-spacing:.02em }
+.process-story { --story-nav:78px; margin:28px auto 64px; width:100%; }
+.process-story-panel{gap:clamp(16px,2.7svh,34px);padding:18px clamp(18px,3.5vw,55px);border-top:1px solid rgba(113,228,162,.28);border-bottom:1px solid rgba(113,228,162,.19);background:radial-gradient(ellipse at 90% 45%,rgba(57,146,103,.12),transparent 50%),#081b14;}
+.process-story-header{display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:.77rem;letter-spacing:.15em;font-weight:750;color:#92beab}
+.process-story-header>strong{font-size:1.3rem;color:#7be8b0;letter-spacing:0}.process-story-header small{color:#88b5a0}
+.process-story-layout{display:grid;grid-template-columns:minmax(240px,.85fr) minmax(0,1.3fr);gap:clamp(20px,5vw,85px);align-items:center;min-height:0}
+.process-story-steps{list-style:none;padding:0;margin:0;display:grid;gap:2px;min-width:0}
+.process-story-steps button{width:100%;display:flex;align-items:center;gap:15px;border:0;border-left:2px solid rgba(142,193,163,.22);padding:9px 14px;text-align:left;background:transparent;color:#a3bfb0;cursor:pointer;transition:background .2s,color .2s,border .2s}
+.process-story-steps button:hover,.process-story-steps button:focus-visible{color:#f0fff4;background:#123628;outline-offset:2px}
+.process-story-steps button.is-current{color:#f0fff4;border-left-color:#75f1a7;background:linear-gradient(90deg,rgba(82,200,138,.16),transparent)}
+.process-story-steps button>span{font-size:.78rem;letter-spacing:.08em;color:#86d8ac;min-width:25px}.process-story-steps button strong{font-size:clamp(.77rem,.96vw,.98rem);line-height:1.35}
+.process-story-feature{min-width:0;max-width:740px}.process-story-feature>span{display:block;letter-spacing:.15em;font-size:.7rem;font-weight:800;color:#77dfaa}.process-story-feature>b{display:block;font-size:clamp(4.2rem,9vw,9rem);font-weight:850;letter-spacing:-.09em;line-height:1.1;color:rgba(126,217,170,.26)}
+.process-story-feature h3{font-size:clamp(1.7rem,3.5vw,3.6rem);letter-spacing:-.055em;line-height:1.12;margin:-12px 0 14px;color:#fff}.process-story-feature p{font-size:clamp(.9rem,1.25vw,1.1rem);line-height:1.7;color:#c0d9ce;margin:0}.process-story-feature small{display:block;margin-top:22px;padding-top:17px;border-top:1px solid rgba(135,211,167,.16);color:#9bbfb0;line-height:1.6}
+/* Small/short/touch/reduced-motion screens stay normal, fully readable document flow. */
+@media(max-width:760px),(max-height:570px),(prefers-reduced-motion:reduce){
+ .scroll-story{min-height:0!important;height:auto!important;}
+ .scroll-story-panel{position:relative!important;top:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important;}
+ .process-story-layout{grid-template-columns:1fr;gap:20px}.process-story-panel{padding:24px 14px}.process-story-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.process-story-steps button{height:100%;padding:12px}.process-story-feature>b{font-size:4.5rem}
+}
+@media(max-width:500px){.process-story-steps{grid-template-columns:1fr}.process-story-steps button{padding:11px 10px}}
+@media(prefers-reduced-motion:reduce){.process-story-steps button{transition:none!important}}
+
+/* A tall/intrinsic composition is never trapped inside a pinned viewport. */
+.scroll-story[data-story-fallback="true"]{min-height:0!important;height:auto!important}
+.scroll-story[data-story-fallback="true"]>.scroll-story-panel{position:relative!important;top:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}
+
+/* V9 QA repair: every sticky composition uses the *same measured nav height*. */
+.scroll-story>.scroll-story-panel {
+  top:var(--story-nav, 110px);
+  min-height:var(--story-available, calc(100svh - 110px));
+  max-height:var(--story-available, calc(100svh - 110px));
+}
+.scroll-story{scroll-margin-top:var(--story-nav, 110px)}
+/* On touch/short/reduced-motion and content that cannot fit: readable full sequence. */
+.scroll-story-linear-sequence{display:none;list-style:none;margin:0;padding:0}
+.scroll-story-linear-sequence li{padding:24px 0;border-top:1px solid rgba(131,217,175,.25)}
+.scroll-story-linear-sequence strong{display:block;color:#ebfff5;font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.35}
+.scroll-story-linear-sequence p{color:#c3d6cb;line-height:1.65}
+.scroll-story-linear-sequence img{display:block;width:100%;max-height:68svh;object-fit:contain;object-position:center;background:rgba(24,49,40,.25);border-radius:8px}
+.scroll-story-linear-sequence a{display:block;color:#8ef0ba;text-decoration:underline;text-underline-offset:4px;margin-top:12px}
+.scroll-story-linear-sequence small{display:block;color:#8ad6b0;font-size:.72rem;letter-spacing:.08em;margin-bottom:8px}
+.scroll-story-linear-sequence li:target{outline:2px solid #7df5b1;outline-offset:8px}
+@media(max-width:900px),(max-height:640px),(prefers-reduced-motion:reduce){
+ .scroll-story{height:auto!important;min-height:0!important}
+ .scroll-story>.scroll-story-panel{position:relative!important;top:auto!important;height:auto!important;min-height:0!important;max-height:none!important}
+ .scroll-story-linear-sequence{display:grid;gap:14px}
+ .scroll-story[data-story-linear="true"] .scroll-story-linear-sequence{display:grid}
+}
+.scroll-story[data-story-linear="true"]{height:auto!important;min-height:0!important}
+.scroll-story[data-story-linear="true"]>.scroll-story-panel{position:relative!important;top:auto!important;height:auto!important;min-height:0!important;max-height:none!important}
+.scroll-story[data-story-linear="true"]>.scroll-story-linear-sequence{display:grid}
+
+/* A page may override --story-nav on the panel. The wrapper is authoritative. */
+body .scroll-story>.scroll-story-panel{--story-nav:inherit!important}
+@media(max-width:900px),(max-height:640px),(prefers-reduced-motion:reduce){
+ .process-story[data-story-linear="true"]>.process-story-panel{display:none!important}
+}
+.process-story[data-story-linear="true"]>.process-story-panel{display:none!important}
+/* If all evidence is available in reading order, never duplicate a trapped stage panel. */
+.scroll-story[data-story-linear="true"]:has(>.scroll-story-linear-sequence)>.scroll-story-panel{display:none!important}
+
+/* V10: sticky height includes padding. Without border-box the intrinsic-height
+   guard falsely switches otherwise short desktop stories to linear mode. */
+.scroll-story,.scroll-story-panel{box-sizing:border-box}
+.scroll-story-panel *, .scroll-story-panel *::before,.scroll-story-panel *::after{box-sizing:border-box}
+/* Single-screen chapters are simple, non-pinned evidence rather than empty scroll runs. */
+.scroll-story[data-story-single="true"]{min-height:0!important}
+.scroll-story[data-story-single="true"]>.scroll-story-panel{position:relative;top:auto;max-height:none;min-height:0}
+.scroll-story[data-story-single="true"]>.scroll-story-linear-sequence{display:none!important}
+/* Small/short/reduced-motion reading mode must not duplicate pinned and linear UIs,
+   including during initial paint before useEffect sets data-story-linear. */
+@media(max-width:900px),(max-height:640px),(prefers-reduced-motion:reduce){
+  .scroll-story:has(>.scroll-story-linear-sequence)>.scroll-story-panel{display:none!important}
+}

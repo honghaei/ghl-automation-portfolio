@@ -20,7 +20,7 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-section[id] { scroll-margin-top: 96px; }
+section[id] { scroll-margin-top: var(--portfolio-nav-clearance, 110px); }
 body { margin: 0; min-width: 320px; background:
   radial-gradient(circle at 85% 4%, rgba(64, 255, 150, .11), transparent 26%),
   radial-gradient(circle at 8% 20%, rgba(52, 139, 94, .08), transparent 22%),

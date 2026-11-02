@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ScrollProcessTimeline from '../components/ScrollProcessTimeline'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import './VeloraCaseStudy.css'
 
@@ -367,9 +368,11 @@ export default function VeloraCaseStudy() {
         <div className="velora-case-shell">
           <p className="velora-eyebrow">04 / CRM Architecture</p>
           <div className="velora-heading-row"><h2>One opportunity. A visible lifecycle.</h2><p>The inquiry form creates or updates the contact; Workflow 01 creates the opportunity; qualification and booking update the same Open record.</p></div>
-          <ol className="velora-stage-list">
-            {stages.map((stage,i)=><li key={stage} className={i < 3 ? 'velora-stage-tested' : ''}><span>{String(i+1).padStart(2,'0')}</span><strong>{stage}</strong><small>{i===0?'Created in Phase 1':i===1?'Reached in Phase 1':i===2?'Reached in Phase 2':'Configured stage'}</small></li>)}
-          </ol>
+          <ScrollProcessTimeline title="Velora / CRM opportunity lifecycle" steps={stages.map((stage, i) => ({
+            title: stage,
+            eyebrow: `STAGE ${String(i + 1).padStart(2, '0')} / ${i < 3 ? 'CONTROLLED TEST EVIDENCE' : 'CONFIGURED ONLY'}`,
+            detail: i === 0 ? 'One inquiry created the native CRM opportunity during Phase 1.' : i === 1 ? 'The qualifying branch moved that same opportunity to Qualified for Consultation.' : i === 2 ? 'The controlled calendar booking moved the same Open opportunity to Consultation Booked in Phase 2.' : 'This stage is configured in the pipeline, but an end-to-end customer progression through it was not verified.',
+          }))} note="The first three stages were exercised in controlled testing. The remaining stages are configured, not represented as executed client outcomes."/>
           <div className="velora-crm-evidence">
             <div className="velora-crm-evidence-main">
               <button type="button" className="velora-proof-image velora-media-button" onClick={()=>openMedia(pipelineEvidence)} aria-label="View actual Velora CRM pipeline full size"><img src={pipelineEvidence.src} alt="Actual five-column Velora pipeline board showing the booked IntegrationTest opportunity" loading="lazy"/><span>Enlarge pipeline ↗</span></button>

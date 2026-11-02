@@ -1,10 +1,21 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import avatar from '../assets/charles-avatar.png'
 import './Navbar.css'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const navWrap = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const nav = navWrap.current
+    if (!nav) return
+    const measure = () => document.documentElement.style.setProperty('--portfolio-nav-clearance', `${Math.ceil(nav.getBoundingClientRect().height) + 8}px`)
+    measure()
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null
+    observer?.observe(nav)
+    window.addEventListener('resize', measure)
+    return () => {observer?.disconnect();window.removeEventListener('resize', measure)}
+  }, [])
   const location = useLocation()
 
   const closeMenu = () => setMenuOpen(false)
@@ -29,7 +40,7 @@ export default function Navbar() {
     `portfolio-nav-link${isActive(section) ? ' is-active' : ''}`
 
   return (
-    <header className="portfolio-navbar-wrap">
+    <header className="portfolio-navbar-wrap" ref={navWrap}>
       <nav className="portfolio-navbar" aria-label="Primary navigation">
         <a className="portfolio-brand" href="/#home" onClick={closeMenu}>
           <span className="portfolio-avatar-shell">

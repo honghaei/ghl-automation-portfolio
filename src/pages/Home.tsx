@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import WhatsAppContact from '../components/WhatsAppContact'
 import ProjectCard from '../components/ProjectCard'
 import LeadSenseFeature from '../components/LeadSenseFeature'
@@ -51,9 +51,35 @@ const faqs: FAQItem[] = [
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number>(0)
 
+  // Present CampusFlow ahead of HRMS without changing their case-study records.
+  const orderedDevelopmentProjects = useMemo(() => {
+    const items = [...projects]
+    const hrms = items.findIndex(project => project.slug === 'iparcel-hrms')
+    const campusflow = items.findIndex(project => project.slug === 'campusflow-learning-management-system')
+    if (hrms !== -1 && campusflow !== -1) {
+      ;[items[hrms], items[campusflow]] = [items[campusflow], items[hrms]]
+    }
+    return items
+  }, [])
+
   const openWhatsApp = () => {
     window.dispatchEvent(new Event('open-whatsapp-contact'))
   }
+
+  const flowdeskProject = useMemo(
+    () => ghlProjects.find((project) => project.slug === 'flowdesk-support-ticketing-automation'),
+    []
+  )
+
+  const supportingGhlProjects = useMemo(
+    () =>
+      ghlProjects.filter((project) =>
+        ['velora-aesthetics-crm-automation', 'csquared-crm-sales-automation'].includes(
+          project.slug
+        )
+      ),
+    []
+  )
 
   return (
     <div className="portfolio-home" id="home">
@@ -155,21 +181,106 @@ export default function Home() {
           <div className="portfolio-home-section">
             <div className="portfolio-ghl-head">
               <div className="portfolio-ghl-head-left">
-                <p className="portfolio-home-eyebrow">GoHighLevel projects</p>
-                <h2 id="ghl-projects-title">
-                  Systems I can show, explain, and rebuild.
-                </h2>
+                <p className="portfolio-home-eyebrow">GoHighLevel projects / built & validated</p>
+                <h2 id="ghl-projects-title">Systems I can show, explain, and rebuild.</h2>
               </div>
 
               <p className="portfolio-ghl-head-right">
-                These builds focus on the CRM structure, automation logic, customer journey,
-                and operational flow behind the system — not only the front-end design.
+                Three documented GoHighLevel builds — from branded customer journeys to
+                engineered CRM and support workflows. Each project is presented with
+                implementation detail, operational context, and proof.
               </p>
             </div>
 
-            <div className="portfolio-ghl-grid">
-              {ghlProjects.map((project) => (
-                <article className={`portfolio-ghl-card${project.image ? ' portfolio-ghl-card--featured' : ''}${project.slug === 'csquared-crm-sales-automation' ? ' portfolio-ghl-card--csquared' : ''}`} key={project.slug}>
+            {flowdeskProject && (
+              <article className="portfolio-ghl-flagship" aria-label="Featured FlowDesk project">
+                <a className="portfolio-ghl-flagship-hitarea"
+                   href="/ghl-project/flowdesk-support-ticketing-automation"
+                   aria-label="View the FlowDesk flagship case study — click anywhere on this project card" />
+                <div className="portfolio-ghl-flagship-copy">
+                  <div className="portfolio-ghl-flagship-badges">
+                    <span className="portfolio-ghl-badge">★ Flagship GHL project</span>
+                    <span className="portfolio-ghl-badge portfolio-ghl-badge--muted">
+                      Built in GoHighLevel
+                    </span>
+                  </div>
+
+                  <h3>{flowdeskProject.title}</h3>
+
+                  <p className="portfolio-ghl-flagship-description">
+                    FlowDesk is my flagship GoHighLevel systems build: a structured support
+                    ticketing solution that turns incoming issues into CRM-managed tickets
+                    with category routing, stage-aware workflow logic, branded email
+                    communication, and reply-aware handling.
+                  </p>
+
+                  <div className="portfolio-ghl-metrics" aria-label="FlowDesk proof points">
+                    <div className="portfolio-ghl-metric">
+                      <strong>08</strong>
+                      <span>Configured GHL workflows</span>
+                    </div>
+                    <div className="portfolio-ghl-metric">
+                      <strong>05</strong>
+                      <span>Branded email templates</span>
+                    </div>
+                    <div className="portfolio-ghl-metric">
+                      <strong>01</strong>
+                      <span>Unified support pipeline</span>
+                    </div>
+                    <div className="portfolio-ghl-metric">
+                      <strong>Live</strong>
+                      <span>Core intake & reply verification</span>
+                    </div>
+                  </div>
+
+                  <div className="portfolio-chip-row">
+                    {['GoHighLevel', 'Support System', 'CRM Pipeline', 'Automation'].map((tool, index) => (
+                      <span className={`portfolio-chip${index === 0 ? ' green' : ''}`} key={tool}>
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="portfolio-ghl-flagship-actions">
+                    <a
+                      className="portfolio-primary-btn"
+                      href="/ghl-project/flowdesk-support-ticketing-automation"
+                    >
+                      Explore flagship case study <span aria-hidden="true">↗</span>
+                    </a>
+                    <a
+                      className="portfolio-secondary-link"
+                      href="/ghl-project/flowdesk-support-ticketing-automation#fd-evidence"
+                    >
+                      View real GHL evidence <span aria-hidden="true">↓</span>
+                    </a>
+                  </div>
+                </div>
+
+                <a
+                  className="portfolio-ghl-flagship-visual"
+                  href="/ghl-project/flowdesk-support-ticketing-automation"
+                  aria-label="Open FlowDesk case study"
+                >
+                  <img
+                    src={flowdeskProject.image}
+                    alt="FlowDesk showcase preview"
+                    loading="lazy"
+                  />
+                </a>
+              </article>
+            )}
+
+            <div className="portfolio-ghl-support-grid">
+              {supportingGhlProjects.map((project) => (
+                <article
+                  className={`portfolio-ghl-card portfolio-ghl-card--support${
+                    project.slug === 'csquared-crm-sales-automation'
+                      ? ' portfolio-ghl-card--csquared'
+                      : ''
+                  }`}
+                  key={project.slug}
+                >
                   <div className="portfolio-ghl-card-top">
                     <span className="portfolio-ghl-badge">{project.badge}</span>
                     <span className="portfolio-ghl-status">{project.status}</span>
@@ -177,10 +288,14 @@ export default function Home() {
 
                   {project.image && (
                     <div className="portfolio-ghl-preview">
-                      <img src={project.image} alt={`${project.title} ${project.slug === 'csquared-crm-sales-automation' ? 'promotional artwork' : 'landing page preview'}`} loading="lazy" />
-                      <span>{project.slug === 'csquared-crm-sales-automation' ? 'View case study' : 'View the real project'}</span>
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        loading="lazy"
+                      />
                     </div>
                   )}
+
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
 
@@ -200,7 +315,7 @@ export default function Home() {
                     href={`/ghl-project/${project.slug}`}
                     aria-label={`View ${project.title} case study`}
                   >
-                    View case study <span aria-hidden="true">→</span>
+                    View existing case study <span aria-hidden="true">↗</span>
                   </a>
                 </article>
               ))}
@@ -242,7 +357,7 @@ export default function Home() {
             <LeadSenseFeature />
 
             <div className="portfolio-project-grid">
-              {projects.map((project) => (
+              {orderedDevelopmentProjects.map((project) => (
                 <ProjectCard project={project} key={project.slug} />
               ))}
             </div>
@@ -260,39 +375,48 @@ export default function Home() {
             </div>
 
             <div className="portfolio-about-copy">
-              <p className="portfolio-home-eyebrow">About me</p>
+              <p className="portfolio-home-eyebrow">About me / engineering & automation</p>
               <h2 id="about-title">
-                Building practical systems with a developer&apos;s mindset.
+                I turn business processes into <span className="accent">well-built digital systems.</span>
               </h2>
 
               <p>
-                I&apos;m Charles Jacob Lat, a Computer Science graduate focused on
-                automation, web development, and application development. I enjoy taking a
-                process or business problem, understanding how the pieces connect, and
-                turning it into a working digital system.
+                I&apos;m a Computer Science graduate specializing in GoHighLevel automation,
+                CRM operations, full-stack web development, and mobile applications.
+                I combine the technical side of development with an understanding of how
+                a business actually works — from customer intake to internal operations,
+                reporting, and the user experience.
               </p>
 
               <p>
-                My work ranges from GoHighLevel CRM automation and workflow design to React
-                web applications and React Native mobile apps. I approach each project with
-                an emphasis on usability, maintainability, and solving the actual problem
-                behind the build.
+                My work includes multi-step GoHighLevel ticketing and qualification workflows,
+                responsive applications, CRM pipelines, database-backed dashboards,
+                interactive 3D experiences, and context-aware financial tools.
+                I design the underlying logic, build the interface, validate the behavior,
+                and document the result so a client can understand how the system operates.
+              </p>
+
+              <p>
+                <strong>What you can expect:</strong> proactive problem-solving, clear communication,
+                deliberate testing, and ownership of the project from requirements to a
+                practical deliverable. I focus on systems that are easy to use, explain,
+                extend, and maintain.
               </p>
 
               <div className="portfolio-about-pillars">
                 <div className="portfolio-about-pillar">
-                  <span>Automation</span>
-                  <strong>GoHighLevel & CRM Systems</strong>
+                  <span>Architect</span>
+                  <strong>CRM processes &amp; workflow logic</strong>
                 </div>
 
                 <div className="portfolio-about-pillar">
-                  <span>Web</span>
-                  <strong>React & TypeScript Development</strong>
+                  <span>Build</span>
+                  <strong>Full-stack web &amp; mobile products</strong>
                 </div>
 
                 <div className="portfolio-about-pillar">
-                  <span>Apps</span>
-                  <strong>React Native & Expo</strong>
+                  <span>Validate</span>
+                  <strong>Testing, reliability &amp; documentation</strong>
                 </div>
               </div>
             </div>
@@ -306,54 +430,51 @@ export default function Home() {
         >
           <div className="portfolio-home-section">
             <div className="portfolio-section-head">
-              <p className="portfolio-home-eyebrow">Skills & technologies</p>
-              <h2 id="skills-title">What I work with.</h2>
+              <p className="portfolio-home-eyebrow">Skills &amp; technical capabilities</p>
+              <h2 id="skills-title">The tools behind the systems I build.</h2>
               <p>
-                My toolkit spans CRM automation, modern frontend development, mobile
-                development, databases, and business system design.
+                My skills combine workflow architecture, frontend development, backend integration,
+                mobile engineering, data handling, and reliable delivery. Each capability is
+                demonstrated through the projects featured on this site.
               </p>
             </div>
 
-            <div className="portfolio-skills-grid">
+            <div className="portfolio-skills-grid portfolio-skills-grid--updated">
               <article className="portfolio-skill-card">
-                <h3>Automation & CRM</h3>
+                <span className="portfolio-skill-kicker">01 / Business automation</span>
+                <h3>GoHighLevel &amp; CRM Systems</h3>
+                <p>Support-ticket pipelines, lead qualification, stage-based workflows, email sequences, appointment journeys and API-aware integrations.</p>
                 <div className="portfolio-skill-list">
-                  <span className="portfolio-chip green">GoHighLevel</span>
-                  <span className="portfolio-chip">n8n</span>
-                  <span className="portfolio-chip">Workflow Automation</span>
-                  <span className="portfolio-chip">CRM Pipelines</span>
-                  <span className="portfolio-chip">Funnels</span>
-                  <span className="portfolio-chip">REST APIs</span>
-                  <span className="portfolio-chip">Webhooks</span>
+                  {['GoHighLevel', 'CRM Pipelines', 'Workflows & Triggers', 'Forms & Funnels', 'Custom Fields', 'Email Automation', 'Webhooks', 'REST APIs', 'A2P 10DLC Configuration'].map(skill => <span className="portfolio-chip" key={skill}>{skill}</span>)}
                 </div>
               </article>
 
               <article className="portfolio-skill-card">
-                <h3>Web Development</h3>
+                <span className="portfolio-skill-kicker">02 / Web engineering</span>
+                <h3>Full-Stack Applications</h3>
+                <p>Production-oriented interfaces, role-based business systems, reusable components, API integrations and structured data operations.</p>
                 <div className="portfolio-skill-list">
-                  <span className="portfolio-chip green">React</span>
-                  <span className="portfolio-chip">Next.js</span>
-                  <span className="portfolio-chip">TypeScript</span>
-                  <span className="portfolio-chip">JavaScript</span>
-                  <span className="portfolio-chip">Laravel</span>
-                  <span className="portfolio-chip">PHP</span>
-                  <span className="portfolio-chip">Responsive UI</span>
+                  {['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML & CSS', 'Laravel', 'PHP', 'MySQL', 'Responsive UI'].map(skill => <span className="portfolio-chip" key={skill}>{skill}</span>)}
                 </div>
               </article>
 
               <article className="portfolio-skill-card">
-                <h3>Apps & Data</h3>
+                <span className="portfolio-skill-kicker">03 / Mobile &amp; geospatial</span>
+                <h3>Apps &amp; Interactive Experiences</h3>
+                <p>Cross-platform mobile products, local-first persistence, finance dashboards and advanced map-based discovery interfaces.</p>
                 <div className="portfolio-skill-list">
-                  <span className="portfolio-chip green">React Native</span>
-                  <span className="portfolio-chip">Expo</span>
-                  <span className="portfolio-chip">Supabase</span>
-                  <span className="portfolio-chip">MySQL</span>
-                  <span className="portfolio-chip">CesiumJS</span>
-                  <span className="portfolio-chip">Git & GitHub</span>
-                  <span className="portfolio-chip">Netlify</span>
+                  {['React Native', 'Expo', 'AsyncStorage', 'React Navigation', 'CesiumJS', 'OpenStreetMap', 'Wikimedia', 'UI/UX Design'].map(skill => <span className="portfolio-chip" key={skill}>{skill}</span>)}
                 </div>
               </article>
 
+              <article className="portfolio-skill-card">
+                <span className="portfolio-skill-kicker">04 / Data &amp; delivery</span>
+                <h3>AI, Data &amp; Deployment</h3>
+                <p>Evidence-backed machine-learning research, Python APIs, database-backed architecture, version control and tested release workflows.</p>
+                <div className="portfolio-skill-list">
+                  {['Python', 'FastAPI', 'scikit-learn', 'Local RAG', 'Supabase', 'Git & GitHub', 'Netlify', 'Render', 'Testing & QA'].map(skill => <span className="portfolio-chip" key={skill}>{skill}</span>)}
+                </div>
+              </article>
             </div>
           </div>
         </section>

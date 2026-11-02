@@ -1,13 +1,15 @@
 import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Workflow from '../components/Workflow'
+import DevelopmentShowcase, { isDetailedDevelopmentProject } from './DevelopmentShowcase'
+import PengpengShowcase from './PengpengShowcase'
 import { projects } from '../data/projects'
 import "../CaseStudyPolish.css";
 
 const revealSection = {
   initial: { opacity: 0, y: 34 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.16 },
+  viewport: { once: false, amount: 0.16 },
   transition: {
     duration: 0.58,
     ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
@@ -28,6 +30,10 @@ export default function ProjectCaseStudy() {
       </main>
     )
   }
+
+  if (project.slug === 'pengpeng-ai-expense-tracker') return <PengpengShowcase />
+
+  if (isDetailedDevelopmentProject(project.slug)) return <DevelopmentShowcase project={project} />
 
   const desktopEvidence = project.evidenceLayout === 'desktop'
   const heroIconVariant = project.heroIconVariant ?? 'avatar'
@@ -129,7 +135,7 @@ export default function ProjectCaseStudy() {
           className="section-heading narrow"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.7 }}
+          viewport={{ once: false, amount: 0.7 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <div>
@@ -145,7 +151,7 @@ export default function ProjectCaseStudy() {
           className="section-heading narrow"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.7 }}
+          viewport={{ once: false, amount: 0.7 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <div>
@@ -161,7 +167,7 @@ export default function ProjectCaseStudy() {
               className="automation-list-item"
               initial={{ opacity: 0, x: -18 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.55 }}
+              viewport={{ once: false, amount: 0.55 }}
               transition={{
                 duration: 0.42,
                 delay: Math.min(index * 0.055, 0.32),
@@ -180,7 +186,7 @@ export default function ProjectCaseStudy() {
           className="section-heading"
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.65 }}
+          viewport={{ once: false, amount: 0.65 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <div>
@@ -203,7 +209,7 @@ export default function ProjectCaseStudy() {
               key={shot.title}
               initial={{ opacity: 0, y: 24, scale: 0.985 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{
                 duration: 0.5,
                 delay: Math.min(index * 0.06, 0.3),

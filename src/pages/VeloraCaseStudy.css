@@ -334,3 +334,14 @@
 .velora-crm-proof-record button {border:1px solid #865a46;border-radius:7px;color:#744631;background:transparent;cursor:pointer;padding:10px 12px;font-weight:800;font-size:.77rem;}
 @media (max-width:960px) { .velora-crm-proof-dialog-main {grid-template-columns:1fr;} }
 @media (max-width:650px) { .velora-crm-execution-facts {grid-template-columns:1fr 1fr;} .velora-crm-execution-card {padding:23px;} .velora-crm-proof-dialog-header {padding:18px;} .velora-crm-proof-dialog-main {padding:16px;} }
+
+/* Portfolio v3: tighter and more polished editorial opening; existing detailed case study retained. */
+.velora-hero{padding:38px 0 61px;gap:clamp(22px,3.2vw,52px)}
+.velora-hero h1{font-size:clamp(3rem,4.4vw,4.8rem);line-height:1.08}
+.velora-hero-picture{border:10px solid rgba(255,255,255,.07);border-radius:18px;transform:none;box-shadow:0 32px 85px rgba(0,0,0,.33)}
+.velora-hero-picture:hover{transform:translateY(-3px)}
+.velora-photo-label{border-radius:7px}
+.velora-facts{background:linear-gradient(90deg,rgba(215,179,153,.065),transparent);border-radius:13px;padding:22px 20px;margin-bottom:22px}
+.velora-hero .velora-intro{max-width:610px}
+.velora-funnel-item{box-shadow:0 20px 48px rgba(56,37,24,.10)}
+@media(max-width:740px){.velora-hero{padding:28px 0 47px}.velora-hero h1{font-size:clamp(2.7rem,8.4vw,4.2rem)}.velora-facts{padding:16px}}

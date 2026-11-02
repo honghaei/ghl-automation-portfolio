@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import '../styles/scroll-reveal.css'
 
-/** Progressive, one-time viewport reveals; normal page layout remains visible without JS. */
+/** Replayable viewport reveals; reduced motion and no-JS remain readable. */
 export function useScrollReveal(pageClass: string, selectors: string) {
   useEffect(() => {
     const root = document.querySelector<HTMLElement>(`.${pageClass}`)
@@ -18,11 +18,9 @@ export function useScrollReveal(pageClass: string, selectors: string) {
 
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
-        if (!entry.isIntersecting) continue
-        entry.target.classList.add('showcase-scroll-visible')
-        observer.unobserve(entry.target)
+        entry.target.classList.toggle('showcase-scroll-visible', entry.isIntersecting)
       }
-    }, { threshold: 0.08, rootMargin: '0px 0px -22px 0px' })
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' })
 
     targets.forEach(target => observer.observe(target))
     return () => {

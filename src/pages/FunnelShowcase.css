@@ -31,15 +31,17 @@
 
 /* Whole funnel cards open case studies, except explicit live preview actions. */
 .funnel-showcase-card { position: relative; cursor: pointer; }
-.funnel-showcase-card .funnel-showcase-details::after {
+.funnel-showcase-card .funnel-showcase-visit::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 .funnel-showcase-card .funnel-showcase-image,
-.funnel-showcase-card .funnel-showcase-visit {
+.funnel-showcase-card .funnel-showcase-details {
   position: relative;
   z-index: 2;
 }
 .funnel-showcase-card:focus-within { outline: 2px solid #5bf2ad; outline-offset: 3px; }
+
+.funnel-showcase-title-link{color:inherit;text-decoration:none;position:relative;z-index:2}.funnel-showcase-title-link:hover{color:var(--showcase-accent)}

@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import ScrollProcessTimeline from '../components/ScrollProcessTimeline'
+import { useEffect, useRef, useState } from 'react'
 import './LeadSensePremium.css'
 
 const liveUrl = 'https://leadsense-ai-research.netlify.app/demo/'
@@ -7,7 +9,7 @@ const metrics = [
   { value: '12,330', label: 'Historical shopping sessions', note: 'Real labeled UCI dataset' },
   { value: '0.6946', label: 'ROC-AUC', note: '0.5000 constant baseline' },
   { value: '0.2644', label: 'Average precision', note: '0.1549 prevalence baseline' },
-  { value: '0.1238', label: 'Brier score', note: '0.1309 baseline Â· lower is better' },
+  { value: '0.1238', label: 'Brier score', note: '0.1309 baseline · lower is better' },
 ]
 
 const capabilities = [
@@ -60,6 +62,84 @@ const workflow = [
 ]
 
 export default function LeadSenseCaseStudy() {
+  const [activeArea, setActiveArea] = useState<'research' | 'experience' | 'delivery'>('research')
+  const [activeShot, setActiveShot] = useState(0)
+  const capabilityScrollRef = useRef<HTMLDivElement | null>(null)
+  const evidenceScrollRef = useRef<HTMLDivElement | null>(null)
+  const areas = {
+    research: [capabilities[3], capabilities[4]],
+    experience: [capabilities[0], capabilities[1]],
+    delivery: [capabilities[2], capabilities[5]],
+  }
+  useEffect(() => {
+    const track = capabilityScrollRef.current
+    if (!track) return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const steps = [...track.querySelectorAll<HTMLElement>('[data-capability-step]')]
+      const navbarHeight = document.querySelector<HTMLElement>('.portfolio-navbar-wrap')?.getBoundingClientRect().height ?? 110
+      const focusLine = navbarHeight + (window.innerHeight - navbarHeight) * 0.5
+      let chosen: 'research' | 'experience' | 'delivery' = 'research'
+      let closest = Number.POSITIVE_INFINITY
+      for (const step of steps) {
+        const rect = step.getBoundingClientRect()
+        const distance = rect.top <= focusLine && rect.bottom >= focusLine
+          ? 0
+          : Math.min(Math.abs(rect.top - focusLine), Math.abs(rect.bottom - focusLine))
+        if (distance < closest) {
+          closest = distance
+          chosen = step.dataset.capabilityStep as typeof chosen
+        }
+      }
+      setActiveArea(previous => previous === chosen ? previous : chosen)
+    }
+    const queueUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+    window.addEventListener('scroll', queueUpdate, { passive: true })
+    window.addEventListener('resize', queueUpdate)
+    queueUpdate()
+    return () => {
+      window.removeEventListener('scroll', queueUpdate)
+      window.removeEventListener('resize', queueUpdate)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  useEffect(() => {
+    const track = evidenceScrollRef.current
+    if (!track) return
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const steps = Array.from(track.querySelectorAll<HTMLElement>('[data-evidence-step]'))
+      const navbarHeight = document.querySelector<HTMLElement>('.portfolio-navbar-wrap')?.getBoundingClientRect().height ?? 110
+      const focusLine = navbarHeight + (window.innerHeight - navbarHeight) * 0.5
+      let next = 0
+      let closest = Number.POSITIVE_INFINITY
+      for (const step of steps) {
+        const rect = step.getBoundingClientRect()
+        const distance = rect.top <= focusLine && rect.bottom >= focusLine
+          ? 0 : Math.min(Math.abs(rect.top - focusLine), Math.abs(rect.bottom - focusLine))
+        if (distance < closest) {
+          closest = distance
+          next = Number(step.dataset.evidenceStep ?? 0)
+        }
+      }
+      setActiveShot(previous => previous === next ? previous : next)
+    }
+    const queue = () => { if (!frame) frame = window.requestAnimationFrame(update) }
+    window.addEventListener('scroll', queue, { passive: true })
+    window.addEventListener('resize', queue)
+    queue()
+    return () => {
+      window.removeEventListener('scroll', queue)
+      window.removeEventListener('resize', queue)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
+
   return (
     <main className="lsp-page">
       <div className="lsp-shell">
@@ -81,10 +161,11 @@ export default function LeadSenseCaseStudy() {
               that makes complex machine learning results understandable.
             </p>
             <p className="lsp-lead-secondary">
-              The result is a working, publicly accessible research platform:
-              a combination of data engineering, model evaluation, API
-              architecture, responsive frontend development and documented
-              engineering safeguards.
+              Visitors can try the interactive research workspace themselves:
+              explore real session records, enter sample session data, and
+              validate inputs through the connected application. The product
+              is ready to demonstrate model research and input handling;
+              public prediction scores remain disabled until release checks are complete.
             </p>
             <div className="lsp-tags">
               {['Python','FastAPI','scikit-learn','Next.js','TypeScript','Netlify','Render'].map(t =>
@@ -93,11 +174,16 @@ export default function LeadSenseCaseStudy() {
             </div>
             <div className="lsp-actions">
               <a className="lsp-primary" href={liveUrl} target="_blank" rel="noopener noreferrer">
-                Explore Live Workspace {'\u2197'}
+                Try the Interactive Workspace {'\u2197'}
               </a>
               <a className="lsp-secondary" href="#engineering">
                 See How I Built It &darr;
               </a>
+            </div>
+            <div className="lsp-live-invite">
+              <strong>Try it yourself — without creating an account.</strong>
+              <p>Open the live workspace to examine model results, explore shopping sessions, and test the input-validation experience. Individual purchase predictions are intentionally not public yet.</p>
+              <a href={liveUrl} target="_blank" rel="noopener noreferrer">Launch the research demo ↗</a>
             </div>
           </div>
 
@@ -178,15 +264,7 @@ export default function LeadSenseCaseStudy() {
               instead of leaving the results inside a notebook.
             </p>
           </div>
-          <div className="lsp-workflow">
-            {workflow.map(([title, detail], index) => (
-              <article key={title} className="lsp-workflow-item">
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <h3>{title}</h3>
-                <p>{detail}</p>
-              </article>
-            ))}
-          </div>
+          <ScrollProcessTimeline title="LeadSense AI / Research to delivery" steps={workflow.map(([title, detail], index)=>({title,detail,eyebrow:`ENGINEERING PHASE ${String(index+1).padStart(2,'0')}`}))} note="Public prediction scores remain guarded pending release checks."/>
         </section>
 
         <section className="lsp-section">
@@ -196,14 +274,36 @@ export default function LeadSenseCaseStudy() {
               <h2>Built for exploration, validation and clarity.</h2>
             </div>
           </div>
-          <div className="lsp-capability-grid">
-            {capabilities.map(feature => (
-              <article className="lsp-capability" key={feature.no}>
-                <span>{feature.no}</span>
-                <h3>{feature.title}</h3>
-                <p>{feature.body}</p>
-              </article>
-            ))}
+          <p className="lsp-scroll-instruction">Scroll through the three engineering layers. The selected capabilities update as each stage enters view.</p>
+          <div className="lsp-capability-editorial lsp-capability-scrollscape" ref={capabilityScrollRef}>
+            <div className="lsp-capability-selectors" aria-label="Capabilities revealed through scrolling">
+              {([
+                ['research', '01', 'Research & evaluation', 'Understand the model and its evidence.'],
+                ['experience', '02', 'Interactive product', 'Explore sessions and test supported inputs.'],
+                ['delivery', '03', 'Backend & deployment', 'Validate the full-stack engineering.'],
+              ] as const).map(([id, number, title, detail]) => (
+                <div data-capability-step={id} className={`lsp-capability-scroll-step${activeArea === id ? ' is-active' : ''}`} key={id} aria-current={activeArea === id ? 'step' : undefined}>
+                  <div className="lsp-capability-scroll-number">{number}</div>
+                  <div><strong>{title}</strong><p>{detail}</p><small>Scroll to explore this layer</small></div>
+                  <div className="lsp-capability-mobile-copy">
+                    {areas[id].map(feature => <p key={feature.no}><b>{feature.title}</b> — {feature.body}</p>)}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="lsp-capability-details lsp-capability-sticky" aria-live="polite">
+              <div className="lsp-capability-progress"><span>CAPABILITY LAYER</span><strong>{activeArea === 'research' ? '01' : activeArea === 'experience' ? '02' : '03'} / 03</strong></div>
+              <span className="lsp-eyebrow">SELECTED CAPABILITIES</span>
+              {areas[activeArea].map((feature, index) => (
+                <article className="lsp-capability-detail" key={feature.no}>
+                  <span>0{index + 1} / {feature.no}</span>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.body}</p>
+                </article>
+              ))}
+              <p className="lsp-capability-context">This is a real interface connected to a validated research API, not a simulated prediction dashboard.</p>
+              <div className="lsp-capability-indicator" aria-hidden="true"><i className={activeArea === 'research' ? 'is-active' : ''}/><i className={activeArea === 'experience' ? 'is-active' : ''}/><i className={activeArea === 'delivery' ? 'is-active' : ''}/></div>
+            </div>
           </div>
         </section>
 
@@ -218,18 +318,28 @@ export default function LeadSenseCaseStudy() {
               documenting the features and results available in the application.
             </p>
           </div>
-          <div className="lsp-gallery">
-            {gallery.map(shot => (
-              <article className="lsp-shot" key={shot.title}>
-                <div className="lsp-shot-image">
-                  <img src={shot.src} alt={shot.title} loading="lazy" />
-                </div>
-                <div className="lsp-shot-caption">
+          <p className="lsp-scroll-instruction">Scroll through the four real screens. The featured image and explanation progress automatically as you explore the product.</p>
+          <div className="lsp-evidence-scrollscape" ref={evidenceScrollRef}>
+            <div className="lsp-evidence-stories">
+              {gallery.map((shot, index) => (
+                <article data-evidence-step={index} className={`lsp-evidence-scroll-step${activeShot === index ? ' is-active' : ''}`} key={shot.title}>
+                  <div className="lsp-evidence-scroll-number">{String(index + 1).padStart(2,'0')} <span>/ {String(gallery.length).padStart(2,'0')}</span></div>
                   <h3>{shot.title}</h3>
                   <p>{shot.detail}</p>
-                </div>
-              </article>
-            ))}
+                  <small>{index === 0 ? 'Research context and model status' : index === 1 ? 'Measured performance and baselines' : index === 2 ? 'Validated dataset exploration' : 'Transparent research decisions'}</small>
+                  <a className="lsp-evidence-mobile-image" href={shot.src} target="_blank" rel="noopener noreferrer"><img src={shot.src} alt={shot.title} loading="lazy" />View screenshot in full resolution ↗</a>
+                </article>
+              ))}
+            </div>
+            <div className="lsp-evidence-sticky">
+              <div className="lsp-evidence-sticky-heading"><span>PRODUCT WALKTHROUGH</span><strong>{String(activeShot + 1).padStart(2,'0')} / {String(gallery.length).padStart(2,'0')}</strong></div>
+              <a className="lsp-evidence-featured-image" href={gallery[activeShot].src} target="_blank" rel="noopener noreferrer" aria-label={`Open ${gallery[activeShot].title} in full resolution`}>
+                <img src={gallery[activeShot].src} alt={gallery[activeShot].title} loading="eager" />
+                <span>View full-size screenshot ↗</span>
+              </a>
+              <div className="lsp-evidence-featured-copy" aria-live="polite"><h3>{gallery[activeShot].title}</h3><p>{gallery[activeShot].detail}</p></div>
+              <div className="lsp-evidence-progress" aria-label="Evidence progress">{gallery.map((shot,index) => <span key={shot.title} className={activeShot === index ? 'is-active' : ''} />)}</div>
+            </div>
           </div>
         </section>
 

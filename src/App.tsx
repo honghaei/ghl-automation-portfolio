@@ -8,17 +8,62 @@ import LeadSenseCaseStudy from './pages/LeadSenseCaseStudy'
 import GHLProjectCaseStudy from './pages/GHLProjectCaseStudy'
 import VeloraCaseStudy from './pages/VeloraCaseStudy'
 import FunnelCaseStudy from './pages/FunnelCaseStudy'
+import FlowDeskCaseStudy from './pages/FlowDeskCaseStudy'
+import ProjectScrollMotion from './components/ProjectScrollMotion'
+import PortfolioScrollMemory, { portfolioScrollKey, portfolioCaseVisitKey } from './components/PortfolioScrollMemory'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
+
   useEffect(() => {
-    if (hash) {
-      // Hash links to the homepage section can be used from other case-study routes.
-      const target = document.getElementById(hash.slice(1))
-      if (target) { target.scrollIntoView(); return }
+    const isCaseStudy = /^\/(?:ghl-project|project|projects|funnel)\//.test(pathname)
+    if (isCaseStudy) {
+      try { window.sessionStorage.setItem(portfolioCaseVisitKey, '1') } catch { /* no-op */ }
     }
-    window.scrollTo(0, 0)
+
+    if (pathname === '/') {
+      let savedY: number | null = null
+      try {
+        if (window.sessionStorage.getItem(portfolioCaseVisitKey) === '1') {
+          const saved = window.sessionStorage.getItem(portfolioScrollKey)
+          const parsed = saved ? JSON.parse(saved) as { scrollY?: number; source?: string } : null
+          if (parsed?.source === '/' && typeof parsed.scrollY === 'number' && Number.isFinite(parsed.scrollY)) {
+            savedY = Math.max(0, parsed.scrollY)
+          }
+        }
+      } catch { /* fall back to normal navigation */ }
+
+      if (savedY !== null) {
+        // Repeat briefly to accommodate layout/images and normal SPA route transitions.
+        const top = savedY
+        const restore = () => window.scrollTo({ top, behavior: 'instant' })
+        const frame = window.requestAnimationFrame(restore)
+        const short = window.setTimeout(restore, 130)
+        const medium = window.setTimeout(restore, 420)
+        const finish = window.setTimeout(() => {
+          restore()
+          try { window.sessionStorage.removeItem(portfolioCaseVisitKey) } catch { /* no-op */ }
+        }, 750)
+        return () => {
+          window.cancelAnimationFrame(frame)
+          window.clearTimeout(short)
+          window.clearTimeout(medium)
+          window.clearTimeout(finish)
+        }
+      }
+    }
+
+    if (hash) {
+      const target = document.getElementById(hash.slice(1))
+      if (target) {
+        target.scrollIntoView({ behavior: 'instant' })
+        return
+      }
+    }
+
+    window.scrollTo({ top: 0, behavior: 'instant' })
   }, [pathname, hash])
+
   return null
 }
 
@@ -26,6 +71,8 @@ export default function App() {
   return (
     <div className="app-shell">
       <ScrollToTop />
+      <PortfolioScrollMemory />
+      <ProjectScrollMotion />
       <Navbar />
 
       <Routes>
@@ -41,10 +88,17 @@ export default function App() {
         {/* Photography-led, non-collecting GoHighLevel funnel demonstrations */}
         <Route path="/funnel/:slug" element={<FunnelCaseStudy />} />
 
-        {/* Featured Velora case study and other GoHighLevel projects */}
-        <Route path="/ghl-project/velora-aesthetics-crm-automation" element={<VeloraCaseStudy />} />
+        {/* Featured GoHighLevel case studies */}
+        <Route
+          path="/ghl-project/flowdesk-support-ticketing-automation"
+          element={<FlowDeskCaseStudy />}
+        />
+        <Route
+          path="/ghl-project/velora-aesthetics-crm-automation"
+          element={<VeloraCaseStudy />}
+        />
 
-        {/* GoHighLevel project case studies */}
+        {/* Other GoHighLevel project case studies */}
         <Route path="/ghl-project/:slug" element={<GHLProjectCaseStudy />} />
       </Routes>
 

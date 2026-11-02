@@ -1,3 +1,5 @@
+import LeadSenseScrollShowcase, { ShowcaseProof } from '../components/LeadSenseScrollShowcase'
+import ScrollProcessTimeline from '../components/ScrollProcessTimeline'
 import { ghlProjects } from '../data/ghlProjects'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import './CSquaredShowcase.css'
@@ -102,26 +104,26 @@ const experienceShots = project.screenshots.filter((shot) => shot.group === 'exp
 const operationsShots = project.screenshots.filter((shot) => shot.group === 'operations')
 const automationShots = project.screenshots.filter((shot) => shot.group === 'automation')
 
-function Gallery({ items, variant = 'default' }: { items: typeof project.screenshots; variant?: 'default' | 'automation' }) {
-  return (
-    <div className={`csq-gallery${variant === 'automation' ? ' csq-gallery--automation' : ''}`}>
-      {items.map((shot, index) => (
-        <article className={`csq-gallery-card${index === 0 ? ' csq-gallery-card--lead' : ''}`} key={shot.title}>
-          {shot.image && (
-            <a className="csq-gallery-image" href={shot.image} target="_blank" rel="noreferrer" aria-label={`Open screenshot: ${shot.title}`}>
-              <img src={shot.image} alt={shot.title} loading="lazy" />
-              <span className="csq-gallery-open">Expand image ↗</span>
-            </a>
-          )}
-          <div className="csq-gallery-content">
-            <span className="csq-gallery-type">{shot.label ?? 'Project evidence'}</span>
-            <h3>{shot.title}</h3>
-            <p>{shot.description}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-  )
+function EvidenceStory({ items, number, eyebrow, headline, value }: { items: typeof project.screenshots; number: string; eyebrow: string; headline: string; value: string }) {
+  const available = items.filter(item => Boolean(item.image))
+  if (!available.length) return null
+  return <section className="csq-evidence-story csq-lss-evidence">
+    <header className="csq-evidence-story-heading">
+      <span>{number} / {eyebrow}</span>
+      <h3>{headline}</h3>
+      <p>{value}</p>
+    </header>
+    <LeadSenseScrollShowcase
+      title={`CSQUARED / ${eyebrow}`}
+      steps={available.map(shot=>({title:shot.title,description:shot.description,eyebrow:shot.label ?? eyebrow}))}
+      renderContent={(_step,index)=>{
+        const shot=available[index]
+        return <ShowcaseProof image={shot.image ?? ''} title={shot.title}
+          eyebrow={`${shot.label ?? eyebrow} / ${String(index+1).padStart(2,'0')}`}
+          description={shot.description} />
+      }}
+    />
+  </section>
 }
 
 export default function CSquaredShowcase() {
@@ -173,22 +175,13 @@ export default function CSquaredShowcase() {
 
         <section className="csq-section csq-container" id="build-process">
           <div className="csq-section-heading"><span className="csq-kicker">02 / THE BUILD PROCESS</span><h2>From rental requirements to <span>evidence-backed automation.</span></h2><p>My work covered more than page design: I translated the business process into customer screens, CRM data, guarded workflow behavior and a private integration architecture.</p></div>
-          <div className="csq-build-grid">
-            {buildMilestones.map((item, index) => <article className="csq-build-step" key={item.phase}><span className="csq-build-number">{String(index + 1).padStart(2, '0')} / {item.phase}</span><h3>{item.title}</h3><p>{item.detail}</p></article>)}
-          </div>
+          <ScrollProcessTimeline title="CSQUARED / Build process" steps={buildMilestones.map(item=>({title:item.title,detail:item.detail,eyebrow:item.phase}))}/>
         </section>
 
         <section className="csq-section csq-section--tint" id="journey">
           <div className="csq-container">
             <div className="csq-section-heading"><span className="csq-kicker">03 / CUSTOMER JOURNEY</span><h2>From first click to a <span>traceable request.</span></h2><p>The customer-facing process sets expectations early, while the CRM turns a request into an organized internal review. This is how the verified synthetic intake is structured.</p></div>
-            <div className="csq-journey">
-              {journey.map((step) => (
-                <article className="csq-journey-step" key={step.no}>
-                  <div className="csq-journey-top"><span>{step.no}</span><span>{step.state}</span></div>
-                  <p className="csq-journey-verb">{step.label}</p><h3>{step.title}</h3><p>{step.text}</p>
-                </article>
-              ))}
-            </div>
+            <ScrollProcessTimeline title="CSQUARED / Customer journey" steps={journey.map(step=>({title:step.title,detail:step.text,eyebrow:`${step.no} / ${step.state} / ${step.label}`}))} note="Request ≠ approved booking. Human review controls commitments and payment."/>
             <div className="csq-branch-note"><span className="csq-branch-pill">MEETUP / VERIFIED SOURCE MAPPINGS</span><span className="csq-branch-pill csq-branch-pill--muted">GRABEXPRESS / FUTURE HANDOVER BRANCH</span><p>The form distinguishes Meetup from delivery options. Five Meetup source fields were verified from the Forms API evidence, supporting a clear first-phase rental intake. Delivery mapping and full opportunity-value reconciliation remain future checks.</p></div>
             <div className="csq-human-review-intro">
               <span className="csq-kicker">WHERE AUTOMATION ENDS AND GOOD JUDGMENT STARTS</span>
@@ -220,16 +213,7 @@ export default function CSquaredShowcase() {
 
         <section className="csq-section csq-container" id="architecture">
           <div className="csq-section-heading"><span className="csq-kicker">04 / SYSTEM ARCHITECTURE</span><h2>More than a funnel. <span>A controlled operating system.</span></h2><p>Each part answers a practical question: how does a renter submit a clear request, how does the team track it, who reviews it, and how can the same record stay consistent as the business grows?</p></div>
-            <div className="csq-architecture">
-              {architecture.map((layer, i) => (
-                <div className="csq-architecture-row" key={layer.title}>
-                  <div className="csq-architecture-rail"><span className="csq-architecture-index">{String(i + 1).padStart(2, '0')}</span>{i < architecture.length - 1 && <span className="csq-architecture-line" aria-hidden="true" />}</div>
-                  <article className="csq-architecture-card csq-architecture-card--value">
-                    <div><span className="csq-card-overline">{layer.eyebrow}</span><h3>{layer.title}</h3><p>{layer.description}</p><p className="csq-architecture-value"><span aria-hidden="true">↗</span> {layer.value}</p></div>
-                  </article>
-                </div>
-              ))}
-            </div>
+            <ScrollProcessTimeline title="CSQUARED / Architecture layers" steps={architecture.map(layer=>({title:layer.title,eyebrow:layer.eyebrow,detail:`${layer.description} ${layer.value}`}))} note="System layers are distinct from executed bookings: approval, payments and fulfillment remain review-controlled or future-phase activities."/>
         </section>
 
         <section className="csq-section csq-section--tint" id="decisions">
@@ -244,7 +228,7 @@ export default function CSquaredShowcase() {
 
         <section className="csq-section csq-container" id="operations">
           <div className="csq-section-heading"><span className="csq-kicker">06 / CRM DESIGN</span><h2>A pipeline the team can <span>actually operate.</span></h2><p>The Sales & Booking pipeline gives the team a clear view of a request from first contact through manual review. A separate eight-stage Rental Operations pipeline maps what needs to happen once a rental is approved—so ownership and next steps do not get lost.</p></div>
-          <div className="csq-stage-track">{stageNames.map((name, index) => <div className={`csq-stage${index === 0 ? ' csq-stage--current' : ''}`} key={name}><span>{String(index + 1).padStart(2,'0')}</span><strong>{name}</strong></div>)}</div>
+          <ScrollProcessTimeline title="CSQUARED / Sales & Booking pipeline" steps={stageNames.map((name,index)=>({title:name,eyebrow:`SALES & BOOKING / STAGE ${String(index+1).padStart(2,'0')}`,detail:index===0?'The only confirmed synthetic opportunity was recorded here as New Inquiry / Open.':`Configured Sales & Booking stage ${index+1}. This is a workflow stage, not evidence of an automatically completed customer booking.`}))} note="Separate pipeline: Rental Operations has eight configured stages. Manual approvals and real booking confirmation remain human-controlled."/>
           <div className="csq-stage-foot"><span>● Verified synthetic opportunity: <strong>New Inquiry / Open</strong></span><span>Rental Operations: <strong>8 configured stages</strong></span></div>
         </section>
 
@@ -263,12 +247,9 @@ export default function CSquaredShowcase() {
               <div><span className="csq-evidence-mark csq-evidence-mark--concept" /> <strong>Offline reconstructed design</strong><small>Visual preview only · not a live published funnel</small></div>
               <div><span className="csq-evidence-mark csq-evidence-mark--ghl" /> <strong>Native GoHighLevel evidence</strong><small>Actual GHL settings, stages, forms, workflows and synthetic logs</small></div>
             </div>
-            <div className="csq-gallery-heading"><h3>01 — Customer experience</h3><span>Landing · planner · review · agreement · verification · confirmation</span></div>
-            <Gallery items={experienceShots} />
-            <div className="csq-gallery-heading csq-gallery-heading--second"><h3>02 — CRM foundation</h3><span>Native form · two pipelines · structured fields · synthetic opportunity</span></div>
-            <Gallery items={operationsShots} />
-            <div className="csq-gallery-heading csq-gallery-heading--second"><h3>03 — Automation &amp; review evidence</h3><span>Guarded intake · execution record · administrator review design</span></div>
-            <Gallery items={automationShots} variant="automation" />
+            <EvidenceStory items={experienceShots} number="01" eyebrow="THE CUSTOMER JOURNEY" headline="A rental experience designed for clarity." value="See how the customer moves from discovering the camera offering to understanding the requirements, costs and next steps before making a request. These are reconstructed visual previews, not proof of an active booking." />
+            <EvidenceStory items={operationsShots} number="02" eyebrow="THE CRM FOUNDATION" headline="A place for every rental detail." value="The GoHighLevel configurations show how request data enters the CRM, how teams view opportunities and how structured fields remove ambiguity from day-to-day review." />
+            <EvidenceStory items={automationShots} number="03" eyebrow="VALIDATION AND SAFEGUARDS" headline="Automation with accountability." value="The guarded intake and execution records illustrate the difference between a configured workflow, a verified synthetic test, and future review paths—not a promise of automatic booking." />
           </div>
         </section>
 

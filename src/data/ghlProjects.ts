@@ -29,6 +29,51 @@ export type GHLProject = {
 
 export const ghlProjects: GHLProject[] = [
   {
+    slug: 'flowdesk-support-ticketing-automation',
+    title: 'FlowDesk | Support Ticketing & Automation',
+    badge: 'Flagship GoHighLevel Project',
+    status: 'Configured • Verified Core Flows',
+    image: '/projects/flowdesk/flowdesk-cover.webp',
+    heroImage: '/projects/flowdesk/flowdesk-cover.webp',
+    heroCaption: 'Conceptual project cover based on FlowDesk architecture. The case study below includes genuine GoHighLevel evidence.',
+    description:
+      'A GoHighLevel-native support operations architecture combining structured ticket intake, eight lifecycle workflows, opportunity-based records, category routing, branded emails, and controlled reply handling.',
+    tools: ['GoHighLevel', 'CRM', 'Workflows', 'Support Operations'],
+    problem:
+      'Support requests scattered across emails and manual notes lack a dependable operational record, consistent customer communication, and clear ticket ownership.',
+    solution:
+      'I designed a support pipeline and data model around native opportunity IDs; created a branded intake form, eight specialized workflows, five email templates, and guard-led lifecycle logic. Core intake, email delivery and reply detection were verified in GHL, while additional policy logic passed 715 offline tests.',
+    workflow: [
+      'Customer submits a structured support request',
+      'Intake Router finds the eligible active ticket or creates a New/Open opportunity',
+      'Native opportunity ID becomes the ticket reference',
+      'Lifecycle workflows route by category, urgency and stage',
+      'Additional information requests and email replies enter a controlled review path',
+      'Successful and no-response closure policies are modeled distinctly',
+      'Reopen window requires exact ticket and reply evidence before automatic operation',
+    ],
+    verification: {
+      completed: [
+        'Eight existing GoHighLevel workflows configured and documented',
+        'Controlled intake, ticket creation, category routing, native ticket ID, and email delivery verified',
+        'Workflow-specific email reply detection and internal-review notification verified',
+        'Five branded email templates and a styled support intake form captured',
+        '715 offline lifecycle and policy tests passed',
+      ],
+      pending: [
+        'Unattended live 72/120/168-hour closure and reopen integration remains approval- and evidence-gated',
+        'Exact reply-to-opportunity/cycle attribution and permanent duplicate-event guards require additional live integration',
+      ],
+    },
+    evidenceNote:
+      'Synthetic demonstration records and controlled email tests. Offline tests are separate from live production validation; workflow screenshots show configured Draft workflows, not a published unattended service.',
+    screenshots: [
+      { title: 'Branded FlowDesk intake', description: 'Illustrative intake design reference; not a claim of a live captured form.', image: '/projects/flowdesk/support-form-showcase.webp', label: 'Design concept', group: 'experience' },
+      { title: 'GoHighLevel pipeline', description: 'Actual CRM opportunity board with support lifecycle stages.', image: '/projects/flowdesk/crm-pipeline-board.webp', label: 'GHL CRM', group: 'operations' },
+      { title: 'Eight workflow overview', description: 'Saved workflow inventory in Draft state.', image: '/projects/flowdesk/crm-workflows-list.webp', label: 'GHL Automation', group: 'automation' },
+    ],
+  },
+  {
     slug: 'velora-aesthetics-crm-automation',
     title: 'Velora Aesthetics | CRM & Consultation Automation',
     badge: 'Verified Portfolio Demo',

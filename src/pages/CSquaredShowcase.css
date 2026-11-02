@@ -1,5 +1,5 @@
 /* CSQUARED: intentionally self-contained visual system. Other GHL case studies are unchanged. */
-.csq-page { --csq-bg: #07120e; --csq-ink: #f2faf5; --csq-accent: #58eda9; --csq-muted: #a4b5ac; --csq-line: rgba(177, 224, 194, .14); --csq-card: #102019; background: var(--csq-bg); color: var(--csq-ink); overflow: hidden; }
+.csq-page { --csq-bg: #07120e; --csq-ink: #f2faf5; --csq-accent: #58eda9; --csq-muted: #a4b5ac; --csq-line: rgba(177, 224, 194, .14); --csq-card: #102019; background: var(--csq-bg); color: var(--csq-ink); overflow: clip; }
 .csq-page *, .csq-page *::before, .csq-page *::after { box-sizing: border-box; }
 .csq-page a { color: inherit; }
 .csq-page h1, .csq-page h2, .csq-page h3, .csq-page p { text-wrap: pretty; }
@@ -204,3 +204,106 @@
   .csq-gallery--automation { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .csq-gallery--automation .csq-gallery-card--lead { grid-column:span 2; }
 }
+
+/* V8: narrative-first interactive evidence; never a wall of thumbnails. */
+.csq-evidence-story{padding:clamp(20px,4vw,40px) 0;margin-top:32px;border-top:1px solid rgba(88,237,169,.22)}
+.csq-evidence-story-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);column-gap:35px;align-items:end;margin-bottom:25px}
+.csq-evidence-story-heading>span{grid-column:1/-1;color:#5aedac;font-size:.8rem;letter-spacing:.15em;font-weight:800;margin-bottom:12px}
+.csq-evidence-story-heading h3{font-size:clamp(2rem,3.5vw,3.4rem);line-height:1.08;letter-spacing:-.04em;margin:0}
+.csq-evidence-story-heading p{margin:0;font-size:1rem;line-height:1.8;color:#b5c9bc}
+.csq-evidence-story-stage{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,.75fr);gap:20px;align-items:start}
+.csq-evidence-story-feature{min-width:0;background:#0d2218;border:1px solid rgba(88,237,169,.22);border-radius:23px;overflow:hidden}
+.csq-evidence-story-feature>a{position:relative;display:block;min-width:0;background:#dfe6e9;padding:8px}
+.csq-evidence-story-feature img{display:block;width:100%;height:clamp(300px,42vw,520px);object-fit:contain;object-position:center}
+.csq-evidence-story-feature>a>span{position:absolute;bottom:16px;right:16px;background:#0a2c1f;padding:11px 14px;border-radius:999px;color:#f0fff5;font-size:.8rem;font-weight:800}
+.csq-evidence-story-caption{padding:25px 28px 30px}
+.csq-evidence-story-caption span,.csq-evidence-story-track>p{color:#5aedac;font-size:.74rem;text-transform:uppercase;font-weight:800;letter-spacing:.12em}
+.csq-evidence-story-caption h4{margin:8px 0 0;font-size:clamp(1.5rem,2.4vw,2.35rem)}
+.csq-evidence-story-caption p{color:#bfd2c6;font-size:.95rem;line-height:1.8;margin:12px 0 0}
+.csq-evidence-story-track{display:grid;gap:10px;min-width:0}
+.csq-evidence-story-track>p{margin:0 0 6px;padding:4px}
+.csq-evidence-story-track>p small{display:block;font-size:.78rem;color:#9bbfac;text-transform:none;letter-spacing:normal;margin-top:8px;font-weight:500;line-height:1.55}
+.csq-evidence-story-track button{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;cursor:pointer;text-align:left;border:1px solid rgba(88,237,169,.15);background:#0d2017;color:#eaf8ef;padding:15px 17px;border-radius:15px}
+.csq-evidence-story-track button.is-selected{border-color:#5bf2ad;box-shadow:inset 3px 0 #5bf2ad;background:rgba(46,147,90,.17)}
+.csq-evidence-story-track button>span:first-child{color:#5bf2ad;font-weight:800}
+.csq-evidence-story-track strong{font-size:.92rem;line-height:1.4;display:block}
+.csq-evidence-story-track button small{display:block;color:#9fb9aa;margin-top:5px;font-size:.77rem;line-height:1.5}
+/* Editorial asymmetry breaks up identical card rows in CSQUARED sections. */
+.csq-decisions{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:stretch}
+.csq-decision:first-child{grid-row:span 2;grid-template-columns:1fr;align-content:center;background:radial-gradient(circle at top left,rgba(88,237,169,.13),transparent 70%),#102119;padding:clamp(30px,4vw,58px)}
+.csq-decision:first-child h3{font-size:clamp(2rem,3.5vw,3.45rem)}
+.csq-decision:first-child .csq-decision-outcome{margin-top:35px}
+.csq-human-review-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr)}
+.csq-human-review-card:first-child{grid-row:span 2;justify-content:center;padding:clamp(28px,4vw,52px)}
+.csq-human-review-card:first-child h4{font-size:clamp(1.65rem,2.8vw,2.5rem)}
+.csq-value-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+.csq-value-item:first-child{grid-row:span 2;align-content:center;padding:clamp(28px,4vw,50px)}
+.csq-value-item:first-child h3{font-size:clamp(1.8rem,3vw,2.75rem)}
+@media(max-width:950px){.csq-evidence-story-heading,.csq-evidence-story-stage{grid-template-columns:1fr}.csq-evidence-story-heading{gap:16px}}
+@media(max-width:770px){.csq-decisions,.csq-human-review-grid,.csq-value-grid{grid-template-columns:1fr}.csq-decision:first-child,.csq-human-review-card:first-child,.csq-value-item:first-child{grid-row:auto}.csq-evidence-story-feature img{height:300px}}
+/* Build roadmap: emphasize the strategy first instead of four identical cards. */
+.csq-build-grid{grid-template-columns:minmax(0,1.13fr) minmax(0,.87fr);gap:16px}
+.csq-build-step:first-child{grid-row:span 3;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(circle at top left,rgba(88,237,169,.17),transparent 70%),#102119;padding:clamp(28px,4vw,60px)}
+.csq-build-step:first-child h3{font-size:clamp(2rem,3.6vw,3.5rem);line-height:1.13;max-width:500px}
+.csq-build-step:first-child p{font-size:1.02rem;line-height:1.85}
+.csq-journey{grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border-block:1px solid rgba(88,237,169,.2)}
+.csq-journey-step{border:0;border-right:1px solid rgba(88,237,169,.17);border-radius:0;background:transparent;padding:24px 19px 31px}
+.csq-journey-step:last-child{border-right:0}
+.csq-journey-step:nth-child(odd){background:linear-gradient(180deg,rgba(88,237,169,.06),transparent)}
+.csq-journey-step:not(:last-child)::after{display:none}
+@media(max-width:950px){.csq-build-grid{grid-template-columns:1fr}.csq-build-step:first-child{grid-row:auto}.csq-journey{grid-template-columns:repeat(2,minmax(0,1fr))}.csq-journey-step{border-bottom:1px solid rgba(88,237,169,.17)}}
+@media(max-width:530px){.csq-journey{grid-template-columns:1fr}.csq-journey-step{border-right:0}.csq-evidence-story-feature img{height:270px}}
+
+/* V10 editorial system diagrams replace the repeated heavy boxed grids. */
+.csq-page .csq-human-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,45px);align-items:stretch;border-block:1px solid rgba(101,227,163,.23);margin-top:35px}
+.csq-page .csq-human-review-card,
+.csq-page .csq-human-review-card:first-child{
+  grid-row:auto;justify-content:flex-start;border:0;border-radius:0;background:transparent;
+  padding:clamp(24px,3vw,48px) clamp(10px,2vw,24px);min-height:0;text-align:left;
+}
+.csq-page .csq-human-review-card:not(:last-child){border-right:1px solid rgba(101,227,163,.17)}
+.csq-page .csq-human-review-card h4,
+.csq-page .csq-human-review-card:first-child h4{font-size:clamp(1.45rem,2.1vw,2.4rem)}
+.csq-page .csq-human-review-card p{max-width:43ch}
+.csq-page .csq-decisions{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid rgba(101,227,163,.22)}
+.csq-page .csq-decision,
+.csq-page .csq-decision:first-child{
+  display:grid;grid-template-columns:48px minmax(0,1fr);gap:18px;grid-row:auto;
+  align-content:start;justify-content:normal;background:transparent;border:0;border-bottom:1px solid rgba(101,227,163,.2);
+  border-radius:0;padding:clamp(26px,3.8vw,56px) clamp(14px,3vw,42px);min-height:0;
+}
+.csq-page .csq-decision:first-child{grid-column:1/-1;grid-template-columns:80px minmax(0,1fr);border-bottom:1px solid rgba(101,227,163,.24)}
+.csq-page .csq-decision:first-child h3{max-width:24ch}
+.csq-page .csq-decision:first-child .csq-decision-outcome{margin-top:26px}
+.csq-page .csq-decision:not(:first-child):nth-child(even){border-right:1px solid rgba(101,227,163,.15)}
+.csq-page .csq-value-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-block:1px solid rgba(101,227,163,.22)}
+.csq-page .csq-value-item,
+.csq-page .csq-value-item:first-child{
+  grid-row:auto;align-content:start;border:0;border-bottom:1px solid rgba(101,227,163,.2);border-radius:0;
+  background:transparent;padding:clamp(24px,3vw,42px) clamp(12px,2.6vw,36px);min-height:0;
+}
+.csq-page .csq-value-item:first-child{grid-column:1/-1}
+.csq-page .csq-value-item:nth-child(even){border-right:1px solid rgba(101,227,163,.15)}
+.csq-page .csq-evidence-story.scroll-story{border:0;border-radius:0;background:transparent}
+.csq-page .csq-evidence-story>.scroll-story-panel{padding:12px 0;border-top:1px solid rgba(101,227,163,.21)}
+.csq-page .csq-evidence-story-feature{border-radius:10px;background:transparent}
+.csq-page .csq-evidence-story-feature img{height:min(43svh,500px)}
+.csq-page .csq-evidence-story-stage{grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr)}
+@media(max-width:950px){
+  .csq-page .csq-human-review-grid,.csq-page .csq-decisions,.csq-page .csq-value-grid{grid-template-columns:1fr}
+  .csq-page .csq-decision:first-child,.csq-page .csq-value-item:first-child{grid-column:auto}
+  .csq-page .csq-human-review-card:not(:last-child),.csq-page .csq-decision:not(:first-child):nth-child(even),.csq-page .csq-value-item:nth-child(even){border-right:0}
+  .csq-page .csq-human-review-card:not(:last-child){border-bottom:1px solid rgba(101,227,163,.18)}
+  .csq-page .csq-evidence-story-stage{grid-template-columns:1fr}
+  .csq-page .csq-evidence-story-feature img{height:auto;max-height:58svh}
+}
+/* Last business case spans both columns: no orphan half-row or missing lower-right block. */
+.csq-page .csq-decision:last-child{grid-column:1/-1;grid-template-columns:72px minmax(0,1fr)}
+.csq-page .csq-decision:last-child>div{max-width:850px}
+@media(max-width:950px){.csq-page .csq-decision:last-child{grid-column:auto;grid-template-columns:48px minmax(0,1fr)}}
+.csq-page .csq-value-item:last-child{grid-column:1/-1}
+.csq-page .csq-value-item:last-child>div{max-width:900px}
+@media(max-width:950px){.csq-page .csq-value-item:last-child{grid-column:auto}}
+
+.csq-lss-evidence{overflow:visible}
+.csq-lss-evidence>.lss-scrollscape{margin-top:20px}

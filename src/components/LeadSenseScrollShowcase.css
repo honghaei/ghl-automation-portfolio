@@ -1,0 +1,223 @@
+/* LeadSense-inspired editorial scrollscape: real document-height chapters on
+   the left, sticky selected evidence on the right. No wheel event interception. */
+.lss-scrollscape{
+  --lss-accent:#53e8a8;--lss-nav-offset:110px;
+  display:grid;grid-template-columns:minmax(0, .72fr) minmax(0,1.13fr);
+  gap:clamp(18px,3.4vw,68px);width:100%;align-items:start;
+  position:relative;overflow:visible;isolation:isolate;
+}
+.lss-scrollscape,.lss-scrollscape *{box-sizing:border-box}
+.lss-chapters{min-width:0;position:relative;border-left:1px solid rgba(128,214,173,.25)}
+.lss-chapter{min-height:clamp(340px,78svh,900px);display:flex;align-items:center;
+  padding:clamp(22px,3vw,46px) clamp(14px,2vw,35px);transition:background .25s ease;
+  border-left:2px solid transparent;margin-left:-1px;}
+.lss-chapter.is-active{border-left-color:var(--lss-accent);background:linear-gradient(90deg,rgba(83,232,168,.055),transparent 85%)}
+.lss-chapter-button{border:0;background:none;color:inherit;font:inherit;cursor:pointer;width:100%;
+  text-align:left;display:block;padding:0;min-width:0;}
+.lss-chapter-button:focus-visible{outline:2px solid var(--lss-accent);outline-offset:10px;border-radius:4px}
+.lss-chapter-number{font-size:clamp(3.4rem,7vw,7rem);color:color-mix(in srgb,var(--lss-accent),#1c2d3e 58%);
+  line-height:1.1;font-weight:850;letter-spacing:-.09em;display:block;margin-bottom:18px}
+.lss-chapter-text{display:grid;gap:12px}
+.lss-chapter-text small,.lss-chapter-text em{font-style:normal;text-transform:uppercase;font-size:.68rem;letter-spacing:.13em;color:var(--lss-accent);font-weight:700}
+.lss-chapter-text strong{font-weight:800;color:#f0fff6;font-size:clamp(1.45rem,2.45vw,2.8rem);line-height:1.14;letter-spacing:-.04em}
+.lss-chapter-text>span{font-size:clamp(.94rem,1.12vw,1.13rem);line-height:1.68;color:#acccbf}
+.lss-chapter-text em{font-size:.64rem;margin-top:10px}
+.lss-sticky{position:sticky;top:var(--lss-nav-offset);height:calc(100svh - var(--lss-nav-offset) - 12px);
+ display:flex;align-items:center;min-width:0;overflow:visible}
+.lss-view{width:100%;min-width:0;max-height:100%;display:flex;flex-direction:column;
+ background:linear-gradient(155deg,#092b2a,#071d1a 80%);border:1px solid rgba(111,204,190,.32);
+ border-radius:22px;padding:clamp(14px,1.7vw,30px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.lss-view-header{display:flex;align-items:center;justify-content:space-between;gap:18px;
+ padding-bottom:13px;border-bottom:1px solid rgba(140,218,196,.18);
+ color:#95cce0;font-size:.72rem;font-weight:750;text-transform:uppercase;letter-spacing:.1em}
+.lss-view-header strong{white-space:nowrap;color:#8abdf0}
+.lss-featured{min-width:0;min-height:0;padding:clamp(8px,1.7svh,20px) 0;
+ overflow:visible;display:flex;justify-content:center;flex-direction:column;flex:1}
+.lss-featured h3,.lss-featured h4{color:#f1fff9;font-size:clamp(1.35rem,2.2vw,2.05rem);line-height:1.2;letter-spacing:-.04em;margin:6px 0 10px}
+.lss-featured p{color:#b7d1c9;line-height:1.57;margin:5px 0 12px;font-size:clamp(.82rem,1vw,.99rem)}
+.lss-featured small,.lss-featured .lss-proof-label{color:#8fcbef;font-size:.7rem;font-weight:750;letter-spacing:.09em;text-transform:uppercase}
+.lss-featured .lss-proof-image,.lss-mobile-content .lss-proof-image{display:flex;position:relative;
+ justify-content:center;align-items:center;min-height:0;width:100%;
+ overflow:hidden;background:#103333;border-radius:12px;border:1px solid rgba(100,180,180,.24)}
+.lss-proof-image img{display:block;max-width:100%;width:100%;height:auto;max-height:min(49svh,580px);
+ object-fit:contain;object-position:center;background:#0a2026}
+.lss-proof-image:hover{border-color:var(--lss-accent)}
+.lss-proof-image span{position:absolute;bottom:10px;right:10px;border-radius:24px;color:white;background:#06291b;
+ padding:9px 13px;font-size:.68rem;font-weight:750}
+.lss-featured .lss-proof-title{display:block;margin:10px 0 6px;font-size:clamp(1rem,1.5vw,1.35rem);font-weight:780;color:#f2fff7}
+.lss-featured .lss-proof-caption{margin:0;color:#b9d3c6;line-height:1.6}
+.lss-view-footer{display:flex;justify-content:space-between;align-items:center;gap:16px;
+ color:#83bba7;font-size:.7rem;padding-top:12px;border-top:1px solid rgba(140,218,196,.15)}
+.lss-progress{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.lss-progress button{height:5px;width:clamp(12px,2.1vw,29px);border:0;border-radius:10px;
+ background:rgba(122,194,175,.23);padding:0;cursor:pointer}
+.lss-progress button.is-active{background:var(--lss-accent)}
+.lss-progress button:focus-visible{outline:2px solid white;outline-offset:4px}
+.lss-mobile-content{display:none}
+.lss-scrollscape :is(a,button){touch-action:manipulation}
+.lss-scrollscape .lss-proof-image:focus-visible{outline:2px solid var(--lss-accent);outline-offset:4px}
+.peng-case .lss-scrollscape,.dev-case .lss-scrollscape,.lsp-page .lss-scrollscape{--lss-accent:#80b8ff}
+@media(max-width:900px),(max-height:680px),(prefers-reduced-motion:reduce){
+ .lss-scrollscape{display:block}
+ .lss-chapters{border-left:0}
+ .lss-chapter,.lss-chapter.is-active{display:block;min-height:0;padding:26px 0;
+  background:none;border-left:0;border-bottom:1px solid rgba(110,204,161,.23);margin:0}
+ .lss-chapter-number{font-size:clamp(2.1rem,7vw,3.7rem);margin:0 0 8px}
+ .lss-chapter-text strong{font-size:clamp(1.35rem,4vw,2rem)}
+ .lss-chapter-text em{display:none}
+ .lss-mobile-content{display:block;margin-top:18px}
+ .lss-mobile-content .lss-proof-image img{max-height:60svh}
+ .lss-sticky{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .lss-chapter,.lss-progress button{transition:none!important;scroll-behavior:auto!important}
+}
+
+/* A single image is not an artificial scroll sequence. */
+.lss-scrollscape.is-single .lss-chapter{min-height:0;padding:30px 20px}
+.lss-scrollscape.is-single .lss-sticky{position:relative;top:auto;height:auto;align-self:center}
+.lss-scrollscape.is-single .lss-view{max-height:none}
+@media(min-width:901px) and (max-height:820px){
+  .lss-view{padding:12px 17px}
+  .lss-featured .lss-proof-image img{max-height:39svh}
+  .lss-featured p{line-height:1.45;font-size:.86rem}
+}
+
+
+/* V12 — readable LeadSense-inspired storyboards.
+   Stage selection is driven by the document, not an internal wheel handler.
+   Keep a generous reading area; stage captions are not duplicated in both columns. */
+.lss-scrollscape {
+  grid-template-columns: minmax(0, .91fr) minmax(0, 1.09fr);
+  column-gap: clamp(36px, 4.5vw, 84px);
+}
+.lss-scrollscape .lss-chapter {
+  min-height: max(530px, calc(100svh - var(--lss-nav-offset) - 28px));
+  padding-block: clamp(42px, 7svh, 90px);
+  padding-inline: clamp(22px, 3vw, 52px);
+}
+.lss-scrollscape .lss-chapter-number {
+  font-size: clamp(4.4rem, 6vw, 6.3rem);
+  line-height: 1;
+  margin-bottom: clamp(22px, 3svh, 34px);
+}
+.lss-scrollscape .lss-chapter-text {
+  gap: clamp(14px, 1.8svh, 22px);
+}
+.lss-scrollscape .lss-chapter-text strong {
+  font-size: clamp(1.8rem, 2.35vw, 2.75rem);
+  line-height: 1.22;
+  max-width: 19ch;
+}
+.lss-scrollscape .lss-chapter-text > span {
+  font-size: clamp(.97rem, 1.1vw, 1.16rem);
+  line-height: 1.75;
+  max-width: 46ch;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.lss-scrollscape .lss-chapter-text em {
+  margin-top: clamp(14px, 2.8svh, 27px);
+}
+/* Full process explanation belongs in the selected capabilities panel, not twice on screen. */
+.lss-scrollscape.lss-process .lss-chapter-text > span {
+  display: none;
+}
+.lss-scrollscape .lss-sticky {
+  top: var(--lss-nav-offset);
+  height: calc(100svh - var(--lss-nav-offset) - 20px);
+}
+.lss-scrollscape .lss-view {
+  min-height: min(580px, calc(100svh - var(--lss-nav-offset) - 30px));
+  max-height: 100%;
+  justify-content: space-between;
+  padding: clamp(24px, 2.45vw, 44px);
+  border-radius: 22px;
+}
+.lss-scrollscape .lss-view-header {
+  padding-bottom: clamp(14px, 2svh, 23px);
+  line-height: 1.5;
+}
+.lss-scrollscape .lss-featured {
+  padding-block: clamp(22px, 3svh, 44px);
+}
+.lss-scrollscape .lss-featured h3,
+.lss-scrollscape .lss-featured h4 {
+  font-size: clamp(1.65rem, 2.15vw, 2.55rem);
+  line-height: 1.25;
+  margin: 18px 0 21px;
+}
+.lss-scrollscape .lss-featured p {
+  font-size: clamp(.99rem, 1.14vw, 1.16rem);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.lss-scrollscape .lss-featured .lss-proof-title {
+  font-size: clamp(1.14rem, 1.5vw, 1.48rem);
+  line-height: 1.35;
+  margin: 18px 0 9px;
+}
+.lss-scrollscape .lss-featured .lss-proof-caption {
+  font-size: clamp(.94rem, 1vw, 1.1rem);
+  line-height: 1.7;
+  margin: 0;
+}
+.lss-scrollscape .lss-view-footer {
+  padding-top: clamp(16px, 2svh, 24px);
+  line-height: 1.6;
+  align-items: center;
+}
+.lss-scrollscape .lss-view-footer > span {
+  max-width: 46ch;
+}
+.lss-scrollscape .lss-process-proof {
+  max-width: 55ch;
+  margin: auto 0;
+}
+.lss-scrollscape .lss-process-proof > small {
+  display: inline-block;
+  margin-bottom: clamp(5px, 1svh, 12px);
+}
+.lss-scrollscape .lss-process-proof p {
+  max-width: 53ch;
+  color: #bfdcd0;
+}
+.lss-scrollscape .lss-proof-image img {
+  max-height: min(39svh, 510px);
+}
+.lss-scrollscape.is-single .lss-chapter {
+  min-height: 0;
+  padding: 30px 20px;
+}
+.lss-scrollscape.is-single .lss-view {
+  min-height: 0;
+}
+/* On short browser zoom/viewport configurations, preserve readable normal flow. */
+@media (max-width: 1050px), (max-height: 735px), (prefers-reduced-motion: reduce) {
+  .lss-scrollscape { display: block; }
+  .lss-scrollscape .lss-chapters { border-left: 0; }
+  .lss-scrollscape .lss-chapter,
+  .lss-scrollscape .lss-chapter.is-active {
+    display: block;
+    min-height: 0;
+    padding: 32px 0;
+    margin: 0;
+    background: none;
+    border-left: 0;
+    border-bottom: 1px solid rgba(110,204,161,.23);
+  }
+  .lss-scrollscape .lss-chapter-number { font-size: clamp(2.7rem, 8vw, 4.2rem); margin: 0 0 12px; }
+  .lss-scrollscape .lss-chapter-text { gap: 10px; }
+  .lss-scrollscape .lss-chapter-text strong { font-size: clamp(1.45rem, 3.8vw, 2rem); max-width: 24ch; }
+  .lss-scrollscape .lss-chapter-text > span { display: none; }
+  .lss-scrollscape .lss-chapter-text em { display: none; }
+  .lss-scrollscape .lss-mobile-content { display: block; margin-top: clamp(18px,3svh,28px); }
+  .lss-scrollscape .lss-sticky { display: none; }
+  .lss-scrollscape .lss-proof-image img { max-height: 62svh; }
+  .lss-scrollscape .lss-mobile-content .lss-proof-title { display: block; margin-block: 14px 8px; }
+  .lss-scrollscape .lss-mobile-content p { font-size: 1rem; line-height: 1.7; }
+  .lss-scrollscape .lss-mobile-content .lss-process-proof { max-width: 65ch; }
+  .lss-scrollscape .lss-mobile-content .lss-process-proof h3 { margin: 14px 0; }
+}
