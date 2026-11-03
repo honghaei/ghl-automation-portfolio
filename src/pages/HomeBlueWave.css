@@ -1,0 +1,344 @@
+
+/* PHASE 1 — HOMEPAGE BLUE THEME ONLY */
+
+.portfolio-home {
+  --home-bg: #050e1c;
+  --home-panel: rgba(8, 22, 42, 0.88);
+  --home-panel-strong: rgba(6, 18, 35, 0.96);
+  --home-text: #f3f8ff;
+  --home-muted: #a6b9cb;
+  --home-green: #42beff;
+  --home-green-soft: rgba(48, 165, 255, 0.08);
+  --home-blue: #42beff;
+
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  color: var(--home-text);
+}
+
+.home-blue-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 76% 55%,
+      rgba(11, 62, 112, 0.28),
+      transparent 53%
+    ),
+    linear-gradient(145deg, #040a15, #071529 64%, #040b18);
+}
+
+.home-blue-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at 30% 70%,
+      rgba(12, 94, 171, 0.07),
+      transparent 45%
+    );
+}
+
+.home-blue-wave {
+  position: absolute;
+  left: 0;
+  width: 110vw;
+  min-width: 800px;
+  height: 32vh;
+  min-height: 170px;
+  max-height: 300px;
+  color: #37baff;
+  opacity: 0.24;
+  animation: home-wave-flow 42s linear infinite;
+  will-change: transform;
+}
+
+.home-blue-wave--1 {
+  top: 14%;
+  animation-delay: -8s;
+}
+
+.home-blue-wave--2 {
+  top: 43%;
+  opacity: 0.16;
+  animation-duration: 54s;
+  animation-delay: -31s;
+}
+
+.home-blue-wave--3 {
+  bottom: -4%;
+  opacity: 0.27;
+  animation-duration: 48s;
+  animation-delay: -24s;
+}
+
+@keyframes home-wave-flow {
+  from {
+    transform: translate3d(-115vw, 0, 0);
+  }
+  to {
+    transform: translate3d(115vw, 0, 0);
+  }
+}
+
+/* All normal page content scrolls over the fixed background. */
+
+.portfolio-home > main {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-home .portfolio-ghl-section {
+  background: transparent;
+}
+
+/* Homepage blue accent styling */
+
+.portfolio-home .portfolio-primary-btn {
+  color: #ffffff;
+  background: linear-gradient(110deg, #087cf1, #14b9f3);
+  box-shadow: 0 8px 28px rgba(8, 126, 241, 0.15);
+}
+
+.portfolio-home .portfolio-primary-btn:hover {
+  box-shadow: 0 12px 34px rgba(8, 126, 241, 0.24);
+}
+
+.portfolio-home .portfolio-home-eyebrow::before {
+  background: #42beff;
+  box-shadow: 0 0 12px rgba(66, 190, 255, 0.38);
+}
+
+.portfolio-home .portfolio-focus-card,
+.portfolio-home .portfolio-ghl-flagship,
+.portfolio-home .portfolio-ghl-card,
+.portfolio-home .portfolio-project-card,
+.portfolio-home .portfolio-skill-card,
+.portfolio-home .portfolio-faq-shell,
+.portfolio-home .portfolio-contact-panel {
+  background: rgba(7, 20, 39, 0.9);
+  border-color: rgba(66, 170, 255, 0.13);
+}
+
+.portfolio-home .portfolio-focus-icon {
+  color: #42beff;
+  border-color: rgba(66, 190, 255, 0.2);
+  background: rgba(66, 190, 255, 0.065);
+}
+
+.portfolio-home .portfolio-focus-card::after {
+  background: rgba(16, 132, 242, 0.055);
+}
+
+.portfolio-home .portfolio-chip.green,
+.portfolio-home .portfolio-ghl-badge {
+  color: #55c6ff;
+  border-color: rgba(66, 190, 255, 0.2);
+  background: rgba(66, 190, 255, 0.055);
+}
+
+/* Navbar styling scoped to homepage only */
+
+body:has(.portfolio-home) .portfolio-navbar-wrap {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 12, 26, 0.96),
+    rgba(4, 12, 26, 0.7) 65%,
+    transparent
+  );
+}
+
+body:has(.portfolio-home) .portfolio-navbar {
+  background: linear-gradient(
+    135deg,
+    rgba(5, 16, 33, 0.96),
+    rgba(8, 23, 44, 0.94)
+  );
+  border-color: rgba(66, 170, 255, 0.14);
+}
+
+body:has(.portfolio-home) .portfolio-avatar-shell {
+  border-color: #42beff;
+}
+
+body:has(.portfolio-home) .portfolio-nav-link:hover,
+body:has(.portfolio-home) .portfolio-nav-link.is-active {
+  color: #42beff;
+}
+
+body:has(.portfolio-home) .portfolio-nav-link.is-active::after {
+  background: #42beff;
+  box-shadow: 0 0 14px rgba(66, 190, 255, 0.65);
+}
+
+body:has(.portfolio-home) .portfolio-contact-link {
+  color: white;
+  background: linear-gradient(110deg, #087cf1, #14b9f3);
+  box-shadow: 0 8px 28px rgba(8, 126, 241, 0.14);
+}
+
+/* Responsive and accessibility */
+
+@media (max-width: 767px) {
+  .home-blue-wave {
+    width: 140vw;
+    opacity: 0.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-blue-wave {
+    animation: none;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.1;
+    will-change: auto;
+  }
+}
+
+/* PHASE 1 FIX — Make the Funnels section
+   display the same fixed blue-wave background */
+
+.portfolio-home .portfolio-funnels-section {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+.portfolio-home .portfolio-funnels-section > .portfolio-home-section {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Preserve individual funnel card designs */
+.portfolio-home .portfolio-funnel-grid {
+  background: transparent;
+}
+
+/* =====================================================
+   GLOBAL BLUE-WAVE BACKGROUND — ALL PORTFOLIO PAGES
+   ===================================================== */
+
+.app-shell {
+  --bg: #050e1c;
+  --panel: #0a1c31;
+  --panel-2: #10233a;
+  --text: #f0f7ff;
+  --muted: #a6bbce;
+  --accent: #42beff;
+  --accent-2: #75d6ff;
+  --dark-accent: #082744;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background: #050e1c;
+}
+
+/* One fixed animated background for every route */
+
+.app-shell > .home-blue-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Keep page content above the background */
+
+.app-shell > :is(
+  .portfolio-home,
+  .fd-case-page,
+  .ghl-case-page,
+  .csq-page,
+  .dev-case,
+  .peng-case,
+  .lsp-page,
+  .funnel-case-page,
+  .velora-case,
+  main,
+  .footer
+) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove opaque backgrounds from page-level wrappers.
+   Individual cards, screenshots and branded previews
+   retain their own backgrounds. */
+
+.app-shell :is(
+  .fd-case-page,
+  .ghl-case-page,
+  .csq-page,
+  .dev-case,
+  .peng-case,
+  .lsp-page,
+  .funnel-case-page,
+  .velora-case
+) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Homepage and funnel section remain transparent */
+
+.app-shell .portfolio-home {
+  background: transparent;
+}
+
+.app-shell .portfolio-funnels-section {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Shared blue navigation styling */
+
+body:has(.app-shell) .portfolio-navbar-wrap {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 12, 26, 0.96),
+    rgba(4, 12, 26, 0.7) 65%,
+    transparent
+  );
+}
+
+body:has(.app-shell) .portfolio-navbar {
+  background: linear-gradient(
+    135deg,
+    rgba(5, 16, 33, 0.96),
+    rgba(8, 23, 44, 0.94)
+  );
+  border-color: rgba(66, 170, 255, 0.14);
+}
+
+body:has(.app-shell) .portfolio-avatar-shell {
+  border-color: #42beff;
+}
+
+body:has(.app-shell) .portfolio-nav-link:hover,
+body:has(.app-shell) .portfolio-nav-link.is-active {
+  color: #42beff;
+}
+
+body:has(.app-shell) .portfolio-nav-link.is-active::after {
+  background: #42beff;
+  box-shadow: 0 0 14px rgba(66, 190, 255, 0.65);
+}
+
+body:has(.app-shell) .portfolio-contact-link {
+  color: #fff;
+  background: linear-gradient(110deg, #087cf1, #14b9f3);
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-shell .home-blue-wave {
+    animation: none !important;
+    will-change: auto;
+  }
+}

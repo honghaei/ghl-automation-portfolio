@@ -9,7 +9,6 @@ import { funnels } from '../data/funnels'
 import FunnelCard from '../components/FunnelCard'
 import './FunnelShowcase.css'
 import './HomeRedesign.css'
-
 type FAQItem = {
   question: string
   answer: string
