@@ -9,6 +9,7 @@ import { funnels } from '../data/funnels'
 import FunnelCard from '../components/FunnelCard'
 import './FunnelShowcase.css'
 import './HomeRedesign.css'
+import TalkingMascot from '../components/mascot/TalkingMascot'
 type FAQItem = {
   question: string
   answer: string
@@ -83,7 +84,7 @@ export default function Home() {
   return (
     <div className="portfolio-home" id="home">
       <main>
-        <section className="portfolio-home-section portfolio-hero">
+        <section className="portfolio-home-section portfolio-hero portfolio-hero--mascot">
           <div className="portfolio-hero-copy">
             <p className="portfolio-home-eyebrow">Open for opportunities</p>
 
@@ -112,6 +113,8 @@ export default function Home() {
               </a>
             </div>
           </div>
+
+          <TalkingMascot contactHref="#contact" />
 
           <div className="portfolio-focus-grid" aria-label="Areas of expertise">
             <article className="portfolio-focus-card">

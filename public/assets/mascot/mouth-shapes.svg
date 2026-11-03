@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<symbol id="mouth-rest" viewBox="-32 -22 64 44"><path d="M-20-2 Q0 10 20-2" fill="none" stroke="#3e231b" stroke-width="2.2" stroke-linecap="round"/></symbol>
+<symbol id="mouth-mbp" viewBox="-32 -22 64 44"><path d="M-18 1 Q0 5 18 1" fill="none" stroke="#5c3027" stroke-width="2.6" stroke-linecap="round"/></symbol>
+<symbol id="mouth-aa" viewBox="-32 -22 64 44"><path d="M-20-5 Q0-10 20-5 Q18 16 0 16 Q-18 16-20-5" fill="#51231f" stroke="#362019" stroke-width="2"/><path d="M-17-4 Q0-7 17-4 L14 1 Q0 4-14 1Z" fill="#fff8ec"/><path d="M-11 11 Q0 3 11 11 Q0 17-11 11" fill="#ee827a"/></symbol>
+<symbol id="mouth-ee" viewBox="-32 -22 64 44"><path d="M-21-3 Q0 1 21-3 Q16 12 0 12 Q-16 12-21-3" fill="#54231f" stroke="#362019" stroke-width="2"/><path d="M-18-2 Q0 2 18-2 L14 3 Q0 7-14 3Z" fill="#fff8ec"/><path d="M-9 9 Q0 5 9 9" fill="none" stroke="#ee827a" stroke-width="3"/></symbol>
+<symbol id="mouth-oh" viewBox="-32 -22 64 44"><ellipse rx="10" ry="13" cy="3" fill="#51231f" stroke="#6c3729" stroke-width="2"/><path d="M-5 12 Q0 6 5 12" fill="#ee827a"/></symbol>
+<symbol id="mouth-oo" viewBox="-32 -22 64 44"><ellipse rx="6" ry="8" cy="3" fill="#51231f" stroke="#9a513a" stroke-width="2"/></symbol>
+<symbol id="mouth-fv" viewBox="-32 -22 64 44"><path d="M-17-2 Q0-5 17-2 Q11 8 0 8 Q-11 8-17-2" fill="#6c3029" stroke="#4e2a20" stroke-width="2"/><path d="M-14-1 Q0-3 14-1 L10 3 H-10Z" fill="#fff8ec"/></symbol>
+</svg>

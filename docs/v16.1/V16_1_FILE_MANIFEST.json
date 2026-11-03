@@ -1,0 +1,79 @@
+{
+  "version": "V16.1",
+  "baseline": "Portfolio_V16_Complete_Source.zip",
+  "baseline_sha256": "1fe525dcae48d5a610cdd78122482584e0caea00c6b0777d32fbe81a5150e395",
+  "modified_original_files": [
+    "src/components/mascot/TalkingMascot.css",
+    "src/components/mascot/TalkingMascot.tsx"
+  ],
+  "unchanged_V16_files": 263,
+  "public_assets_preserved": 185,
+  "changed_files": [
+    {
+      "path": "docs/v16.1/V16_1_CHANGELOG.md",
+      "status": "new",
+      "sha256": "90e1a086e8898b887720a50d5707312ba160b52f6c19a7ab8e3d95667c8dc479"
+    },
+    {
+      "path": "docs/v16.1/V16_1_INSTALLATION.md",
+      "status": "new",
+      "sha256": "670a80bc61bd0c09808fb1d476668b72a37b0dfcd6f7af4e84f6b808eca48336"
+    },
+    {
+      "path": "docs/v16.1/V16_1_VERIFICATION_REPORT.md",
+      "status": "new",
+      "sha256": "fee30e0caf8b39a67388031b0bcdc0dd6ed10c497ca36e9a3f6f076f85997a8a"
+    },
+    {
+      "path": "docs/v16.1/v161-build-results.txt",
+      "status": "new",
+      "sha256": "1574a86bc7c5f6ad4615e9613cab26929c1d768fdaa96c9a26c6b68f6adc26bf"
+    },
+    {
+      "path": "docs/v16.1/v161-compact-results.txt",
+      "status": "new",
+      "sha256": "be56ca724760f4bf443e74b060d360433f4e008fafb5b5f02da3fadd94a62c37"
+    },
+    {
+      "path": "docs/v16.1/v161-functional-results.txt",
+      "status": "new",
+      "sha256": "6a7fdb10be5007045b00eeeb8ed9f7e5182da61791cb6ad2eaebea59f2fe53ea"
+    },
+    {
+      "path": "docs/v16.1/v161-initial-results.txt",
+      "status": "new",
+      "sha256": "a9ce249af6b9623f0ac5dfec39e79759297c2a864613e708c455cff8119ae8ba"
+    },
+    {
+      "path": "docs/v16.1/v161-matrix-results.txt",
+      "status": "new",
+      "sha256": "311a67fc815265222e5bf8c3beccd98696d173bb39079827842afa8ef6fe0e23"
+    },
+    {
+      "path": "docs/v16.1/v161-reduced-results.txt",
+      "status": "new",
+      "sha256": "8503a1e78a582e7eedb7f5e84465975dc1ad1261e78e3120615f58b8e2f1fb76"
+    },
+    {
+      "path": "docs/v16.1/v161-route-results.txt",
+      "status": "new",
+      "sha256": "4d18ef32bb8079bc9957eb27005c687b0eb5c73adcee387fa317a10ef82f49e2"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.css",
+      "status": "modified",
+      "sha256": "86f1ac494b68ffa5b4edc2f359d5e32d564e1f3eed4f8f05535374676cbc23c9"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.tsx",
+      "status": "modified",
+      "sha256": "4f9e1753ccc5123d76f647f76c66347b6aa378c14d28531c20cf369f69680c27"
+    },
+    {
+      "path": "tests/v16-1-layout.html",
+      "status": "new",
+      "sha256": "26aa4bc653b881e5890834f8173523e5bc65059dc17a6fc40d1dcd4688472647"
+    }
+  ],
+  "self_hash_excluded": true
+}

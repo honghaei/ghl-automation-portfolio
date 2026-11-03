@@ -1,0 +1,137 @@
+{
+  "version": "V16",
+  "baseline": "ghl-automation-portfolio(9).zip",
+  "baseline_sha256": "9f36b6f45fd7085ba82576febcc85b2ad7942b4a740600e633cf67745213fb9c",
+  "original_files_preserved": 239,
+  "modified_original_files": [
+    "src/pages/Home.tsx"
+  ],
+  "changed_files": [
+    {
+      "path": "docs/v16/V16_APPLY_INSTRUCTIONS.md",
+      "status": "new",
+      "sha256": "f0c04d08a8b9865e155cee4082e198b6ae3356869bad1ef4d2a043fd86658db3"
+    },
+    {
+      "path": "docs/v16/V16_ASSET_NOTES.md",
+      "status": "new",
+      "sha256": "57f49d586b6284a80b0cb0c83c053a04d06d9e568d3f5637cacbb16424ac5fc0"
+    },
+    {
+      "path": "docs/v16/V16_CHANGELOG.md",
+      "status": "new",
+      "sha256": "c7dbb4668f9804ff08d1705e66fdf44f4acd51cb22ee2161165149a7975a0b4f"
+    },
+    {
+      "path": "docs/v16/V16_VERIFICATION_REPORT.md",
+      "status": "new",
+      "sha256": "411cc45cea82b0629c69a10c1ae19dad4d96db73bb0559b005a0faf793eb1b1d"
+    },
+    {
+      "path": "docs/v16/functional-browser-results.txt",
+      "status": "new",
+      "sha256": "6a7fdb10be5007045b00eeeb8ed9f7e5182da61791cb6ad2eaebea59f2fe53ea"
+    },
+    {
+      "path": "docs/v16/layout-browser-results.txt",
+      "status": "new",
+      "sha256": "fc9c5c88ff836226061a323a78be2422ccdac720e8131ed66c6661967500aec3"
+    },
+    {
+      "path": "docs/v16/reduced-motion-results.txt",
+      "status": "new",
+      "sha256": "8503a1e78a582e7eedb7f5e84465975dc1ad1261e78e3120615f58b8e2f1fb76"
+    },
+    {
+      "path": "public/assets/mascot/approved-poses.png",
+      "status": "new",
+      "sha256": "5b70ef3ce7c235255fd57b309d7cdcd833b0fcbaebf3b2b5eb26f4d044edd863"
+    },
+    {
+      "path": "public/assets/mascot/closing.svg",
+      "status": "new",
+      "sha256": "38fe6d45213c4f0bece363e97f669962597beb4b2b3518b958d04752e7b5ee19"
+    },
+    {
+      "path": "public/assets/mascot/explaining.svg",
+      "status": "new",
+      "sha256": "8eb4560e65bbde352b80f001ba88bde91d2e83a73aa068ca7ae43b947baaf1e6"
+    },
+    {
+      "path": "public/assets/mascot/greeting.svg",
+      "status": "new",
+      "sha256": "addbe8a897c9c57616a7b951b212026f4cd7695c72fbae6706f70f06a6a52f39"
+    },
+    {
+      "path": "public/assets/mascot/idle.svg",
+      "status": "new",
+      "sha256": "ffe6b2b4d52ecb3c76975a98a28868b27c1abbdfc66179e465cb471c11e2df65"
+    },
+    {
+      "path": "public/assets/mascot/mouth-shapes.svg",
+      "status": "new",
+      "sha256": "70077e9ccd31b7d0783d4a4e270af35c224006316d679f8f0d16cd94c0ab29d7"
+    },
+    {
+      "path": "public/assets/mascot/think-cutout.png",
+      "status": "new",
+      "sha256": "09e4634468e76098c412744a12d0bc31f8e6477476dfd9dd36f141b926eec194"
+    },
+    {
+      "path": "public/assets/mascot/thinking.svg",
+      "status": "new",
+      "sha256": "23506235ba4df3e15f74a56fd742f3bdac5d1cf6cb86e26831a6f9e03198b820"
+    },
+    {
+      "path": "src/components/mascot/GreetingArt.tsx",
+      "status": "new",
+      "sha256": "1f914358169ab8272dc979565f9c08a65b8f90eaa078f5a02f7af4c34230ba24"
+    },
+    {
+      "path": "src/components/mascot/MouthRig.tsx",
+      "status": "new",
+      "sha256": "4d8fd13aad788fe3a463b18dde4cd356eef548b1aa9b46adf5ba8d0d935d44d1"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.css",
+      "status": "new",
+      "sha256": "9cbb0d8e56fe8ab05af91ba9cd2d6544e4041eb39b0207a68497403999071aaa"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.tsx",
+      "status": "new",
+      "sha256": "a297f0f2312d0cb071be7f4530d39dc2c10fdca7ec01501617f85ca817609d9d"
+    },
+    {
+      "path": "src/components/mascot/mascotModel.ts",
+      "status": "new",
+      "sha256": "dd31086606be839168fa4fb6d47289e8664912fedc1c043d683b9944e4298baa"
+    },
+    {
+      "path": "src/pages/Home.tsx",
+      "status": "modified",
+      "sha256": "749d8b8684ca4e312b01fbe5e1090770aa1f41d4ecf0d37b135ceb036807f89d"
+    },
+    {
+      "path": "tests/mascot-browser.html",
+      "status": "new",
+      "sha256": "653e2bf30fa9a22cd5ddcc8c2a67177dbf7f7c50c07d45f36710521e9a4e6098"
+    },
+    {
+      "path": "tests/mascot-fixture.html",
+      "status": "new",
+      "sha256": "02e221e9d3e4b37c7aa0674f3c822985225f149fef6fb4ab2424af0a13f5b62c"
+    },
+    {
+      "path": "tests/mascot-fixture.tsx",
+      "status": "new",
+      "sha256": "44c6c83323c1009379ebc4f5f42625f917f38fa72d6a6043507f41b6470f2710"
+    },
+    {
+      "path": "tests/mascot-model.test.mjs",
+      "status": "new",
+      "sha256": "735114b6117c92cb156462643043d2b488089162118ea7ad3a13814987a7429e"
+    }
+  ],
+  "manifest_hash_excluded": true
+}
