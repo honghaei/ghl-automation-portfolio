@@ -1,9 +1,10 @@
 import { useEffect, useId, useRef } from 'react'
-import { captionDuration, shapeFor, type Pose } from './mascotModel'
+import { shapeFor, type Pose } from './mascotModel'
+import type { PlaybackFrame } from './audioTimeline'
 
-type Props = { speaking: boolean; text: string; boundary: React.MutableRefObject<number>; pose: Pose }
-/** Lightweight local rig; approximate word/timing driven visemes, not phoneme alignment. */
-export default function MouthRig({ speaking, text, boundary, pose }: Props) {
+type Props = { speaking: boolean; readFrame: React.MutableRefObject<() => PlaybackFrame>; pose: Pose }
+/** Recording-time/amplitude-driven visual speech; not phoneme alignment. */
+export default function MouthRig({ speaking, readFrame, pose }: Props) {
   const rig = useRef<SVGSVGElement>(null)
   const id = useId().replace(/:/g, '')
   useEffect(() => {
@@ -12,16 +13,16 @@ export default function MouthRig({ speaking, text, boundary, pose }: Props) {
     node.dataset.mouth = 'rest'
     if (!speaking) return
     let beat = 0
-    let at = boundary.current
-    let lastBoundary = boundary.current
-    const timer = window.setInterval(() => {
-      // Browser boundaries correct the local estimate where supported.
-      if (boundary.current !== lastBoundary) { at = boundary.current; lastBoundary = boundary.current }
-      node.dataset.mouth = shapeFor(text, Math.floor(at), beat++)
-      at = Math.min(text.length - 1, at + text.length * 95 / captionDuration(text))
-    }, 95)
-    return () => { window.clearInterval(timer); node.dataset.mouth = 'rest' }
-  }, [speaking, text, boundary])
+    const draw = () => {
+      const frame = readFrame.current()
+      node.dataset.level = frame.level.toFixed(3)
+      node.dataset.mouth = !frame.active || frame.level < .09 ? 'rest'
+        : shapeFor(frame.text, frame.charIndex, beat++)
+    }
+    draw()
+    const timer = window.setInterval(draw, 75)
+    return () => { window.clearInterval(timer); node.dataset.mouth = 'rest'; node.dataset.level = '0' }
+  }, [speaking, readFrame])
   // All four source poses share the same 360x560 body frame.
   const mouthY = pose === 'thinking' ? 142 : pose === 'idle' || pose === 'greeting' ? 164 : 168
   return (

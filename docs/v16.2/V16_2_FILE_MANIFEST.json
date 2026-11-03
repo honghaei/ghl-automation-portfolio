@@ -1,0 +1,129 @@
+{
+  "release": "Portfolio V16.2",
+  "baseline": "Portfolio V16.1 retained authoritative source; prior changed-file manifest validated",
+  "baseline_file_count": 277,
+  "complete_source_file_count": 288,
+  "modified_files": [
+    "src/components/mascot/MouthRig.tsx",
+    "src/components/mascot/TalkingMascot.css",
+    "src/components/mascot/TalkingMascot.tsx",
+    "tests/mascot-browser.html",
+    "tests/mascot-fixture.tsx"
+  ],
+  "added_files": [
+    "docs/v16.2/V16_2_CHANGELOG.md",
+    "docs/v16.2/V16_2_FILE_MANIFEST.json",
+    "docs/v16.2/V16_2_INSTALLATION.md",
+    "docs/v16.2/V16_2_VERIFICATION_REPORT.md",
+    "public/assets/mascot/audio/v16.2/mascot-inquiry.mp3",
+    "public/assets/mascot/audio/v16.2/mascot-intro.mp3",
+    "src/components/mascot/PlaybackController.ts",
+    "src/components/mascot/audioManifest.ts",
+    "src/components/mascot/audioTimeline.ts",
+    "tests/mascot-audio.test.mjs",
+    "tests/v16-2-layout.html"
+  ],
+  "deleted_files": [],
+  "unchanged_baseline_files": 272,
+  "changed_files": [
+    {
+      "path": "docs/v16.2/V16_2_CHANGELOG.md",
+      "bytes": 4286,
+      "sha256": "a6638d025dfe9297349f3211810b8a0b578aeb113ff72b63a640911062b90dfa"
+    },
+    {
+      "path": "docs/v16.2/V16_2_INSTALLATION.md",
+      "bytes": 4651,
+      "sha256": "5daca011cde1cc030d7335f41564a0c67e0721654fcab5ee5f2ae799a5d3d972"
+    },
+    {
+      "path": "docs/v16.2/V16_2_VERIFICATION_REPORT.md",
+      "bytes": 9177,
+      "sha256": "2d3d68a0d141bebd9fae477336850332c4a5396abae128bf67e308562393b59c"
+    },
+    {
+      "path": "public/assets/mascot/audio/v16.2/mascot-inquiry.mp3",
+      "bytes": 94259,
+      "sha256": "ae94c2fa91b1e26ddd72cecc777c2c16ce97347cf21c1dc7441c4002134628ab"
+    },
+    {
+      "path": "public/assets/mascot/audio/v16.2/mascot-intro.mp3",
+      "bytes": 264786,
+      "sha256": "b0245fe7ce3bf3eee82b73eec6775b85dac827af96693a8acdb7d4f1d9b91a3e"
+    },
+    {
+      "path": "src/components/mascot/MouthRig.tsx",
+      "bytes": 3326,
+      "sha256": "3db7c214108af53bde75f2a27f8c9412ff6ea6f5188db36ef060d3185fc4ed23"
+    },
+    {
+      "path": "src/components/mascot/PlaybackController.ts",
+      "bytes": 8059,
+      "sha256": "16b3d4920b3fb8819aee39567df6d0349c2be7b01142844291e683b51e6bd335"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.css",
+      "bytes": 9370,
+      "sha256": "3172260058aa8017165aa65e73b1644a0f99a9fb97df91dbe1d957d4223e3fd3"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.tsx",
+      "bytes": 9282,
+      "sha256": "afcc42be1b823e9284c1599565aa35319f127ab1b39cc809911fa961a676de49"
+    },
+    {
+      "path": "src/components/mascot/audioManifest.ts",
+      "bytes": 4065,
+      "sha256": "43e2dc9cb154f6fd0b208f814d8f9ef4b5700f33f4fd8ef0146cac502dc57fd2"
+    },
+    {
+      "path": "src/components/mascot/audioTimeline.ts",
+      "bytes": 1287,
+      "sha256": "bbe99e25b94846a5d58430fb63de4a031fda1aec23e4ec8622442da44dd25671"
+    },
+    {
+      "path": "tests/mascot-audio.test.mjs",
+      "bytes": 9504,
+      "sha256": "4c2089d61489d0ccba019daccad6f218d1a559fabd7703cd0ab27b63bb6129b6"
+    },
+    {
+      "path": "tests/mascot-browser.html",
+      "bytes": 7761,
+      "sha256": "d3a198362eecf4f7b4f88853cf087390ff8f197041265d7856939e660b022a93"
+    },
+    {
+      "path": "tests/mascot-fixture.tsx",
+      "bytes": 3485,
+      "sha256": "85d35ba20349aebbdd537e284e48d486f941430858cc7fe9c7af88e6ce0540b9"
+    },
+    {
+      "path": "tests/v16-2-layout.html",
+      "bytes": 12084,
+      "sha256": "f4c5bcb987e8fc9c451c3c9ad89e4d1531a9acce194741eaf48785f7055a65ac"
+    }
+  ],
+  "self_entry": "docs/v16.2/V16_2_FILE_MANIFEST.json is included but intentionally has no self-referential checksum.",
+  "audio": [
+    {
+      "path": "public/assets/mascot/audio/v16.2/mascot-intro.mp3",
+      "bytes": 264786,
+      "sha256": "b0245fe7ce3bf3eee82b73eec6775b85dac827af96693a8acdb7d4f1d9b91a3e"
+    },
+    {
+      "path": "public/assets/mascot/audio/v16.2/mascot-inquiry.mp3",
+      "bytes": 94259,
+      "sha256": "ae94c2fa91b1e26ddd72cecc777c2c16ce97347cf21c1dc7441c4002134628ab"
+    }
+  ],
+  "excluded": [
+    "node_modules",
+    "dist",
+    ".git",
+    "tests/.compiled",
+    ".vite",
+    ".cache",
+    "*.tsbuildinfo",
+    "credentials",
+    "new raw test logs"
+  ]
+}

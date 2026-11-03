@@ -1,48 +1,46 @@
-// Development-only test entry. Never imported by the production application.
+// Development-only controlled HTMLMediaElement fixture. Never imported by App.
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import TalkingMascot from '../src/components/mascot/TalkingMascot'
-const mode = new URLSearchParams(location.search).get('mode')
-const timers = new Set<number>()
-let starts = 0
-let cancels = 0
-const spoken: string[] = []
-if (mode !== 'native') {
-Object.defineProperty(window, 'qaSpeech', { configurable: true, value: { get starts() { return starts }, get cancels() { return cancels }, spoken } })
-Object.defineProperty(window, 'SpeechSynthesisUtterance', { configurable: true, value: class { text: string; constructor(text: string) { this.text = text } } })
-Object.defineProperty(window, 'speechSynthesis', { configurable: true, value: {
-  getVoices: () => [{lang: 'en-US', localService: true}],
-  cancel: () => { for (const t of timers) clearTimeout(t); timers.clear(); cancels++ },
-  speak: (u: SpeechSynthesisUtterance) => {
-    spoken.push(u.text)
-    if (mode === 'blocked') return
-    if (mode === 'error') { timers.add(window.setTimeout(() => u.onerror?.({ error: 'synthesis-failed' } as SpeechSynthesisErrorEvent), 40)); return }
-    timers.add(window.setTimeout(() => {
-      starts++; u.onstart?.({} as SpeechSynthesisEvent)
-      for (let i = 0; i < 15; i++) timers.add(window.setTimeout(() => u.onboundary?.({ name: 'word', charIndex: i * 2 } as SpeechSynthesisEvent), i * 80))
-      timers.add(window.setTimeout(() => u.onend?.({} as SpeechSynthesisEvent), mode === 'long' ? 6500 : 1450))
-    }, 40))
-  },
-} })
+import { AUDIO_TRACKS } from '../src/components/mascot/audioTimeline'
+const mode = new URLSearchParams(location.search).get('mode') || 'allowed'
+const stats = { plays: 0, pauses: 0, active: 0, maxActive: 0, elements: 0 }
+type State = { at: number; start: number; paused: boolean; ended: boolean; error: {code:number}|null; timer?: number }
+const map = new WeakMap<HTMLMediaElement, State>()
+const state = (e: HTMLMediaElement) => {
+  let s = map.get(e)
+  if (!s) { s = {at:0,start:performance.now(),paused:true,ended:false,error:null}; map.set(e,s); stats.elements++ }
+  return s
 }
-const reactRoot = createRoot(document.getElementById('test-root')!)
-reactRoot.render(<React.StrictMode><TalkingMascot /></React.StrictMode>)
-const unmount = document.createElement('button'); unmount.textContent = 'Unmount mascot'; unmount.id = 'unmount'; unmount.onclick = () => reactRoot.unmount(); document.body.append(unmount)
-if (mode === 'native') {
-  const log = document.createElement('pre'); log.id = 'native-log'; log.style.color = 'white'; document.body.append(log)
-  const record = (text: string) => { log.textContent += text + '\n' }
-  if ('speechSynthesis' in window) {
-    const synth = window.speechSynthesis; const original = synth.speak.bind(synth)
-    record(`Native voices: ${synth.getVoices().length}`)
-    synth.addEventListener('voiceschanged', () => record(`Native voices: ${synth.getVoices().length}`))
-    synth.speak = u => {
-      record(`Native speak requested: ${u.text}`)
-      const start = u.onstart, end = u.onend, error = u.onerror
-      u.onstart = e => { record('Native onstart'); start?.call(u, e) }
-      u.onend = e => { record('Native onend'); end?.call(u, e) }
-      u.onerror = e => { record(`Native onerror: ${e.error}`); error?.call(u, e) }
-      original(u)
-    }
-  } else record('Native speech unsupported')
+const duration = (e: HTMLMediaElement) => AUDIO_TRACKS[e.src.includes('inquiry') ? 'inquiry' : 'intro'].duration
+const rate = 4
+const time = (e: HTMLMediaElement) => { const s=state(e); return Math.min(duration(e),s.at+(s.paused?0:(performance.now()-s.start)/1000*rate)) }
+if (mode === 'native-broken') AUDIO_TRACKS.intro.src = '/assets/mascot/audio/v16.2/missing-fixture.mp3'
+if (!mode.startsWith('native')) {
+  const proto=HTMLMediaElement.prototype
+  Object.defineProperties(proto, {
+    currentTime:{configurable:true,get(){return time(this)},set(t:number){const s=state(this);s.at=t;s.start=performance.now();this.dispatchEvent(new Event('timeupdate'))}},
+    duration:{configurable:true,get(){return duration(this)}},
+    paused:{configurable:true,get(){return state(this).paused}},
+    ended:{configurable:true,get(){return state(this).ended}},
+    error:{configurable:true,get(){return state(this).error}},
+    currentSrc:{configurable:true,get(){return this.src}},
+  })
+  proto.load=function(){const s=state(this);window.clearInterval(s.timer);s.at=0;s.start=performance.now();s.paused=true;s.ended=false;s.error=null;stats.active=0}
+  proto.pause=function(){const s=state(this);s.at=time(this);s.paused=true;window.clearInterval(s.timer);stats.pauses++;stats.active=0;this.dispatchEvent(new Event('pause'))}
+  proto.play=function(){const e=this,s=state(e);stats.plays++;
+    if(mode==='denied')return Promise.reject(Object.assign(new Error('policy'),{name:'NotAllowedError'}))
+    if(mode==='broken'){s.error={code:4};e.dispatchEvent(new Event('error'));return Promise.reject(new Error('missing file'))}
+    s.paused=false;s.ended=false;s.start=performance.now();stats.active++;stats.maxActive=Math.max(stats.maxActive,stats.active)
+    window.clearInterval(s.timer)
+    s.timer=window.setInterval(()=>{if(time(e)>=duration(e)){s.at=duration(e);s.paused=true;s.ended=true;stats.active=0;window.clearInterval(s.timer);e.dispatchEvent(new Event('ended'))}else e.dispatchEvent(new Event('timeupdate'))},25)
+    e.dispatchEvent(new Event('playing'));return Promise.resolve()
+  }
 }
-
+Object.defineProperty(window,'qaMedia',{value:stats})
+const reactRoot=createRoot(document.getElementById('test-root')!)
+const render=()=>reactRoot.render(<React.StrictMode><TalkingMascot/></React.StrictMode>)
+render()
+const unmount=document.createElement('button');unmount.textContent='Unmount mascot';unmount.id='unmount';unmount.onclick=()=>reactRoot.unmount();document.body.append(unmount)
+const rerender=document.createElement('button');rerender.textContent='Rerender mascot';rerender.id='rerender';rerender.onclick=render;document.body.append(rerender)
+document.body.style.minHeight='2200px'
