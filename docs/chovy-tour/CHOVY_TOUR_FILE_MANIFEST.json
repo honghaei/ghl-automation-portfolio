@@ -1,0 +1,1539 @@
+{
+  "revision": "Chovy Tour V2.0",
+  "baseline_sha256": "479da4eef6cde5ed90117bc9dc955fefcde10ae356dc15cf9abf8466fe88d406",
+  "modified": [
+    "docs/chovy-tour/CHOVY_TOUR_CHANGELOG.md",
+    "docs/chovy-tour/CHOVY_TOUR_FILE_MANIFEST.json",
+    "docs/chovy-tour/CHOVY_TOUR_INSTALLATION.md",
+    "docs/chovy-tour/CHOVY_TOUR_VERIFICATION_REPORT.md",
+    "public/assets/chovy-tour/Chovy_Portfolio_Guided_Tour.vtt",
+    "public/assets/chovy-tour/Chovy_Portfolio_Guided_Tour_Web.mp4",
+    "public/assets/chovy-tour/chovy-tour-poster.webp",
+    "src/components/mascot/GreetingArt.tsx",
+    "src/components/mascot/TalkingMascot.css",
+    "src/components/tour/ChovyTourSection.css",
+    "src/components/tour/ChovyTourSection.tsx",
+    "src/pages/Home.tsx",
+    "tests/chovy-capture-plan.json",
+    "tests/chovy-capture.html",
+    "tests/chovy-tour-qa.html"
+  ],
+  "added": [
+    "src/pages/ContactClosing.css"
+  ],
+  "deleted": [],
+  "unchanged_count": 287,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 62,
+      "sha256": "9fb9e9328b179ff511cd30bb1042b043f850cfd00e21687e4310ce1d18b476e8"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1119,
+      "sha256": "3c3d217d6c1d2ba7d1030d7e8e6afc937616b9617b766d2e841c82d511b5b94f"
+    },
+    {
+      "path": "docs/chovy-tour/CHOVY_TOUR_CHANGELOG.md",
+      "bytes": 2555,
+      "sha256": "4f820f1be8b7cc442e630e1cf1f998ab603cb81e30ca681cd9222f4404cf5a53"
+    },
+    {
+      "path": "docs/chovy-tour/CHOVY_TOUR_INSTALLATION.md",
+      "bytes": 2098,
+      "sha256": "1c9af1171bc5241fa6b16032f49253899c506b4c2d6e103f7b26d3b21df1f007"
+    },
+    {
+      "path": "docs/chovy-tour/CHOVY_TOUR_VERIFICATION_REPORT.md",
+      "bytes": 8680,
+      "sha256": "fb8880fc7a1809c7c0d2c59574a3934255562a9e75fc6daee722a7b836f1e434"
+    },
+    {
+      "path": "docs/v16.1/V16_1_CHANGELOG.md",
+      "bytes": 2759,
+      "sha256": "90e1a086e8898b887720a50d5707312ba160b52f6c19a7ab8e3d95667c8dc479"
+    },
+    {
+      "path": "docs/v16.1/V16_1_FILE_MANIFEST.json",
+      "bytes": 2648,
+      "sha256": "528d3bcd9679efb8e7f801f3b4029fb2a2b0c1aa83f3603c32355292a5e3861a"
+    },
+    {
+      "path": "docs/v16.1/V16_1_INSTALLATION.md",
+      "bytes": 3923,
+      "sha256": "670a80bc61bd0c09808fb1d476668b72a37b0dfcd6f7af4e84f6b808eca48336"
+    },
+    {
+      "path": "docs/v16.1/V16_1_VERIFICATION_REPORT.md",
+      "bytes": 6679,
+      "sha256": "fee30e0caf8b39a67388031b0bcdc0dd6ed10c497ca36e9a3f6f076f85997a8a"
+    },
+    {
+      "path": "docs/v16.1/v161-build-results.txt",
+      "bytes": 2334,
+      "sha256": "1574a86bc7c5f6ad4615e9613cab26929c1d768fdaa96c9a26c6b68f6adc26bf"
+    },
+    {
+      "path": "docs/v16.1/v161-compact-results.txt",
+      "bytes": 1335,
+      "sha256": "be56ca724760f4bf443e74b060d360433f4e008fafb5b5f02da3fadd94a62c37"
+    },
+    {
+      "path": "docs/v16.1/v161-functional-results.txt",
+      "bytes": 1165,
+      "sha256": "6a7fdb10be5007045b00eeeb8ed9f7e5182da61791cb6ad2eaebea59f2fe53ea"
+    },
+    {
+      "path": "docs/v16.1/v161-initial-results.txt",
+      "bytes": 1877,
+      "sha256": "a9ce249af6b9623f0ac5dfec39e79759297c2a864613e708c455cff8119ae8ba"
+    },
+    {
+      "path": "docs/v16.1/v161-matrix-results.txt",
+      "bytes": 34143,
+      "sha256": "311a67fc815265222e5bf8c3beccd98696d173bb39079827842afa8ef6fe0e23"
+    },
+    {
+      "path": "docs/v16.1/v161-reduced-results.txt",
+      "bytes": 114,
+      "sha256": "8503a1e78a582e7eedb7f5e84465975dc1ad1261e78e3120615f58b8e2f1fb76"
+    },
+    {
+      "path": "docs/v16.1/v161-route-results.txt",
+      "bytes": 517,
+      "sha256": "4d18ef32bb8079bc9957eb27005c687b0eb5c73adcee387fa317a10ef82f49e2"
+    },
+    {
+      "path": "docs/v16.2/V16_2_CHANGELOG.md",
+      "bytes": 4286,
+      "sha256": "a6638d025dfe9297349f3211810b8a0b578aeb113ff72b63a640911062b90dfa"
+    },
+    {
+      "path": "docs/v16.2/V16_2_FILE_MANIFEST.json",
+      "bytes": 4276,
+      "sha256": "959bc6274848827e1179dc425ffc0937580312be4afa90541c60c95f2ea7d649"
+    },
+    {
+      "path": "docs/v16.2/V16_2_INSTALLATION.md",
+      "bytes": 4651,
+      "sha256": "5daca011cde1cc030d7335f41564a0c67e0721654fcab5ee5f2ae799a5d3d972"
+    },
+    {
+      "path": "docs/v16.2/V16_2_VERIFICATION_REPORT.md",
+      "bytes": 9177,
+      "sha256": "2d3d68a0d141bebd9fae477336850332c4a5396abae128bf67e308562393b59c"
+    },
+    {
+      "path": "docs/v16/V16_APPLY_INSTRUCTIONS.md",
+      "bytes": 4340,
+      "sha256": "f0c04d08a8b9865e155cee4082e198b6ae3356869bad1ef4d2a043fd86658db3"
+    },
+    {
+      "path": "docs/v16/V16_ASSET_NOTES.md",
+      "bytes": 3174,
+      "sha256": "57f49d586b6284a80b0cb0c83c053a04d06d9e568d3f5637cacbb16424ac5fc0"
+    },
+    {
+      "path": "docs/v16/V16_CHANGELOG.md",
+      "bytes": 1768,
+      "sha256": "c7dbb4668f9804ff08d1705e66fdf44f4acd51cb22ee2161165149a7975a0b4f"
+    },
+    {
+      "path": "docs/v16/V16_FILE_MANIFEST.json",
+      "bytes": 4555,
+      "sha256": "1c6774864fbc449fc341086f92746fb8dd3bef10f3b47e5686b21e0d13d5090f"
+    },
+    {
+      "path": "docs/v16/V16_VERIFICATION_REPORT.md",
+      "bytes": 6139,
+      "sha256": "411cc45cea82b0629c69a10c1ae19dad4d96db73bb0559b005a0faf793eb1b1d"
+    },
+    {
+      "path": "docs/v16/functional-browser-results.txt",
+      "bytes": 1165,
+      "sha256": "6a7fdb10be5007045b00eeeb8ed9f7e5182da61791cb6ad2eaebea59f2fe53ea"
+    },
+    {
+      "path": "docs/v16/layout-browser-results.txt",
+      "bytes": 2413,
+      "sha256": "fc9c5c88ff836226061a323a78be2422ccdac720e8131ed66c6661967500aec3"
+    },
+    {
+      "path": "docs/v16/reduced-motion-results.txt",
+      "bytes": 114,
+      "sha256": "8503a1e78a582e7eedb7f5e84465975dc1ad1261e78e3120615f58b8e2f1fb76"
+    },
+    {
+      "path": "index.html",
+      "bytes": 426,
+      "sha256": "115abc8aaf62518e17b9489ad209e2df411dd29927b50be564a5447be7f0feea"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 61908,
+      "sha256": "636b8fd12590c6e0b2b1c4e2a802a81f829bafa8ee7fbe2a3f10f1d1b05da8c6"
+    },
+    {
+      "path": "package.json",
+      "bytes": 536,
+      "sha256": "e22dfb3265e8cc04a578aed91b9902dbf3ece079cb4c609f77acaa735fa3a211"
+    },
+    {
+      "path": "preview.html",
+      "bytes": 6798,
+      "sha256": "3e74fbda504ace6355c855b725ddc940dd8505916087be70a6e0d49850894a39"
+    },
+    {
+      "path": "public/_redirects",
+      "bytes": 24,
+      "sha256": "66584af744075248a042165adbdbd6a0551fa708a85650ea1e3e777eee17080c"
+    },
+    {
+      "path": "public/assets/chovy-tour/Chovy_Portfolio_Guided_Tour.vtt",
+      "bytes": 10487,
+      "sha256": "744b08e880bec7eecdab354dfa01bba4279332765d53291e1257ff73d6be92b5"
+    },
+    {
+      "path": "public/assets/chovy-tour/Chovy_Portfolio_Guided_Tour_Web.mp4",
+      "bytes": 29699092,
+      "sha256": "e9727da15ff55caed94181f9f21ec4576dec498ef53bc5bdef578cdc6de49a03"
+    },
+    {
+      "path": "public/assets/chovy-tour/chovy-tour-poster.webp",
+      "bytes": 109798,
+      "sha256": "4dbbac0d69fde492bf62bef9937578fdf7cb52d6b5827489bec5dbf1dc492750"
+    },
+    {
+      "path": "public/assets/mascot/approved-poses.png",
+      "bytes": 705530,
+      "sha256": "5b70ef3ce7c235255fd57b309d7cdcd833b0fcbaebf3b2b5eb26f4d044edd863"
+    },
+    {
+      "path": "public/assets/mascot/audio/v16.2/mascot-inquiry.mp3",
+      "bytes": 94259,
+      "sha256": "ae94c2fa91b1e26ddd72cecc777c2c16ce97347cf21c1dc7441c4002134628ab"
+    },
+    {
+      "path": "public/assets/mascot/audio/v16.2/mascot-intro.mp3",
+      "bytes": 264786,
+      "sha256": "b0245fe7ce3bf3eee82b73eec6775b85dac827af96693a8acdb7d4f1d9b91a3e"
+    },
+    {
+      "path": "public/assets/mascot/closing.svg",
+      "bytes": 940933,
+      "sha256": "38fe6d45213c4f0bece363e97f669962597beb4b2b3518b958d04752e7b5ee19"
+    },
+    {
+      "path": "public/assets/mascot/explaining.svg",
+      "bytes": 940933,
+      "sha256": "8eb4560e65bbde352b80f001ba88bde91d2e83a73aa068ca7ae43b947baaf1e6"
+    },
+    {
+      "path": "public/assets/mascot/greeting.svg",
+      "bytes": 940930,
+      "sha256": "addbe8a897c9c57616a7b951b212026f4cd7695c72fbae6706f70f06a6a52f39"
+    },
+    {
+      "path": "public/assets/mascot/idle.svg",
+      "bytes": 940930,
+      "sha256": "ffe6b2b4d52ecb3c76975a98a28868b27c1abbdfc66179e465cb471c11e2df65"
+    },
+    {
+      "path": "public/assets/mascot/mouth-shapes.svg",
+      "bytes": 1454,
+      "sha256": "70077e9ccd31b7d0783d4a4e270af35c224006316d679f8f0d16cd94c0ab29d7"
+    },
+    {
+      "path": "public/assets/mascot/think-cutout.png",
+      "bytes": 1060234,
+      "sha256": "09e4634468e76098c412744a12d0bc31f8e6477476dfd9dd36f141b926eec194"
+    },
+    {
+      "path": "public/assets/mascot/thinking.svg",
+      "bytes": 1413871,
+      "sha256": "23506235ba4df3e15f74a56fd742f3bdac5d1cf6cb86e26831a6f9e03198b820"
+    },
+    {
+      "path": "public/projects/aura/screenshots/aura-consultation-desktop-ghl-preview.png",
+      "bytes": 207948,
+      "sha256": "c9f88f3c5b17ba2209b9868d722921913b85db9790ba615dc1cfb07417ce2acb"
+    },
+    {
+      "path": "public/projects/aura/screenshots/aura-funnel-steps.jpg",
+      "bytes": 110426,
+      "sha256": "d453f97ca8f9e00c71253ffba54f7bf27a42ef4ed046d53323792e633ea98605"
+    },
+    {
+      "path": "public/projects/aura/screenshots/aura-landing-desktop-ghl-preview.png",
+      "bytes": 395899,
+      "sha256": "c5362f4fbf3d695b707f8d352f86e57175709b908217d451e1286d21ff31eb89"
+    },
+    {
+      "path": "public/projects/aura/screenshots/aura-thank-you-desktop-ghl-preview.png",
+      "bytes": 179009,
+      "sha256": "1f2a14947f08f41b8f855e7960113c9959f8644e79964f1d4c0e238fc9afdf18"
+    },
+    {
+      "path": "public/projects/campusflow/01-student-dashboard.webp",
+      "bytes": 74388,
+      "sha256": "c8353cbebe24cd0f0c5d821f0db91b054d191ba0d89e8bc0f9393aad03665656"
+    },
+    {
+      "path": "public/projects/campusflow/02-five-subjects.webp",
+      "bytes": 51602,
+      "sha256": "763f4896f24160de8692c8f95643bdc7477c80d3504bf5516442d5497d85e22b"
+    },
+    {
+      "path": "public/projects/campusflow/03-learning-modules.webp",
+      "bytes": 58100,
+      "sha256": "7ff0abce95e1f5fb452f07b12761846a7aeb7e3350e350f9e2345c6b6790b9f3"
+    },
+    {
+      "path": "public/projects/campusflow/04-inline-pdf-preview.webp",
+      "bytes": 45902,
+      "sha256": "74c0fe698047b66379cdcd9021a25d3ffdfddd6ac6ec0e8b784268a831bef6e5"
+    },
+    {
+      "path": "public/projects/campusflow/05-instructor-dashboard.webp",
+      "bytes": 66684,
+      "sha256": "52bf9c9d75153ea90566c580e3c41c585f7fdbe3958c0f5d1120e20b17eed179"
+    },
+    {
+      "path": "public/projects/campusflow/06-instructor-module-management.webp",
+      "bytes": 57132,
+      "sha256": "11e263627077b0a3ac931c12dbe51b47a89bf9753a5abcaa292e9a4d53a4f5ee"
+    },
+    {
+      "path": "public/projects/campusflow/07-registrar-approved-enrollment.webp",
+      "bytes": 65158,
+      "sha256": "b9adaf06dca9f87e7e4c4d5bd406e1f595480a06232b64b00dc9ef8ade4fd2b1"
+    },
+    {
+      "path": "public/projects/campusflow/08-certificate-gallery.webp",
+      "bytes": 39230,
+      "sha256": "47dee3103a6c8eab2b4a82c0f3db8f31b0453c6c13229547c8bfefc19564028b"
+    },
+    {
+      "path": "public/projects/campusflow/09-certificate-preview.webp",
+      "bytes": 35550,
+      "sha256": "d7a1e60f6156e8dd1777ff2f6bdf3608bc44585d661f70a483d6b71cd1f3df28"
+    },
+    {
+      "path": "public/projects/campusflow/10-course-inbox.webp",
+      "bytes": 46646,
+      "sha256": "a8b8b5139d7ce8c21b6a15d3ccd3c0a89da2d71efa9824e2988dbfbeb5575431"
+    },
+    {
+      "path": "public/projects/campusflow/11-login.webp",
+      "bytes": 46692,
+      "sha256": "3b52eea5d48ebfb0f5ceab0585ff9e7aa185c7d31c87d19fa63656b98f65c128"
+    },
+    {
+      "path": "public/projects/campusflow/12-mobile-profile.webp",
+      "bytes": 28874,
+      "sha256": "113d2060f8b66e1ea66db4916ec54ccbd374bdbc8241b290d6eaee571743de34"
+    },
+    {
+      "path": "public/projects/campusflow/campusflow-logo.png",
+      "bytes": 11031,
+      "sha256": "c097a0eb07612f39c6cc41c5db55bc640bb6f15dc3440c9857fa40310fdd3e3c"
+    },
+    {
+      "path": "public/projects/csquared/acknowledgement-desktop.webp",
+      "bytes": 42802,
+      "sha256": "550888da8c49ed28e4a321714222884b69a0e956c6afb1953b09e7009518fa8d"
+    },
+    {
+      "path": "public/projects/csquared/acknowledgement-mobile.webp",
+      "bytes": 39910,
+      "sha256": "2460a0497ce3b86df68070fffa461bfba8451035c79c35996a759dffd90036d8"
+    },
+    {
+      "path": "public/projects/csquared/csquared-card-preview.webp",
+      "bytes": 76060,
+      "sha256": "21709d188bc588e580a4436a309a7407e72ba0e6e2ff1d09e0d86fd435eb3ddf"
+    },
+    {
+      "path": "public/projects/csquared/csquared-hero-showcase.webp",
+      "bytes": 149736,
+      "sha256": "09314f54ac5e4fbd2e8be6a9ff5b2ff073b8f95bc5c6ca6f081f079ca684031a"
+    },
+    {
+      "path": "public/projects/csquared/funnel-inventory.webp",
+      "bytes": 73244,
+      "sha256": "7af371224d61d8190bfe576f12ee00755083c89b4f838f28a68047437ec10d19"
+    },
+    {
+      "path": "public/projects/csquared/inquiry-form.webp",
+      "bytes": 28088,
+      "sha256": "fad61c74d796db298d0b8eadd80394cc3b3068c9d6cd97eab24fac668a6b1c6c"
+    },
+    {
+      "path": "public/projects/csquared/landing-desktop.webp",
+      "bytes": 77728,
+      "sha256": "55a76651a5f549df0448a8cb65e5d956059c63773ecbebeaaa2622a24cda4276"
+    },
+    {
+      "path": "public/projects/csquared/landing-mobile.webp",
+      "bytes": 46586,
+      "sha256": "380aefc6773c367dc10e5924e7490aba263174394f0b5fc265cc992568bb9e12"
+    },
+    {
+      "path": "public/projects/csquared/native-inquiry-form.webp",
+      "bytes": 43128,
+      "sha256": "d017a15c6be7d1cde2337638651905da6b91b2a70e73c2a567e2302532093efc"
+    },
+    {
+      "path": "public/projects/csquared/preview-agreement.webp",
+      "bytes": 135316,
+      "sha256": "1371523687ffef19fc3d88fa02af2447f9813e6c4b044975d1cedce59596620f"
+    },
+    {
+      "path": "public/projects/csquared/preview-application-process.webp",
+      "bytes": 110186,
+      "sha256": "97a9b3872d3f799267cf116e2665f8c1675161ec31e63ae22452045bd0323adb"
+    },
+    {
+      "path": "public/projects/csquared/preview-confirmation.webp",
+      "bytes": 90828,
+      "sha256": "8035308566a6e5c189f33396a13dc8a56d2161e3259f2d04f3815b8435b04e72"
+    },
+    {
+      "path": "public/projects/csquared/preview-deposit.webp",
+      "bytes": 111090,
+      "sha256": "ca9c4084b1eb7ad174efc9983cf634c224f725d2f2e5c479e1d112c0785f5f77"
+    },
+    {
+      "path": "public/projects/csquared/preview-identity.webp",
+      "bytes": 123154,
+      "sha256": "56008235ce81eb09354fd2760bb68997e8f373543fe5115649284070bf76bd52"
+    },
+    {
+      "path": "public/projects/csquared/preview-landing.webp",
+      "bytes": 92554,
+      "sha256": "67e8825b803bc2fb2bb109c6ca52e5e320b30c5c810d547e41bb05ceb02b01b9"
+    },
+    {
+      "path": "public/projects/csquared/preview-rental-planner.webp",
+      "bytes": 102490,
+      "sha256": "b3e560332c410037cd40a949ef955aed869612d0e5ea3eed68300120815dbe5d"
+    },
+    {
+      "path": "public/projects/csquared/rental-calendar.webp",
+      "bytes": 26190,
+      "sha256": "bce0ca56d4b577053988051c264fc6428bc1decf2b3477fa2754a6f9d4a2c376"
+    },
+    {
+      "path": "public/projects/csquared/rental-custom-fields.webp",
+      "bytes": 143908,
+      "sha256": "24e6bce9f488b188aed1d7873b46e513975138aa947090157f197e4cab6f672f"
+    },
+    {
+      "path": "public/projects/csquared/rental-operations-pipeline.webp",
+      "bytes": 64418,
+      "sha256": "af3ec4565495261859e30298315fc92999bbb419f5c33e2ac7e26ecf28188d3b"
+    },
+    {
+      "path": "public/projects/csquared/request-desktop.webp",
+      "bytes": 48406,
+      "sha256": "491b482a32588cba6796b6700e0dbe7ead587d246b72fd74adee0883ea6d8ed5"
+    },
+    {
+      "path": "public/projects/csquared/request-mobile.webp",
+      "bytes": 41476,
+      "sha256": "da8d448f7fe43a9f2e268eaa054fffd0f519f000bf21a0a68ac736262586d954"
+    },
+    {
+      "path": "public/projects/csquared/sales-booking-pipeline.webp",
+      "bytes": 58104,
+      "sha256": "b01cca1028c23afa7db9a44f7aa4c4bfc807d55a397ffd519ce2a5fb8fa5dcb7"
+    },
+    {
+      "path": "public/projects/csquared/synthetic-opportunity-redacted.webp",
+      "bytes": 51448,
+      "sha256": "cfd09ce137c210083ae6ad73aa6644c65f8e3f3c5d0f4a124ce3d3079a77d38a"
+    },
+    {
+      "path": "public/projects/csquared/synthetic-opportunity.webp",
+      "bytes": 47812,
+      "sha256": "17239620de7a7326a55ef2ba0c691bccdc4ebea15a11bc21def90ec569448fd4"
+    },
+    {
+      "path": "public/projects/csquared/workflow-01-builder-redacted.webp",
+      "bytes": 34226,
+      "sha256": "df310563a12ca4a0f939d0946e6b04093b1cffc8001f91811e2bae97fcaf53ab"
+    },
+    {
+      "path": "public/projects/csquared/workflow-01-execution.webp",
+      "bytes": 72758,
+      "sha256": "71a5d12e4f9e118a1feae5ad3f39da869b58121fd4d6b2415719d75edb95f64b"
+    },
+    {
+      "path": "public/projects/csquared/workflow-01-settings.webp",
+      "bytes": 55748,
+      "sha256": "c755e04c3e90868276c9b6034fe36c173cad69782609c01448d3dc348f45bfa6"
+    },
+    {
+      "path": "public/projects/csquared/workflow-07-builder.webp",
+      "bytes": 26606,
+      "sha256": "c54dc4c23f7ec06161d72f1fa4733bcec32651023cad9ea9490c2113cd28111e"
+    },
+    {
+      "path": "public/projects/csquared/workflow-09-draft.webp",
+      "bytes": 18878,
+      "sha256": "63f94bd5805d6f4aeac111f190d73876680734e74e1044c2e8244165c802d150"
+    },
+    {
+      "path": "public/projects/csquared/workflows-draft.webp",
+      "bytes": 73738,
+      "sha256": "900a5f38e2bdab68faa544ca8c7a0050623fa13d803d43574ddd7273173e5fad"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-backup-snapshot.webp",
+      "bytes": 32534,
+      "sha256": "84cdd800f5ab38c71e1095b5dfae7217c3f4c6565de18bab77dd687270c39d04"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-custom-fields.webp",
+      "bytes": 132470,
+      "sha256": "8fba81b49484e847fb41f9da52539e3c17322940cb8dfbff8f9b27d7a66ff986"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-opportunity-category.webp",
+      "bytes": 34498,
+      "sha256": "7fe242171b960a2646bc2746a8a6a96b1672fa2338598e7671a2e5980e06dd4c"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-opportunity-resolved.webp",
+      "bytes": 39470,
+      "sha256": "7f02dc645e07056c79fe9a8a6ff2e178d7662719e98553d08bd8dc48c4cba64c"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-pipeline-board.webp",
+      "bytes": 75154,
+      "sha256": "7d01178006a93fb86fea851f0a7828fcf1892929fa584b2e6c872ca21be74236"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-pipeline-card-layout.webp",
+      "bytes": 70386,
+      "sha256": "4e704824efd1d79d5a379834e0ad9da525ec359e5dde96b3da4fafcc80182be7"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-tags.webp",
+      "bytes": 78684,
+      "sha256": "e95cd5a940490abb2785ff516848da5700b868e29127c643632d6bf860192269"
+    },
+    {
+      "path": "public/projects/flowdesk/crm-workflows-list.webp",
+      "bytes": 75374,
+      "sha256": "6216618fcfdf0f2a81a847d916f89a4276afb295a28171d4e37f5396880f6696"
+    },
+    {
+      "path": "public/projects/flowdesk/email-01-ticket-received.webp",
+      "bytes": 130150,
+      "sha256": "20ee3aabb830f35e8915118d8154538481e235e8b217d151151db8573dbba831"
+    },
+    {
+      "path": "public/projects/flowdesk/email-02-additional-info.webp",
+      "bytes": 190058,
+      "sha256": "8479d99e531616a065ca9c1492e11ac55bbd0f4be21a51c6d782dd326fa92c1a"
+    },
+    {
+      "path": "public/projects/flowdesk/email-03-ticket-resolved.webp",
+      "bytes": 185252,
+      "sha256": "e9ebd6b99ce2089b2014eca514d3fc85a07213d66173b2590c386e98e83ca3ed"
+    },
+    {
+      "path": "public/projects/flowdesk/email-04-awaiting-reply-reminder.webp",
+      "bytes": 190696,
+      "sha256": "2c63344c9686be495a1e3de5bfb31146e9998e70a6136f578b1b9048bcd49952"
+    },
+    {
+      "path": "public/projects/flowdesk/email-05-added-to-existing-ticket.webp",
+      "bytes": 182982,
+      "sha256": "eb3921d1262733f86bfc634c1f8cf0eaa24f5316023a7a195752970ce558aa97"
+    },
+    {
+      "path": "public/projects/flowdesk/email-delivery-gmail.webp",
+      "bytes": 53056,
+      "sha256": "f5ac96c928477887204c20a42a7af25c942638066f79ed2d267d6a04d81f67c0"
+    },
+    {
+      "path": "public/projects/flowdesk/flowdesk-cover.webp",
+      "bytes": 144780,
+      "sha256": "ec38609545be2a95cbc3de760080195b25cd4d27c0107d672475981524bd86c3"
+    },
+    {
+      "path": "public/projects/flowdesk/flowdesk-showcase.webp",
+      "bytes": 89266,
+      "sha256": "6568fefc892a6434078e2e98c0a30324a0b7083c32c3d44208c18beb56dd5d67"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-01-full.png",
+      "bytes": 904126,
+      "sha256": "f9565f6820b05d7029e2cca234e4bfafc74dd80400cfab1907fedb9670a34de9"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-02-full.png",
+      "bytes": 4009792,
+      "sha256": "33d22933b06af26bcf23402f00e24cee8d6053804e80c97fbef4bd75f5416476"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-03-full.png",
+      "bytes": 952800,
+      "sha256": "3b618cacd2e8e26a83ffa7d5c2b7ec3b88445c9104000eb28d577408e3105b28"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-04-full.png",
+      "bytes": 623440,
+      "sha256": "66bc46369a035639b4519a44c785e477649f4f09a0215ce62a70ee9a7798cd32"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-05-full.png",
+      "bytes": 4273232,
+      "sha256": "0a8bdebebb10aa29af3183f94a0da8f0190319b36575b80facd5eea81748350e"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-06-full.png",
+      "bytes": 1380749,
+      "sha256": "6afcd7b524573b2e195f9350d8a46e68f83cc3872d77788c0f41aa90f5007fd7"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-07-full.png",
+      "bytes": 300555,
+      "sha256": "025c51798c5256aa36d3cfd9853aa6ff34b37c3d79fa32800522a6667417a3f0"
+    },
+    {
+      "path": "public/projects/flowdesk/hd/workflow-08-full.png",
+      "bytes": 442774,
+      "sha256": "8d35270c3109dab8fe81ea88e1a9d060eab1e6f6a5bbc2af504a7f897626c13f"
+    },
+    {
+      "path": "public/projects/flowdesk/log-01-reply-handler.webp",
+      "bytes": 56348,
+      "sha256": "72d4f3f8bdc2ed4a29eb50dded704b5a113bd603e27ce6ccaf4b673ab485b073"
+    },
+    {
+      "path": "public/projects/flowdesk/log-02-resolved-sequence.webp",
+      "bytes": 82026,
+      "sha256": "9ef4ab244399cc921117559a0799c5e423cbee476916591e655085080ebec388"
+    },
+    {
+      "path": "public/projects/flowdesk/log-03-awaiting-reply.webp",
+      "bytes": 52992,
+      "sha256": "62e2d14d137e63e2020e333ac6a2c80c894c39e8cb2d877f3ecc73b487ba59a0"
+    },
+    {
+      "path": "public/projects/flowdesk/log-04-in-progress.webp",
+      "bytes": 38500,
+      "sha256": "c39033c49918ac6db2a438b69f7b5d32f88c205b7028d5bc628f2efe3555a73e"
+    },
+    {
+      "path": "public/projects/flowdesk/log-05-urgent-sequence.webp",
+      "bytes": 44534,
+      "sha256": "fb22ba042accf3dd24637ba655af77ae0e89d200ec96a0193d3afd09ecd8c220"
+    },
+    {
+      "path": "public/projects/flowdesk/log-06-new-sequence.webp",
+      "bytes": 76148,
+      "sha256": "8320bbdf421658d3656e348f4240c2b2ab6477c019136b09c22ce40580b01cf6"
+    },
+    {
+      "path": "public/projects/flowdesk/log-07-intake-router.webp",
+      "bytes": 79880,
+      "sha256": "756f2dd71147bad00d0fb5357f7b585d24b9ddf7609b99ef16ea68519895c883"
+    },
+    {
+      "path": "public/projects/flowdesk/support-form-showcase.webp",
+      "bytes": 103316,
+      "sha256": "26b5eeb44d587cb05bb710322fcb7aca7736f00cc1c7d12cda0ede67b46b3144"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-01-intake-router.webp",
+      "bytes": 129162,
+      "sha256": "08f93f56a0d7f75096c89654ea67e9a47d65eda1eda96ee9b9fcb0e5f94a2f59"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-02-new-sequence.webp",
+      "bytes": 311312,
+      "sha256": "7c8e512d776c24666119220f05af90cd61b892ecf7132092ed011a0d853d73f2"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-03-urgent-sequence.webp",
+      "bytes": 127894,
+      "sha256": "2c37380d5c0863e77d751060ad4cf23933266c4f7697c4e60b0e9dbb60cdba3f"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-04-in-progress.webp",
+      "bytes": 119216,
+      "sha256": "75ddb296e8da79d2508774a322b0a210a8b98cf4e525a14a4e141d65162d5533"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-05-awaiting-reply.webp",
+      "bytes": 306596,
+      "sha256": "445bcd8202a039ae7a90daad2059a3a15b14d99f050ceddbb2a2f35530e8bd8e"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-06-resolved.webp",
+      "bytes": 173658,
+      "sha256": "bed4546e574cb9c720a72e21ad4c103468c46e67efb40e16c887115d5de462c8"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-07-reply-handler.webp",
+      "bytes": 59192,
+      "sha256": "170e8d4c9f0dcb30c4cc708b0734251b15318f9638985aa9831f0658353d898d"
+    },
+    {
+      "path": "public/projects/flowdesk/workflow-08-reopen-window.webp",
+      "bytes": 90940,
+      "sha256": "d299290edf87c7ae9bacd32783b447bde039877c97d0f57e7276c0caa69197f9"
+    },
+    {
+      "path": "public/projects/forme/screenshots/forme-application-desktop-ghl-preview.png",
+      "bytes": 247500,
+      "sha256": "198a9fdedddb40d02fb88005f499fc1d08e63cfd9441e70fae6ba91160d78329"
+    },
+    {
+      "path": "public/projects/forme/screenshots/forme-funnel-steps.jpg",
+      "bytes": 112777,
+      "sha256": "5008d7643f5f7c11e12be12fa348201548d8450a81d4e713204a2d421ba5a531"
+    },
+    {
+      "path": "public/projects/forme/screenshots/forme-landing-desktop-ghl-preview.png",
+      "bytes": 377625,
+      "sha256": "a2e70a7db042fe45700d45e80aac0cac292ee98217cb7afc164fee670627e50d"
+    },
+    {
+      "path": "public/projects/forme/screenshots/forme-thank-you-desktop-ghl-preview.png",
+      "bytes": 208574,
+      "sha256": "d63d614b3e6dca108d0b95d087e90ecf77cfd9b7b070e02bad528bfdc79846e2"
+    },
+    {
+      "path": "public/projects/hrms/01-login.png",
+      "bytes": 624198,
+      "sha256": "dad75bf028b03586728185844987738777bec48ae9aac455a22bfb16b39bd639"
+    },
+    {
+      "path": "public/projects/hrms/02-dashboard.png",
+      "bytes": 198442,
+      "sha256": "259e115731e8f8955071b0037cb86b5ac91d8b12bdfb5680437615005053a8b7"
+    },
+    {
+      "path": "public/projects/hrms/03-employees.png",
+      "bytes": 179551,
+      "sha256": "1c99317e026ee7b04655508109e3214900256243f04b3f6765150a3149118bc9"
+    },
+    {
+      "path": "public/projects/hrms/04-attendance.png",
+      "bytes": 166458,
+      "sha256": "b62b041f616019c0b13fee088fca98c5cfb11448b8a470a51d3f69d8b405a155"
+    },
+    {
+      "path": "public/projects/hrms/05-leave-requests.png",
+      "bytes": 146816,
+      "sha256": "ea510f492da04a13abd619d58c521600a872021ca36f37b6463a42c9edea5135"
+    },
+    {
+      "path": "public/projects/hrms/06-departments.png",
+      "bytes": 175301,
+      "sha256": "b809c871b12682f9ae0075c2bacaf35ce82ca15d9555c376f17b24feffc5ab4e"
+    },
+    {
+      "path": "public/projects/hrms/07-announcements.png",
+      "bytes": 151455,
+      "sha256": "7c01232c3f96f02802c4ac842d27c0b9afac0ef5b234e29746c45d6ab81aa83e"
+    },
+    {
+      "path": "public/projects/hrms/08-reports.png",
+      "bytes": 164102,
+      "sha256": "a326908c5b269db3ea1a2aa7206cd9867cdcd714a326e57eb89055a83ad44c23"
+    },
+    {
+      "path": "public/projects/hrms/09-settings.png",
+      "bytes": 126689,
+      "sha256": "c52ada92a951f941e541e0fe6cbb1c459efcc3b9f3657ef90e06abf5d15e170f"
+    },
+    {
+      "path": "public/projects/hrms/IPARCELPLUS.png",
+      "bytes": 16846,
+      "sha256": "733670a11b0ba0fdd99b7cab4966ba21824b0b9d159343c33c10dcbb36ae8418"
+    },
+    {
+      "path": "public/projects/hrms/iparcel-logo.png",
+      "bytes": 14277,
+      "sha256": "362e3223313b577975ab5e28dd79a5444c38dc5ac09cc662a16636c4c578f920"
+    },
+    {
+      "path": "public/projects/lakbay/01-nationwide-3d-philippines-map.webp",
+      "bytes": 341076,
+      "sha256": "622e70909df1662e23e52681d4bcc233fd1a05fcb2b67858dececcaeb2b0f751"
+    },
+    {
+      "path": "public/projects/lakbay/02-palawan-destination-discovery.webp",
+      "bytes": 213220,
+      "sha256": "7d0eb2f009e90185ccbfd6363bfbc3dcc9975318a9d4e1f86998d75c618c60b3"
+    },
+    {
+      "path": "public/projects/lakbay/03-barasoain-church-destination.webp",
+      "bytes": 265968,
+      "sha256": "9451fe8b2357a78cca07e0441d5cb69975d45d4b1453bd1160920d9e33e022e7"
+    },
+    {
+      "path": "public/projects/lakbay/04-puerto-princesa-photo-gallery.webp",
+      "bytes": 360892,
+      "sha256": "7a84ff523a7d39a1c8d402b0fc776bce983523d6bde35bb5da60b133fb4b5c5c"
+    },
+    {
+      "path": "public/projects/lakbay/05-personal-travel-wishlist.webp",
+      "bytes": 380898,
+      "sha256": "50e7fa05a81022521428c13490a8fd683aabcbc73a3a19ab08e4024b5f95d0c8"
+    },
+    {
+      "path": "public/projects/lakbay/lakbay-logo.png",
+      "bytes": 17752,
+      "sha256": "068fd1ef1d6e7b12e864325f47a1eb33d58ba8f5bfbd871c97c004e2a4867b0f"
+    },
+    {
+      "path": "public/projects/leadsense/documentation.webp",
+      "bytes": 94818,
+      "sha256": "4fed957dfaea5f7ed76c9ca2e2f70de02baef0d214235a0cd4c7bf03836ca9ab"
+    },
+    {
+      "path": "public/projects/leadsense/leadsense-ai-logo.png",
+      "bytes": 1100955,
+      "sha256": "af83f185785c84ec34c3098b889656be977c8c7af94c6ba3e2f8a669aa2b9fdc"
+    },
+    {
+      "path": "public/projects/leadsense/model-insights.webp",
+      "bytes": 93078,
+      "sha256": "4826755d230424f92ca4377956dc6bccbff2881489a1b2e622016093d3c3ae3d"
+    },
+    {
+      "path": "public/projects/leadsense/overview.webp",
+      "bytes": 86614,
+      "sha256": "9de3189d3191917d7bb1b14a0f067675678f565bbdeb9e3b9cfa5e1d96183341"
+    },
+    {
+      "path": "public/projects/leadsense/session-explorer.webp",
+      "bytes": 68536,
+      "sha256": "deb7ff9c018de39ceb1a655af99bb38b72472ab76aecd2cd11f3616ca1162a94"
+    },
+    {
+      "path": "public/projects/pengpeng/01-splash.png",
+      "bytes": 548091,
+      "sha256": "a241f403aa7eac03ccb4a0121096952c438775f218495ea66f608171ae05b695"
+    },
+    {
+      "path": "public/projects/pengpeng/02-overview.png",
+      "bytes": 584951,
+      "sha256": "07df100824f3d125bb5fa723e19ec2e132899ad974f576d4f2c973494ad87bc5"
+    },
+    {
+      "path": "public/projects/pengpeng/03-wallets.png",
+      "bytes": 566128,
+      "sha256": "2b5d0df6eeb25b4e58a3aedc88885636c98e838dd3763a287f60c5dcf3a59171"
+    },
+    {
+      "path": "public/projects/pengpeng/04-bills.png",
+      "bytes": 544710,
+      "sha256": "00483c8be5f4ba95e72951b9573ddbd01ced643e099608bf3be2c5d2e45db7c8"
+    },
+    {
+      "path": "public/projects/pengpeng/05-pengpeng-ai.png",
+      "bytes": 688947,
+      "sha256": "ab9b3382a2b6aa3b947b4d65b22e0caf0a3cae89001592fac6d8453d97749f13"
+    },
+    {
+      "path": "public/projects/pengpeng/06-profile-goals.png",
+      "bytes": 609092,
+      "sha256": "9f69d3426d8e7a3474aea7a9b3cdd8fbe4e9d4b9d49763deb3f12b70d8d886c6"
+    },
+    {
+      "path": "public/projects/pengpeng/07-app-tour.png",
+      "bytes": 731791,
+      "sha256": "8e4346975b5a050243a3c6fd48ae616b058fee1132f2c01a38913865c576966a"
+    },
+    {
+      "path": "public/projects/pengpeng/08-profile-onboarding.png",
+      "bytes": 579609,
+      "sha256": "9b29f7353a794f2ae09c88a181d0e41f7bfdd2298775497a35718e9fa664f847"
+    },
+    {
+      "path": "public/projects/pengpeng/pengpeng-avatar.png",
+      "bytes": 1474173,
+      "sha256": "e8e3a0ead1e34018987bbbbbe3eaf8eb24f4e2b2ff451a65de876614218ea482"
+    },
+    {
+      "path": "public/projects/pengpeng/pengpeng-cover.png",
+      "bytes": 1753692,
+      "sha256": "c9806b07190d567d173934b24f1c7136d83f1f8d1b492a75229e17c47906706a"
+    },
+    {
+      "path": "public/projects/velora/screenshots/01-funnel-pages/velora-first-name-fixed.png",
+      "bytes": 110070,
+      "sha256": "65c1bb994b3a54855b923a2245263ff273b9f100749c789bb4fe615c76458958"
+    },
+    {
+      "path": "public/projects/velora/screenshots/01-funnel-pages/velora-landing-hero-editor.png",
+      "bytes": 237307,
+      "sha256": "37b2fdc60310dd4fd26003e78db291f9030e784ef38c6d271a5f73baed99d8c0"
+    },
+    {
+      "path": "public/projects/velora/screenshots/01-funnel-pages/velora-thank-you-desktop-user.png",
+      "bytes": 88683,
+      "sha256": "c27cff934a06e387c71d666b4f30f54c571dc7911a5ac603af70b369af807ced"
+    },
+    {
+      "path": "public/projects/velora/screenshots/02-crm-pipeline/velora-custom-fields.png",
+      "bytes": 515104,
+      "sha256": "98b174dc623b25a3480e81df5c1ef84b4623e2b2c740b565f855f5b41e3a8581"
+    },
+    {
+      "path": "public/projects/velora/screenshots/02-crm-pipeline/velora-phase1-contact-queued-sent-tags.png",
+      "bytes": 398247,
+      "sha256": "c23a01daca6303ea80068af46daddba3f7976b3dbaf392109998ad46cb6f7674"
+    },
+    {
+      "path": "public/projects/velora/screenshots/02-crm-pipeline/velora-phase1-opportunity-qualified-open.png",
+      "bytes": 194165,
+      "sha256": "1158475ccd57c32e245420cf5949c38b35f82d105afbb17ffccb591428a3ec7e"
+    },
+    {
+      "path": "public/projects/velora/screenshots/02-crm-pipeline/velora-phase1-single-opportunity-pipeline.png",
+      "bytes": 269041,
+      "sha256": "476878ac6a279bedb243588e637e985ab937cc178997293e67b7b5f5220c1ed9"
+    },
+    {
+      "path": "public/projects/velora/screenshots/02-crm-pipeline/velora-phase2-opportunity-booked.png",
+      "bytes": 96737,
+      "sha256": "8dd507bdb61f99dde97a6086fce67efe222ffe2c89beef0719ce081e31c4d3e7"
+    },
+    {
+      "path": "public/projects/velora/screenshots/02-crm-pipeline/velora-pipeline-stages.png",
+      "bytes": 125001,
+      "sha256": "f3d9a0ed567406cf8702f86c00f286275864586c9a234d38afa2aa1573657b74"
+    },
+    {
+      "path": "public/projects/velora/screenshots/03-workflow-overviews/velora-workflow01-overview.png",
+      "bytes": 126780,
+      "sha256": "1940e402e6d3d1b3e277629f52a6d2f6384e2807cb09b0b6f591a7cff8095887"
+    },
+    {
+      "path": "public/projects/velora/screenshots/03-workflow-overviews/velora-workflow02-overview.png",
+      "bytes": 450742,
+      "sha256": "e76dbfc1984fbdbca0509affd84a689eb6424944d201f52eaf4ad2e26a4a11ac"
+    },
+    {
+      "path": "public/projects/velora/screenshots/03-workflow-overviews/velora-workflow03-overview.png",
+      "bytes": 231990,
+      "sha256": "dae4a97f1e31c4685fdf959916663e7f57bbea6998ca755fd48592faff393b34"
+    },
+    {
+      "path": "public/projects/velora/screenshots/03-workflow-overviews/velora-workflow04-overview.png",
+      "bytes": 324573,
+      "sha256": "aa22c8efc9b0eab9f55747def76b33e9c5755fb3360db07e85638fbdd6fd14ef"
+    },
+    {
+      "path": "public/projects/velora/screenshots/03-workflow-overviews/velora-workflow05-overview.png",
+      "bytes": 186686,
+      "sha256": "8a81611ede315a7420629e22d7a7e1ce06b42793530841c88a19ee5a0bfb6d57"
+    },
+    {
+      "path": "public/projects/velora/screenshots/03-workflow-overviews/velora-workflow06-overview.png",
+      "bytes": 412240,
+      "sha256": "cc89ae3018f83f4f42a6e18caa107a38ebfc0dbc0f63627c5ce4548b677c84cd"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-phase1-final-three-invitations-disabled.png",
+      "bytes": 407012,
+      "sha256": "60cc5d7878f2e81172bba2bdf898d18031279a8a44f5cdaf791549e267e866d8"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-phase2-one-hour-wait-config.png",
+      "bytes": 356452,
+      "sha256": "5ce7c585e2e990ace5f49d40991019bcd5d8fedfc40d11375c13c0fb2e4b1c8c"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow01-opportunity-creation.png",
+      "bytes": 396099,
+      "sha256": "0c8490fe96b93d725e41d21763085f7083cb9f8d01890961763bcb0d14a689fe"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow01-settings.png",
+      "bytes": 320338,
+      "sha256": "2c10ef5bbd94193b9b3ebd276607aa7361fec24989ace43a985b04feb058f2b9"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow02-readiness.png",
+      "bytes": 493629,
+      "sha256": "4a843cb8c980c9f93ae87a96a5bd4208880f73ed5d958f397c3099b9fe363998"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow02-saved-guard.png",
+      "bytes": 480902,
+      "sha256": "a6a0fe4835193b78503a852fdc3c19d9df9426d4e757e6b7066971ac6d61c452"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow02-saved-settings.png",
+      "bytes": 323298,
+      "sha256": "684d3545e53291e6361268185712374cda0ddb86213cdbdbc273c4f36460d6ea"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow02-travel.png",
+      "bytes": 495505,
+      "sha256": "b6034fb52762acde98dbb511d3722f0a2ec578e129fb44e2c4fb54a775c488e3"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow03-find-opportunity.png",
+      "bytes": 433086,
+      "sha256": "a9456e4111bd2978d9fbc71dbe8ac93b7468cf191b1b55383c022c805c8c8ede"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow04-followup.png",
+      "bytes": 376587,
+      "sha256": "3c15a7bc71df607a725035e6c8753314087140357562818d771294df9aca8793"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow04-settings.png",
+      "bytes": 324795,
+      "sha256": "262960c78aa8f012161abe4ded43fdb4b3b22c922fb65de24420bc1700a7a28f"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow05-rescheduled-condition.png",
+      "bytes": 379869,
+      "sha256": "572e98e848dbabdfde4c8dcad13d486eeeb42be38672de0efa2a44f304c72128"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow06-day14-wait.png",
+      "bytes": 430240,
+      "sha256": "57a809d98348c008fe4ff6ad6fbbc6ad457e8863b36228e4cc7c61596b76c255"
+    },
+    {
+      "path": "public/projects/velora/screenshots/04-workflow-details/velora-workflow06-settings.png",
+      "bytes": 325085,
+      "sha256": "ea329bcc86a8db3469f04fdf28c03b48b632b2023983686e5a19492c210f2429"
+    },
+    {
+      "path": "public/projects/velora/screenshots/05-testing-evidence/velora-phase1-workflow01-success.png",
+      "bytes": 259799,
+      "sha256": "66f340d2cada0691ab63d92306fb05108775b0ab9446b1a64d600d674fbca0de"
+    },
+    {
+      "path": "public/projects/velora/screenshots/05-testing-evidence/velora-phase1-workflow02-success.png",
+      "bytes": 446123,
+      "sha256": "828e90589877a23c284f2a752cb6397335c3fcc882f59c45d70be7170b6bc453"
+    },
+    {
+      "path": "public/projects/velora/screenshots/05-testing-evidence/velora-phase2-reminder-schedule.png",
+      "bytes": 349682,
+      "sha256": "7c108fa92f6379e3db888e764cc2ff52b11147c2da419ffe5410a66cb25d8142"
+    },
+    {
+      "path": "public/projects/velora/screenshots/05-testing-evidence/velora-phase2-workflow03-execution.png",
+      "bytes": 375881,
+      "sha256": "4e8994dba314e019a926cd06d8e4686d31ae29350f12a2e604c8781aae816e9c"
+    },
+    {
+      "path": "public/projects/velora/screenshots/05-testing-evidence/velora-phase2-workflow05-safe-exit.png",
+      "bytes": 265753,
+      "sha256": "4d98593ba774f11800f3f1c66470d4f4221b43fec88520ec2d05fd3fd1c0a8cf"
+    },
+    {
+      "path": "public/projects/velora/screenshots/06-email-automation/velora-phase1-email-delivery-statistics.png",
+      "bytes": 489998,
+      "sha256": "0a582d46ec38f0772adfde3710e0daaf369ec92115a316c5d276e473b569c138"
+    },
+    {
+      "path": "public/projects/velora/screenshots/06-email-automation/velora-phase1-message-delivery-details.png",
+      "bytes": 91958,
+      "sha256": "b2fd80cdd8b8b079065daadf2f2d372c8e71b389a2506687eeaa67daa8d95b5b"
+    },
+    {
+      "path": "public/projects/velora/screenshots/06-email-automation/velora-phase2-confirmation-timezone.png",
+      "bytes": 176405,
+      "sha256": "7486c1e9d1e24076b966cb6f5c4b0ed9446bff122fbbd77673ab1eb91c963f98"
+    },
+    {
+      "path": "public/projects/velora/screenshots/06-email-automation/velora-phase2-email-delivery-statistics.png",
+      "bytes": 239900,
+      "sha256": "89c2fda48ce7773594d48a02c505cd14c5df66e7a0528deec323f7437d272348"
+    },
+    {
+      "path": "public/projects/velora/screenshots/06-email-automation/velora-phase2-email-recipient-delivered.png",
+      "bytes": 72769,
+      "sha256": "2fd9a4f5083ba93ce425d5cb8b95bb47f235206ad7254902b9b6126d85aeb350"
+    },
+    {
+      "path": "public/projects/velora/screenshots/06-email-automation/velora-phase2-gmail-inbox-user.png",
+      "bytes": 73171,
+      "sha256": "4b38398ab5f2f0be8aeca29402570ead96447fabe105a53f6f20a76834579d39"
+    },
+    {
+      "path": "public/projects/velora/screenshots/06-email-automation/velora-workflow06-corrected-recovery-email2.png",
+      "bytes": 532217,
+      "sha256": "a5f99929337585d2dd5c1c50daf0d5e0cd75c3f957fc566643c339c5f39c27c1"
+    },
+    {
+      "path": "public/projects/velora/screenshots/07-calendar-booking/velora-booking-details-user.png",
+      "bytes": 69478,
+      "sha256": "c996f8af283b1fe1a60f8775bbced8fb11992554c737ca4bca1a85563363f53b"
+    },
+    {
+      "path": "public/projects/velora/screenshots/07-calendar-booking/velora-phase2-appointment-record.png",
+      "bytes": 426911,
+      "sha256": "2a86f2cb54cdb03e5f5a7e9ad6f5f049aa535ba74e3eca1c1d4ee31709792289"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-booked-opportunity-details.png",
+      "bytes": 35708,
+      "sha256": "1a4471b3a598350409d593382d558a7f1859b7482856e80887bea731ebc307b6"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-booking-page-design.png",
+      "bytes": 61662,
+      "sha256": "0039d556469f4ad8f9bb18f9d6580b59da14e96d26eaff4dad0bc2a69db1d76b"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-calendar-month-overview.png",
+      "bytes": 75469,
+      "sha256": "ae6857c60aafb206548901095e22bdb8edd0cbf32d480169b6828e680309961d"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-calendar-slots-in-funnel.png",
+      "bytes": 74523,
+      "sha256": "dcc88a66e3ddbeb2cfde0bb064d219b08e425b7ca262cfb472cbd05192f9c1af"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-calendar-week-bookings.png",
+      "bytes": 87795,
+      "sha256": "e70250b158c67ec2ec2f6189a7fe1bcc77c63711907065df7d53412f8c0fb4db"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-inquiry-success.png",
+      "bytes": 19937,
+      "sha256": "8dac25afdc5940cf7e363c01d75d5654bbcfef3412992668ceb47c8c45926837"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-pipeline-board-verified.png",
+      "bytes": 119163,
+      "sha256": "e6e42f8627f4b9cfef8e080ee9aa2da5d4f14cbba52b5e2b9e0aa04263bb3cd3"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-six-published-workflows.png",
+      "bytes": 102872,
+      "sha256": "72d6b910f2b9bfa15f3e65397de07c1e8660ce76ba635d5f64377ebee65f7246"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-thank-you-page-clean.png",
+      "bytes": 88927,
+      "sha256": "877200969129d020450f84d810077cb2cd953b6769fee17ac6eaaac95430cd62"
+    },
+    {
+      "path": "public/projects/velora/screenshots/08-portfolio-updates/velora-workflow01-clear-builder.png",
+      "bytes": 59631,
+      "sha256": "aae99afb807c23587e757dfd8417fe794f4d416c4848c7cb33539e19d45d9a09"
+    },
+    {
+      "path": "src/App.tsx",
+      "bytes": 4223,
+      "sha256": "031fce7c04ab242f72e8875d55c48fd37cc9c364fa56d43024162f30f0705dc2"
+    },
+    {
+      "path": "src/CaseStudyPolish.css",
+      "bytes": 4547,
+      "sha256": "22bc32640d1698a802b999f068bb546bf8e3d8dd1c3dadf00748a42d76968d9e"
+    },
+    {
+      "path": "src/assets/charles-avatar.png",
+      "bytes": 10991,
+      "sha256": "642a6552f235c2276a94cc830ca81fc4e2362a648a0214f0885c621972ee21c5"
+    },
+    {
+      "path": "src/assets/charles-jacob-lat.jpg",
+      "bytes": 66405,
+      "sha256": "b9dd9690fb9c195b7c4bf3e807144a99b508a64a5caa7e24105ff7642d7d84f3"
+    },
+    {
+      "path": "src/components/Footer.css",
+      "bytes": 2591,
+      "sha256": "6350db3c244f3eea5fd497256a5771e8d66fc8d98495763ea81af64e9f89b3e3"
+    },
+    {
+      "path": "src/components/Footer.tsx",
+      "bytes": 1929,
+      "sha256": "8b0721fbcba8009fed76298ecd952985f337fd71f6fe8d0b77d44f06d6eb606e"
+    },
+    {
+      "path": "src/components/FunnelCard.tsx",
+      "bytes": 1457,
+      "sha256": "199447796f52bd083085b82af5acf56ab1350c6e424331c59a04008824f97ca4"
+    },
+    {
+      "path": "src/components/HomeWaveBackground.tsx",
+      "bytes": 939,
+      "sha256": "1c51f43fbd93b11894656ea72a09fc3101545252ea7ddf7028fdcd159a0cfa5b"
+    },
+    {
+      "path": "src/components/LeadSenseFeature.tsx",
+      "bytes": 2463,
+      "sha256": "f0a04668ffdc710a843afadfd8254477c94ccdcb9c6cb22a14dcc14e47266127"
+    },
+    {
+      "path": "src/components/LeadSensePortfolio.css",
+      "bytes": 9429,
+      "sha256": "b5704f461e0aa50133b02e3a9388c680fae9b588c8c7f826b37e9891a104ecf9"
+    },
+    {
+      "path": "src/components/LeadSenseScrollShowcase.css",
+      "bytes": 10646,
+      "sha256": "25e50f2fd85ad928862ea6f3788144215536e0e565055866f69bb78204970c04"
+    },
+    {
+      "path": "src/components/LeadSenseScrollShowcase.tsx",
+      "bytes": 6746,
+      "sha256": "5de9621e0f9de84cc0809d3fdf2d318787cddeeba2fed0f55e9e76bc59e11798"
+    },
+    {
+      "path": "src/components/Navbar.css",
+      "bytes": 5095,
+      "sha256": "3f0fd9104702bbebdaa2840b022f61c311fb3d6832c518616b40f29e4439f35c"
+    },
+    {
+      "path": "src/components/Navbar.tsx",
+      "bytes": 4137,
+      "sha256": "d2981bb2c07ddd947188f5c0af600dd1bf18a3c9bb99da7f08653071068b4ef5"
+    },
+    {
+      "path": "src/components/PortfolioScrollMemory.tsx",
+      "bytes": 1413,
+      "sha256": "ee8993008ad6f3ae88cf3e2ab57538d6ef34c0e8b82ad1aaf376880f4b6d7769"
+    },
+    {
+      "path": "src/components/ProjectCard.tsx",
+      "bytes": 1831,
+      "sha256": "b38ec70c557d1754f27651224f9ec6cc9e7a93c1d2fc05ab87b21ce1667ba6af"
+    },
+    {
+      "path": "src/components/ProjectScrollMotion.tsx",
+      "bytes": 4281,
+      "sha256": "927f76b7e4770d61a0b15e910e9a6735aa430750f964ba62108df79e45cb3e93"
+    },
+    {
+      "path": "src/components/ScrollProcessTimeline.tsx",
+      "bytes": 736,
+      "sha256": "f6b05f99d97c298c123b51c2a609ae641d7ce9569e5d879708aa938a4e089e6d"
+    },
+    {
+      "path": "src/components/ScrollStory.css",
+      "bytes": 7801,
+      "sha256": "3ef3ada37a02db58f737b8c4a077c004f22397eaf3e5c7e791d9a570f53ebfbe"
+    },
+    {
+      "path": "src/components/WhatsAppContact.tsx",
+      "bytes": 2708,
+      "sha256": "8cc45b444f23a6dc9abd7c9b43670618a4d56dc61da0ad1774227af415eb1ec4"
+    },
+    {
+      "path": "src/components/Workflow.tsx",
+      "bytes": 661,
+      "sha256": "ebc8e30e571d7d63697135a8037ad4f5a0c77c1c9287f82d8214bf53a31ee2ce"
+    },
+    {
+      "path": "src/components/mascot/GreetingArt.tsx",
+      "bytes": 1601,
+      "sha256": "8f74bff989503b1abab20149646e927fa88f4c7041aa63a999fddc473cc85a2a"
+    },
+    {
+      "path": "src/components/mascot/MouthRig.tsx",
+      "bytes": 3326,
+      "sha256": "3db7c214108af53bde75f2a27f8c9412ff6ea6f5188db36ef060d3185fc4ed23"
+    },
+    {
+      "path": "src/components/mascot/PlaybackController.ts",
+      "bytes": 8059,
+      "sha256": "16b3d4920b3fb8819aee39567df6d0349c2be7b01142844291e683b51e6bd335"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.css",
+      "bytes": 9852,
+      "sha256": "b4ecb0eb5259917c353cf8ca6aef8912482ad9e80ecc1e8b15997f56e752d4d4"
+    },
+    {
+      "path": "src/components/mascot/TalkingMascot.tsx",
+      "bytes": 9663,
+      "sha256": "2120ffc0758d6704bf62c9d61fd4e374a79b02ae1613dd616163d9d2cbf2fdbd"
+    },
+    {
+      "path": "src/components/mascot/audioManifest.ts",
+      "bytes": 4065,
+      "sha256": "43e2dc9cb154f6fd0b208f814d8f9ef4b5700f33f4fd8ef0146cac502dc57fd2"
+    },
+    {
+      "path": "src/components/mascot/audioTimeline.ts",
+      "bytes": 1287,
+      "sha256": "bbe99e25b94846a5d58430fb63de4a031fda1aec23e4ec8622442da44dd25671"
+    },
+    {
+      "path": "src/components/mascot/mascotModel.ts",
+      "bytes": 2185,
+      "sha256": "dd31086606be839168fa4fb6d47289e8664912fedc1c043d683b9944e4298baa"
+    },
+    {
+      "path": "src/components/tour/ChovyTourSection.css",
+      "bytes": 5219,
+      "sha256": "171d0bc4f4ddbbf0c6129e7dbaf799dd4309c312c4516e7746e5dd3890bc3a41"
+    },
+    {
+      "path": "src/components/tour/ChovyTourSection.tsx",
+      "bytes": 8586,
+      "sha256": "256e47a2d5718759950cf4e5e95f2353fb568824341c872dc1b2a45ea02e01e0"
+    },
+    {
+      "path": "src/components/tour/tourAudioPriority.ts",
+      "bytes": 605,
+      "sha256": "472c57c57b52f16e0fe27727f2c11afa4d287460619b2b81b55328be715938c3"
+    },
+    {
+      "path": "src/components/tour/tourData.ts",
+      "bytes": 5538,
+      "sha256": "38f94df2441ceb24f0fb749a5961ea123e2fbf109c188ee5cf1f75dbb6ece3b9"
+    },
+    {
+      "path": "src/data/funnels.ts",
+      "bytes": 6564,
+      "sha256": "a3b8ff8a4c66731c2d2372dbdda6a9b4fe3d7bda50fa97f34c03c4efc014cd6e"
+    },
+    {
+      "path": "src/data/ghlProjects.ts",
+      "bytes": 16999,
+      "sha256": "ac2fee5155c0cf4bebd520eebf4d574f31848cbffaefa8a95d00fc84ed3ec27e"
+    },
+    {
+      "path": "src/data/projects.ts",
+      "bytes": 23776,
+      "sha256": "8c0ccc71a4d2797f9fd5735ce7d2f9f751186b504442ce877a8ef6921fc0de8b"
+    },
+    {
+      "path": "src/hooks/useScrollReveal.ts",
+      "bytes": 1412,
+      "sha256": "53a3c96c32d29317ecf434d60dd31adcf7cfa5394340c9a20532206cbc8016a8"
+    },
+    {
+      "path": "src/main.tsx",
+      "bytes": 325,
+      "sha256": "d506e6d16915af11057fa5ebd861fcb1fd89979a86e6deec292892dec5512e3d"
+    },
+    {
+      "path": "src/pages/CSquaredShowcase.css",
+      "bytes": 34734,
+      "sha256": "75bd886a396d7c60535baa6889366f493d39cf5d8b3b02c8e638006d94f51e08"
+    },
+    {
+      "path": "src/pages/CSquaredShowcase.tsx",
+      "bytes": 28219,
+      "sha256": "9278caa381d66f8d8440543dbe1def9ed26c23270bbb248e8f2ae90217f42143"
+    },
+    {
+      "path": "src/pages/ContactClosing.css",
+      "bytes": 2632,
+      "sha256": "619906ceb580a14bac780cac99b25cf1e85cd92b5d01cc0707794c54bda5f862"
+    },
+    {
+      "path": "src/pages/DevelopmentShowcase.css",
+      "bytes": 20774,
+      "sha256": "d3fcea01aff420a7daebc3d0dfb1e1c0cb47764701a917b4cda4f99964024e29"
+    },
+    {
+      "path": "src/pages/DevelopmentShowcase.tsx",
+      "bytes": 21198,
+      "sha256": "0b0056c2a1825fb098898c0af9a68e7e090fcd5f01b66499d4ebd7906dd8d9e7"
+    },
+    {
+      "path": "src/pages/FlowDeskCaseStudy.css",
+      "bytes": 41339,
+      "sha256": "1c5f56ea568375cf11bf46d855ae5ddb43915fcf287db1c04ad698d1e09d0c86"
+    },
+    {
+      "path": "src/pages/FlowDeskCaseStudy.tsx",
+      "bytes": 35133,
+      "sha256": "05b8de709924ad5e42a17a72a5d6d1153cf3e4fe3a72c4b8a5879b6fab24913c"
+    },
+    {
+      "path": "src/pages/FunnelCaseStudy.css",
+      "bytes": 9896,
+      "sha256": "0aefa7c10bf1f5e895b993d1adad1b29a7b9189556906b9775401af075641b86"
+    },
+    {
+      "path": "src/pages/FunnelCaseStudy.tsx",
+      "bytes": 14991,
+      "sha256": "c00a5ec041bb24045ceb561b6b13aaafa21ed95345a34baaf77c0a1d7e62377a"
+    },
+    {
+      "path": "src/pages/FunnelShowcase.css",
+      "bytes": 4423,
+      "sha256": "09809ed6f4de6edf8257004d8468d3208fe308f28d5434e64ae72ebb341d57de"
+    },
+    {
+      "path": "src/pages/GHLProjectCaseStudy.css",
+      "bytes": 7592,
+      "sha256": "f806df2db11ae61a78a4dd611b2c47ea11d38f68bccd7246ee570c5d24bb48c8"
+    },
+    {
+      "path": "src/pages/GHLProjectCaseStudy.tsx",
+      "bytes": 9071,
+      "sha256": "5c33027c8f4298802a433af0fc5330bd907d020e500aec29cfe78ff744f43648"
+    },
+    {
+      "path": "src/pages/Home.tsx",
+      "bytes": 25375,
+      "sha256": "c8c7cceab1e376bd60f898a8f3338dce2bd0b21ccb665e8a316f6fb973ca14b4"
+    },
+    {
+      "path": "src/pages/HomeBlueWave.css",
+      "bytes": 7585,
+      "sha256": "c7b5e3c0e9da9c6c88735bfe5eeb4f97ac90b47f5f3797adbbd84cbd25a2026f"
+    },
+    {
+      "path": "src/pages/HomeRedesign.css",
+      "bytes": 27589,
+      "sha256": "2adc5fd51a372981a3caf971eb45c0d2259957a80df03ec6335185588826955c"
+    },
+    {
+      "path": "src/pages/LeadSenseCaseStudy.tsx",
+      "bytes": 21667,
+      "sha256": "b2d407dcdcd2cd2251ebd61871e9a83315d8ed023e328d05c8f848d07dad952b"
+    },
+    {
+      "path": "src/pages/LeadSensePremium.css",
+      "bytes": 20441,
+      "sha256": "5a2e084a4bc65d0018b55d4fa069bfef99ed76f79eadb786ca67323cab77eed6"
+    },
+    {
+      "path": "src/pages/PengpengShowcase.css",
+      "bytes": 11873,
+      "sha256": "ed0fc094aa719c5b9d735b9ec9866ac6703bcaeef11c86bd3c8d621c0ce9f835"
+    },
+    {
+      "path": "src/pages/PengpengShowcase.tsx",
+      "bytes": 8791,
+      "sha256": "9c856d9a3b9d6f777ede7e498eab1edafdb280d6e01dc02430a2afbdc9273c90"
+    },
+    {
+      "path": "src/pages/ProjectCaseStudy.tsx",
+      "bytes": 9296,
+      "sha256": "33e0cb0e267b8697a3f9f5dea706dbcf75b071d805d759089d0af92abfeceb07"
+    },
+    {
+      "path": "src/pages/VeloraCaseStudy.css",
+      "bytes": 34680,
+      "sha256": "ce334153d4b6e9eeb7bb6ce5b95038ba661d7ac56e8fcb6eb98b7acfef244f79"
+    },
+    {
+      "path": "src/pages/VeloraCaseStudy.tsx",
+      "bytes": 43350,
+      "sha256": "ad5b604e74556c942ee86fd8efe7df16e94ad03872747487dfc383674287e4ff"
+    },
+    {
+      "path": "src/styles.css",
+      "bytes": 21437,
+      "sha256": "c884f0b2f8f8ae49629c4cf4602873edeb8311b819f8a7722d136533840cd42e"
+    },
+    {
+      "path": "src/styles/ProjectMotion.css",
+      "bytes": 1499,
+      "sha256": "db4122f03264694c5f9e50f138f591e2a36a2460500e1c5f1ffc39072edaccca"
+    },
+    {
+      "path": "src/styles/scroll-reveal.css",
+      "bytes": 816,
+      "sha256": "3e364d201c746000fc7b2768b3941ba371a798d0f77fac59706d82e54857a581"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "bytes": 37,
+      "sha256": "b440b802c2cfeac6a24eda510bd63c1f23c6ab5c52bcfe3a32a918dbad6b46c8"
+    },
+    {
+      "path": "tests/chovy-capture-plan.json",
+      "bytes": 17103,
+      "sha256": "9c4fbeeafa77277513f62872f908b371bd5f123a1347361fd0ab3b7b2efa5f9d"
+    },
+    {
+      "path": "tests/chovy-capture.html",
+      "bytes": 6655,
+      "sha256": "3aec13175a05ee6985e5d81dde1abe3762b3baaf241d33141affee55c3d74952"
+    },
+    {
+      "path": "tests/chovy-tour-priority.test.mjs",
+      "bytes": 2498,
+      "sha256": "02de0ca21b306aecbd33a5a2accd1c39514e6e749e6971e88460ed006d1e72fa"
+    },
+    {
+      "path": "tests/chovy-tour-qa.html",
+      "bytes": 12382,
+      "sha256": "9193e45fa2a9db23239c46049588d34f5f266e764bd7455ca2fc986c630ca629"
+    },
+    {
+      "path": "tests/mascot-audio.test.mjs",
+      "bytes": 9504,
+      "sha256": "4c2089d61489d0ccba019daccad6f218d1a559fabd7703cd0ab27b63bb6129b6"
+    },
+    {
+      "path": "tests/mascot-browser.html",
+      "bytes": 7761,
+      "sha256": "d3a198362eecf4f7b4f88853cf087390ff8f197041265d7856939e660b022a93"
+    },
+    {
+      "path": "tests/mascot-fixture.html",
+      "bytes": 433,
+      "sha256": "02e221e9d3e4b37c7aa0674f3c822985225f149fef6fb4ab2424af0a13f5b62c"
+    },
+    {
+      "path": "tests/mascot-fixture.tsx",
+      "bytes": 3485,
+      "sha256": "85d35ba20349aebbdd537e284e48d486f941430858cc7fe9c7af88e6ce0540b9"
+    },
+    {
+      "path": "tests/mascot-model.test.mjs",
+      "bytes": 2205,
+      "sha256": "735114b6117c92cb156462643043d2b488089162118ea7ad3a13814987a7429e"
+    },
+    {
+      "path": "tests/v16-2-layout.html",
+      "bytes": 12084,
+      "sha256": "f4c5bcb987e8fc9c451c3c9ad89e4d1531a9acce194741eaf48785f7055a65ac"
+    },
+    {
+      "path": "tsconfig.app.json",
+      "bytes": 507,
+      "sha256": "a7266d1c85fa6947c70073256d9a73e4c459e97b0b4ef24b5c48dcab498ef4c5"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 119,
+      "sha256": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808"
+    },
+    {
+      "path": "tsconfig.node.json",
+      "bytes": 191,
+      "sha256": "843c35f20f6d101c456338994e7d3d0c8c94182fcc8b7378f1e096c7ed547234"
+    },
+    {
+      "path": "vite.config.d.ts",
+      "bytes": 54,
+      "sha256": "46a0b34e1264c4d25ca6646ff0e6cfaa7275ea1ae5a6bc23d4dfd84edf2f2b2e"
+    },
+    {
+      "path": "vite.config.js",
+      "bytes": 137,
+      "sha256": "73d3434eed31fe9cec0f53a543bfaa2fc45e8f62350e70c31feda630ab1569b6"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 133,
+      "sha256": "6dc0ce25c4170ac9fbadb4dbd19ca5c2ceb57b9c5efc5090b82e2923f53dd679"
+    }
+  ],
+  "note": "This manifest is listed as changed but omits its own recursive content hash."
+}

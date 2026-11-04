@@ -60,7 +60,7 @@
 .viseme { display: none; }
 [data-mouth="rest"] .viseme-rest, [data-mouth="aa"] .viseme-aa, [data-mouth="ee"] .viseme-ee, [data-mouth="oh"] .viseme-oh, [data-mouth="oo"] .viseme-oo, [data-mouth="mbp"] .viseme-mbp, [data-mouth="fv"] .viseme-fv { display: inline; }
 .mascot-blink { opacity: 0; animation: mascot-blink 6.1s infinite; }
-.mascot-wave-arm { transform-origin: 895px 200px; animation: mascot-wave-hand .85s ease-in-out infinite alternate; }
+.mascot-wave-arm { transform-box: view-box; transform-origin: 897px 244px; animation: mascot-wave-hand .85s ease-in-out infinite alternate; }
 .mascot-pose:not(.is-active) .mascot-wave-arm { animation-play-state: paused; }
 @keyframes mascot-wave-hand { from { transform: rotate(-2deg); } to { transform: rotate(3deg); } }
 @keyframes mascot-breathe { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.008); } }
@@ -96,3 +96,9 @@
 
 /* The cloud and character scroll as ordinary content, including in iOS webviews. */
 .talking-mascot { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* Decorative wave strokes never inherit the wrist rotation. */
+.mascot-wave-accents { animation: mascot-wave-accent 1.2s ease-in-out infinite alternate; }
+.mascot-pose:not(.is-active) .mascot-wave-accents { animation-play-state: paused; }
+@keyframes mascot-wave-accent { from { opacity: .65; transform: translateX(0); } to { opacity: 1; transform: translateX(-1px); } }
+@media(prefers-reduced-motion: reduce) { .mascot-wave-accents { animation: none; } }

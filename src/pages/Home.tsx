@@ -9,7 +9,9 @@ import { funnels } from '../data/funnels'
 import FunnelCard from '../components/FunnelCard'
 import './FunnelShowcase.css'
 import './HomeRedesign.css'
+import './ContactClosing.css'
 import TalkingMascot from '../components/mascot/TalkingMascot'
+import ChovyTourSection from '../components/tour/ChovyTourSection'
 type FAQItem = {
   question: string
   answer: string
@@ -115,6 +117,8 @@ export default function Home() {
           </div>
 
           <TalkingMascot contactHref="#contact" />
+
+          <ChovyTourSection />
 
           <div className="portfolio-focus-grid" aria-label="Areas of expertise">
             <article className="portfolio-focus-card">
@@ -534,12 +538,11 @@ export default function Home() {
         >
           <div className="portfolio-home-section">
             <div className="portfolio-contact-panel">
-              <div>
-                <p className="portfolio-home-eyebrow">Available for work</p>
-                <h2 id="contact-title">Have a project or opportunity in mind?</h2>
+              <div className="portfolio-contact-copy">
+                <p className="portfolio-home-eyebrow portfolio-contact-availability">Available for work <span>Freelance &amp; remote</span></p>
+                <h2 id="contact-title">Have a project in mind?<br /><span>Let’s build the right solution.</span></h2>
                 <p>
-                  I&apos;m open to GoHighLevel, automation, web development, app
-                  development, freelance, and remote opportunities.
+                  Whether you need CRM automation, AI-powered workflows, a website, or an application, let’s discuss your challenges and find a practical solution.
                 </p>
               </div>
 
@@ -548,7 +551,7 @@ export default function Home() {
                   className="portfolio-primary-btn"
                   href="mailto:latcharlesjacob@gmail.com"
                 >
-                  Email Me
+                  Email Me <span aria-hidden="true">↗</span>
                 </a>
 
                 <button
@@ -556,7 +559,7 @@ export default function Home() {
                   type="button"
                   onClick={openWhatsApp}
                 >
-                  WhatsApp
+                  WhatsApp <span aria-hidden="true">↗</span>
                 </button>
               </div>
             </div>

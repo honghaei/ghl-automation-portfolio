@@ -5,6 +5,7 @@ import { INQUIRY, INTRO_LINES, type Pose } from './mascotModel'
 import { AUDIO_TRACKS, frameAt, type PlaybackFrame } from './audioTimeline'
 import { INITIAL_PLAYBACK, PlaybackController } from './PlaybackController'
 import './TalkingMascot.css'
+import { isTourPlaying, subscribeTourPriority } from '../tour/tourAudioPriority'
 
 const ASSETS = '/assets/mascot/'
 const POSES: Pose[] = ['idle', 'greeting', 'explaining', 'closing', 'thinking']
@@ -13,6 +14,7 @@ const MESSAGES = [...INTRO_LINES.map(l => l.text), INQUIRY]
 type Props = { contactHref?: string }
 export default function TalkingMascot({ contactHref = '#contact' }: Props) {
   const [playback, setPlayback] = useState(INITIAL_PLAYBACK)
+  const [tourPlaying, setTourPlaying] = useState(isTourPlaying)
   const [ready, setReady] = useState(false)
   const [inquiryOpen, setInquiryOpen] = useState(false)
   const root = useRef<HTMLDivElement>(null)
@@ -37,11 +39,15 @@ export default function TalkingMascot({ contactHref = '#contact' }: Props) {
     controller.current = c; readFrame.current = c.playbackFrame
     const update = () => setPlayback(c.snapshot())
     const unsubscribe = c.subscribe(update); update()
+    const unsubscribeTour = subscribeTourPriority(active => {
+      setTourPlaying(active)
+      if (active) c.mute()
+    })
     const leavePage = () => c.mute()
     window.addEventListener('pagehide', leavePage)
     return () => {
       window.removeEventListener('pagehide', leavePage)
-      unsubscribe(); window.clearTimeout(hoverTimer.current); c.destroy()
+      unsubscribeTour(); unsubscribe(); window.clearTimeout(hoverTimer.current); c.destroy()
       controller.current = null; readFrame.current = () => frameAt('intro', 0, false)
     }
   }, [])
@@ -81,7 +87,7 @@ export default function TalkingMascot({ contactHref = '#contact' }: Props) {
   }, [inquiryVisible])
   const toggleVoice = () => {
     const c = controller.current
-    if (!c) return
+    if (!c || isTourPlaying()) return
     if (c.snapshot().voiceEnabled) { c.mute(); return }
     window.clearTimeout(hoverTimer.current)
     if (inquiryVisible) c.enableVoice('inquiry')
@@ -139,8 +145,8 @@ export default function TalkingMascot({ contactHref = '#contact' }: Props) {
         <span className="mascot-platform" aria-hidden="true"/>
       </button>
       <div className="mascot-controls">
-        <span className="mascot-hint">{playback.phase === 'starting' ? 'Loading voice…' : playback.phase === 'buffering' ? 'Voice is buffering…' : complete ? 'Hover, focus or tap to chat' : 'A quick hello from Charles'}</span>
-        <button className="mascot-audio-toggle" type="button" aria-pressed={playback.voiceEnabled}
+        <span className="mascot-hint">{tourPlaying ? 'Chovy’s tour is playing below' : playback.phase === 'starting' ? 'Loading voice…' : playback.phase === 'buffering' ? 'Voice is buffering…' : complete ? 'Hover, focus or tap to chat' : 'A quick hello from Charles'}</span>
+        <button className="mascot-audio-toggle" type="button" disabled={tourPlaying} aria-pressed={playback.voiceEnabled}
           title={inquiryVisible ? 'Play inquiry from the beginning' : 'Play introduction from the beginning'} onClick={toggleVoice}>
           {playback.voiceEnabled ? '◖ Mute voice' : '♪ Voice on'}
         </button>

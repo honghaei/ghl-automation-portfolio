@@ -1,0 +1,40 @@
+.chovy-tour-section { grid-column: 1 / -1; min-width: 0; margin-block: 12px 8px; padding: clamp(20px, 3vw, 40px); border: 1px solid #32bbff28; border-radius: 28px; background: linear-gradient(130deg, #0a1e34ed, #061222ed); box-shadow: 0 18px 70px #0002; }
+.chovy-tour-heading { max-width: 970px; margin-bottom: 28px; }
+.chovy-tour-heading h2 { font-size: clamp(1.65rem, 3vw, 2.55rem); letter-spacing: -.04em; line-height: 1.16; margin: 0 0 16px; color: #f1f7ff; }
+.portfolio-home .chovy-tour-heading > p { color: #aebfce; font-size: 1rem; line-height: 1.65; }
+.chovy-tour-technology { display: flex; flex-wrap: wrap; gap: 8px 22px; color: #c4e5f6; font-size: .8rem; margin: 18px 0 7px; }
+.chovy-tour-technology strong { color: #80e4ff; font-weight: 700; }
+.portfolio-home .chovy-tour-heading .chovy-tour-recording-note { font-size: .75rem; color: #8faabd; margin: 0; }
+.chovy-tour-title { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: #9fb7cc; font-size: .75rem; }
+.chovy-tour-badge { color: #68d8ff; font-weight: 650; }
+.chovy-tour-video-title { margin: 10px 0 18px; color: #f3f8ff; font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.3; }
+.chovy-tour-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(245px, .37fr); gap: 24px; align-items: start; }
+.chovy-tour-feature { min-width: 0; }
+.chovy-tour-video-frame { overflow: hidden; border: 1px solid #47bcff40; border-radius: 14px; aspect-ratio: 16 / 9; background: #020910; container-type: inline-size; }
+.chovy-tour-video-frame video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.chovy-tour-video-frame video::cue { font-family: system-ui, sans-serif; font-size: 1.6cqw; color: #f1f7ff; background: #030c18ed; }
+.chovy-tour-video-frame video:fullscreen::cue { font-size: 1.6vw; }
+.chovy-tour-caption-bar { display: flex; gap: 12px; align-items: start; padding: 12px 2px 0; min-height: 5em; font-size: .85rem; }
+.portfolio-home .chovy-tour-caption { flex: 1; margin: 0; color: #e4f2fc; font-size: inherit; line-height: 1.55; overflow-wrap: anywhere; }
+.chovy-tour-cc { flex: none; border: 1px solid #38bfff55; border-radius: 6px; color: #74dbff; background: #0b2a43; font: inherit; font-weight: 700; padding: 4px 7px; cursor: pointer; }
+.chovy-tour-cc[aria-pressed="false"] { color: #96aaba; background: transparent; }
+.portfolio-home p.chovy-tour-feedback { min-height: 3em; margin: 8px 0 0; font-size: .75rem; color: #9bb4c9; line-height: 1.5; }
+.chovy-tour-feedback button { font: inherit; border: 1px solid #70d9ff; background: #0b2c46; color: #cef3ff; border-radius: 8px; padding: 4px 9px; cursor: pointer; }
+.chovy-tour-chapters { border-left: 1px solid #3abaff25; padding: 0 0 0 18px; min-width: 0; }
+.portfolio-home .chovy-tour-chapters > p { display: flex; justify-content: space-between; gap: 10px; margin: 0 0 10px; color: #71d5ff; text-transform: uppercase; letter-spacing: .1em; font-size: .65rem; font-weight: 700; }
+.chovy-tour-chapters > p span { text-transform: none; color: #8aa8bd; letter-spacing: 0; font-weight: 400; }
+.chovy-tour-chapters ol { list-style: none; padding: 0; margin: 0; }
+.chovy-tour-chapters li + li { margin-top: 2px; }
+.chovy-tour-chapters button { display: grid; grid-template-columns: 19px minmax(0, 1fr) auto; align-items: center; gap: 8px; width: 100%; min-height: 38px; padding: 7px 8px; text-align: left; background: transparent; border: 1px solid transparent; border-radius: 8px; font: inherit; font-size: .75rem; line-height: 1.4; color: #c4d3e1; cursor: pointer; }
+.chovy-tour-chapters button[aria-current="true"] { background: #128ed024; border-color: #39baff50; color: #f1faff; }
+.chovy-tour-chapters button:hover { background: #ffffff09; }
+.chovy-tour-chapter-number, .chovy-tour-chapters time { color: #7fabc5; font-size: .68rem; font-variant-numeric: tabular-nums; }
+.chovy-tour-transcript { border-top: 1px solid #3abaff25; padding-top: 18px; margin-top: 14px; }
+.chovy-tour-transcript summary { cursor: pointer; color: #bcecff; font-size: .9rem; padding-block: 4px; }
+.chovy-tour-transcript section { max-width: 960px; padding-top: 12px; }
+.chovy-tour-transcript h3 { font-size: 1rem; margin-bottom: 8px; color: #e0f4ff; }
+.portfolio-home .chovy-tour-transcript p { font-size: .9rem; line-height: 1.7; color: #aabfce; }
+.chovy-tour-section :is(button, summary):focus-visible { outline: 2px solid #8ae2ff; outline-offset: 3px; }
+.mascot-audio-toggle:disabled { cursor: default; opacity: .65; }
+@media(max-width: 1100px) { .chovy-tour-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; } .chovy-tour-chapters { border-left: 0; border-top: 1px solid #3abaff25; padding: 18px 0 0; } .chovy-tour-chapters ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px 10px; } .chovy-tour-chapters li + li { margin: 0; } }
+@media(max-width: 540px) { .chovy-tour-section { border-radius: 20px; padding: 22px 14px; } .chovy-tour-chapters ol { grid-template-columns: minmax(0, 1fr); } .chovy-tour-chapters button { min-height: 44px; font-size: .8rem; } .chovy-tour-video-frame { border-radius: 10px; } .chovy-tour-heading { margin-bottom: 24px; } .chovy-tour-caption-bar { min-height: 8.5em; } }
